@@ -1,0 +1,115 @@
+<div class="container header-spacer">
+<div class="row">
+    
+   
+    
+    <div class="col-md-8">
+        
+         <h1>{{ label }}</h1>
+    <div class="metadata-top">{{ content.field_media_type.0 }} | {{ content.field_publish_date.0 }}</div>    
+        
+    <div>{{ drupal_block("social_sharing_buttons_block") }}</div>
+        
+        {% if (node.field_photo_album.value is empty) and (node.field_video.value is empty)  %}
+         <div>
+            <img class="img-fluid" src="{{ file_url(content.field_image|field_target_entity.uri.value) }}" alt="{{ content.field_image|field_raw('alt') }}"></a> 
+          </div>
+        <div class="clearfix">&nbsp;</div>
+        {% endif %}
+         
+        {% if node.field_photo_album %}
+        <div>
+        {{ content.field_photo_album }} 
+        </div>   
+        <div class="clearfix">&nbsp;</div>
+        {% endif %}
+        
+        {% if node.field_video %}
+        <div>
+           {{ content.field_video }} 
+        </div>    
+        <div class="clearfix">&nbsp;</div>
+        {% endif %}
+        
+        {% if node.body %}
+        {{ content.body }}
+        {% endif %}
+        
+        
+    
+    </div>
+    
+    <div class="col-md-4">
+        
+        {% if node.field_contact_information.value %}
+        
+           <h3>Contact Person</h3>  
+           {{ content.field_contact_information }}
+        <hr />
+        {% endif %}
+        
+        
+        {% if node.field_related_content.value %}
+        
+           <div class="related-links">
+           <h3>Related Links</h3>
+              <ul class="related-links-set">
+                  {{ content.field_related_content }}
+              </ul>    
+           </div>  
+        <hr />   
+        {% endif %}
+    
+        
+        {% if node.field_focus_areas.value %}
+        
+           <div class="related-links">
+           <h3>Focus Areas</h3>
+              <ul class="related-links-set">
+                  {{ content.field_focus_areas }}
+              </ul>    
+           </div>   
+        <hr />   
+        {% endif %}
+        
+        {% if node.field_subjects.value %}
+        
+           <div class="related-links">
+           <h3>Subjects</h3>
+              <ul class="related-links-set">
+                  {{ content.field_subjects }}
+              </ul>    
+           </div>   
+        <hr />   
+        {% endif %}
+        
+        
+        {% if node.field_topics.value %}
+        
+           <div class="related-links">
+           <h3>Topics</h3>
+              <ul class="related-links-set">
+                  {{ content.field_topics }}
+              </ul>    
+           </div>   
+        <hr />   
+        {% endif %} 
+        
+        {% if node.field_organization.value %}
+        
+           <div class="related-links">
+           <h3>Organizations</h3>
+              <ul class="related-links-set">
+                  {{ content.field_organization }}
+              </ul>    
+           </div>    
+        <hr />
+        {% endif %}
+        
+    </div>
+
+
+
+
+</div>
+</div>

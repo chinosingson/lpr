@@ -1,0 +1,14 @@
+/vendor
+/docroot/sites/default/files
+/docroot/sites/default/settings.php
+/docroot/sites/default/settings.local.php
+/docroot/sites/default/error_log
+/old
+/docroot/modules/contrib
+/docroot/themes/contrib
+
+*.sql
+*.sql.gz
+*.mysql.gz
+.lando.yml
+

@@ -1,0 +1,27 @@
+<div class="container header-spacer">
+<h1 class="profile-header">{{ label }}</h1>
+    <div class="profile-position">{{ content.field_position.0 }}, {{ content.	field_organization.0 }}</div>
+    <hr class="profile-divider" />
+    <div class="clearfix"></div> 
+    {% if node.field_image.value %}
+    <img class="img-fluid profile-photo" src={{ file_url(content.field_image|field_target_entity.uri.value) }} alt={{ content.field_image|field_raw('alt') }} >
+    {% endif %}
+        
+    {% if content.body %}
+    <div class="profile-body">
+        {{ content.body }}
+        
+        <div class="clearfix">&nbsp;</div>
+        
+        {% if node.field_publications.value %}
+            <h3>Related Publications</h3>
+            {{ content.field_publications }}
+        {% endif %}
+        
+        <div class="clearfix">&nbsp;</div>
+        <a class="backlinks" href="javascript:history.go(-1)">&rarr; Previous Page</a>
+    </div>
+    
+    
+    {% endif %}
+</div>
