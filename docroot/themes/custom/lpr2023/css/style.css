@@ -148,3 +148,66 @@
    }
    
 }
+
+
+/* Our LPR Champions grid */
+.view-profile-listing .views-row .profile-listing-image {
+  height: 220px;
+  width: 220px;
+  overflow: hidden;
+}
+
+.view-profile-listing views-row .profile-listing-image img {
+  height: 220px;
+}
+
+.view-profile-listing .views-row .profile-listing-name a {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  align-items: flex-end;
+  justify-content: flex-start;
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+  height: 220px;
+  width: 220px;
+  text-shadow: 0px 0px 8px #000000;
+}
+
+.view-profile-listing .views-row .profile-listing-name {
+  width: 100%;
+  position: relative;
+  bottom: 220px;
+  height: inherit;
+}
+
+@media (min-width: 768px) {
+  .view-profile-listing .views-row .profile-listing-name {
+    display: none;
+    width: min-content;
+    overflow: hidden;
+  }
+
+  .view-profile-listing .views-row:hover .profile-listing-name {
+    display: table-cell;
+  }
+
+  .view-profile-listing .views-row .profile-listing-image img {
+    filter: grayscale(100%);
+  }
+
+  .view-profile-listing .views-row:hover .profile-listing-image img {
+    filter: grayscale(0%);
+  }
+}
+
+@media (max-width: 768px) {
+  .view-profile-listing .views-row .profile-listing-image img {
+    filter: grayscale(0%);
+  }
+
+  .view-profile-listing .views-row .profile-listing-name {
+    display: table-cell;
+  }
+}
