@@ -1,0 +1,150 @@
+/**
+ * @file
+ * Subtheme specific CSS.
+ */
+
+ :root {
+   --green: #39A186;
+   --blue: #0088C7;
+ }
+
+ .green {
+   color: var(--green);
+ }
+
+ .blue {
+   color: var(--blue);
+ }
+
+ h1 {
+   font-size: 2.625rem; /* 42px */
+ }
+
+ h2 {
+   font-size: 2rem; /* 32px */
+ }
+
+ h3 {
+   font-size: 1.625rem; /* 28px */
+ }
+
+ h4 {
+   font-size: 1.25rem; /* 20px */
+ }
+
+ .nav-link {
+   color: #333 !important;
+ }
+
+ .navbar .nav-link {
+   color: #000 !important;
+ }
+
+ .site-footer {
+    background: var(--green) !important;
+    color: #fff !important;
+ }
+ 
+ .line-left-green {
+   position: absolute;
+   left: 0%;
+   height: 9px;
+   width: 75px;
+   background-color: var(--green);
+ }
+
+ .line-right-green {
+   position: absolute;
+   left: 94%;
+   height: 9px;
+   width: 75px;
+   background-color: var(--green); 
+ }
+
+ .line-left-blue {
+   position: absolute;
+   left: 0%;
+   height: 9px;
+   width: 75px;
+   background-color: var(--blue);
+ }
+
+ .line-right-blue {
+   position: absolute;
+   left: 94%;
+   height: 9px;
+   width: 75px;
+   background-color: var(--blue); 
+ }
+ 
+ .background-box-green {
+   background: url(../images/green-box.png) no-repeat top right;
+ }
+
+ .background-circle-blue-left {
+   background: url(../images/circle-blue.png) no-repeat top left;
+   padding-left: 100px;
+   padding-top: 100px;
+ }
+
+ .background-circle-green-right {
+   background: url(../images/circle-green.png) no-repeat top right;
+   padding-right: 100px;
+   padding-top: 100px;
+ }
+
+
+ /* Profile Page */
+
+ .node--type-profile .view-display-id-profile_title .views-row {
+   text-align: right;
+ }
+
+ .node--type-profile .view-display-id-profile_photo img {
+   border-radius: 5px;
+   box-shadow: 5px 5px #D9D9D9;
+   margin-left: 15px;
+ }
+
+ .node--type-profile .node__content .field--name-body {
+   padding: 100px;
+   border: 3px solid var(--blue);
+   border-radius: 10px;
+   margin-top: -25px;
+ }
+
+ .site-footer {
+   margin-top: 100px;
+ }
+
+
+ @media (max-width: 992px) {
+   .node--type-profile .view-display-id-profile_title {
+      text-align: center !important;
+   }
+
+   .node--type-profile .view-display-id-profile_photo {
+      margin: 0;
+   }
+      
+   .node--type-profile .view-display-id-profile_photo .views-field-field-image {
+      text-align: center;
+      padding: 10px 0 10px;
+   }
+
+   .node--type-profile .node__content .field--name-body {
+      padding: 30px;
+      border: 3px solid var(--blue);
+      border-radius: 10px;
+      margin-top: 0;
+   }
+
+}
+
+
+@media (min-width: 992px) {
+   .navbar-expand-lg .navbar-collapse {
+      flex-direction: row-reverse;
+   }
+   
+}
