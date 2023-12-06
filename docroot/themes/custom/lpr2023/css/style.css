@@ -241,11 +241,6 @@
 }
 
 /* Flagship Programs - Home */
-#flagship-programs-home .program {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
 #flagship-programs-home .program-image {
   width: 100%;
