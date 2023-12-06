@@ -3,19 +3,43 @@
  * Subtheme specific CSS.
  */
 
+ @font-face {
+   font-family: Ideal Sans;
+   src: url(../fonts/IdealSans-Book-Pro.otf);
+ }
+
  :root {
    --green: #39A186;
    --blue: #0088C7;
+ }
+
+ body {
+   font-family: Roboto, helvetica;
+ }
+
+ h1, h2, h3, h4, h5, h6 {
+   font-family: Ideal Sans;
  }
 
  .green {
    color: var(--green);
  }
 
- .blue {
-   color: var(--blue);
+ .bg-green, .bg-green a {
+   background: var(--green);
+   color: #fff;
  }
 
+ .blue {
+   color: var(--blue);
+
+ }
+
+ .bg-blue, .bg-blue a {
+   background: var(--blue);
+   color: #fff;
+ }
+ 
  h1 {
    font-size: 2.625rem; /* 42px */
  }
