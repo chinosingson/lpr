@@ -186,9 +186,11 @@
 }
 
 .view-profile-listing .views-row .profile-listing-name a {
+  font-family: 'Ideal Sans', sans-serif;
+  font-size: 1.4rem;
   display: flex;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 2px 10px;
   align-items: flex-end;
   justify-content: flex-start;
   text-decoration: none;
@@ -215,6 +217,7 @@
 
   .view-profile-listing .views-row:hover .profile-listing-name {
     display: table-cell;
+    background: rgba(66, 169, 216, 0.50);
   }
 
   .view-profile-listing .views-row .profile-listing-image img {
@@ -228,10 +231,37 @@
 
 @media (max-width: 768px) {
   .view-profile-listing .views-row .profile-listing-image img {
-    filter: grayscale(0%);
+    filter: grayscale(100%);
   }
 
   .view-profile-listing .views-row .profile-listing-name {
     display: table-cell;
+    /* background: rgba(66, 169, 216, 0.50); */
+  }
+}
+
+/* Flagship Programs - Home */
+#flagship-programs-home .program {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#flagship-programs-home .program-image {
+  width: 100%;
+  min-width: 290px;
+  height: 255px;
+  border-radius: 35px;
+  background: #fafafa;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+@media (min-width: 992px) {
+  #flagship-programs-home .program-title {
+    min-height: 100px !important;
+  }
+
+  #flagship-programs-home .program-blurb {
+    min-height: 200px !important;
   }
 }
