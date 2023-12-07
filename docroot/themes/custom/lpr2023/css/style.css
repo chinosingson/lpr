@@ -24,6 +24,11 @@
    font-family: Ideal Sans;
  }
 
+ a {
+   color: var(--blue);
+   text-decoration: none;
+ }
+
  .green {
    color: var(--green);
  }
