@@ -260,3 +260,27 @@
     min-height: 200px !important;
   }
 }
+
+/* Our Focus - Home */
+#our-focus-home #focus-environmental-protection { background: #8BD573; }
+#our-focus-home #focus-gender-equality { background: #56CA87; }
+#our-focus-home #focus-harnessing-technology { background: #0088C7; }
+#our-focus-home #focus-ppp { background: #76C879; }
+
+@media (min-width: 768px) {
+  #our-focus-home .focus-title {
+    min-height: 80px;
+  }
+  #our-focus-home .focus-blurb {
+    min-height: 120px;
+  }
+}
+
+@media (min-width: 992px) {
+  #our-focus-home .focus-title {
+    min-height: 140px;
+  }
+  #our-focus-home .focus-blurb {
+    min-height: 250px;
+  }
+}
