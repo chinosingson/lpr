@@ -17,6 +17,7 @@
  body,p {
    font-family: 'Roboto', 'Helvetica', sans-serif;
    font-weight: 300;
+   font-size: 20px
  }
 
  h1, h2, h3, h4, h5, h6 {
@@ -43,20 +44,25 @@
  }
  
  h1 {
-   font-size: 2.625rem; /* 42px */
+   font-size: 2.625em; /* 42px */
  }
 
  h2 {
-   font-size: 2rem; /* 32px */
+   font-size: 2em; /* 32px */
  }
 
  h3 {
-   font-size: 1.625rem; /* 28px */
+   font-size: 1.625em; /* 28px */
  }
 
  h4 {
-   font-size: 1.25rem; /* 20px */
+   font-size: 1.25em; /* 20px */
  }
+
+ .region {
+   margin: 20px 0 20px;
+ }
+
 
  .nav-link {
    color: #333 !important;
@@ -72,7 +78,7 @@
  }
  
  .line-left-green {
-   position: absolute;
+   position: relative;
    left: 0%;
    height: 9px;
    width: 75px;
@@ -80,7 +86,7 @@
  }
 
  .line-right-green {
-   position: absolute;
+   position: relative;
    left: 94%;
    height: 9px;
    width: 75px;
@@ -88,7 +94,7 @@
  }
 
  .line-left-blue {
-   position: absolute;
+   position: relative;
    left: 0%;
    height: 9px;
    width: 75px;
@@ -96,7 +102,7 @@
  }
 
  .line-right-blue {
-   position: absolute;
+   position: relative;
    left: 94%;
    height: 9px;
    width: 75px;
@@ -117,6 +123,23 @@
    background: url(../images/circle-green.png) no-repeat top right;
    padding-right: 100px;
    padding-top: 100px;
+ }
+
+ /* Superfish */
+ .block-superfishmain-nav-2023 {
+   float: right;
+   color: #000;
+   text-decoration: none;
+ }
+ ul.sf-menu.sf-style-white {
+   float: right;
+ }
+ ul.sf-menu.sf-style-white a, ul.sf-menu.sf-style-white a:visited, ul.sf-menu.sf-style-white span.nolink {
+   color: #000;
+   text-decoration: none;
+ }
+ ul.sf-menu.sf-style-white .sf-depth-3 {
+   margin-left: 10px
  }
 
 
@@ -141,6 +164,10 @@
 
  .site-footer {
    margin-top: 100px;
+ }
+ 
+ .navbar-toggler-icon {
+   background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
  }
 
 
