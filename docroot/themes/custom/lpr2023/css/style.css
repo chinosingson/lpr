@@ -29,11 +29,16 @@
    text-decoration: none;
  }
 
+ a:hover {
+   color: var(--blue);
+   font-weight: 500;
+ }
+
  .green {
    color: var(--green);
  }
 
- .bg-green, .bg-green a {
+ .bg-green, .bg-green a, .bg-green a:hover {
    background: var(--green);
    color: #fff;
  }
@@ -43,7 +48,7 @@
 
  }
 
- .bg-blue, .bg-blue a {
+ .bg-blue, .bg-blue a, .bg-blue a:hover {
    background: var(--blue);
    color: #fff;
  }
