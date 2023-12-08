@@ -1,4 +1,5 @@
 /vendor
+/docroot/sites/development.services.yml
 /docroot/sites/default/files
 /docroot/sites/default/settings.php
 /docroot/sites/default/settings.local.php
@@ -11,4 +12,4 @@
 *.sql.gz
 *.mysql.gz
 .lando.yml
-
+.DS_Store
