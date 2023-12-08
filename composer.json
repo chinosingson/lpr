@@ -75,6 +75,7 @@
         "drupal/recaptcha": "^3.2",
         "drupal/redirect": "^1.9",
         "drupal/rename_admin_paths": "^2.2@beta",
+        "drupal/responsive_menu": "^4.4",
         "drupal/search_api": "^1.30",
         "drupal/search_api_block": "^1.1",
         "drupal/search_api_exclude": "^2.0",
