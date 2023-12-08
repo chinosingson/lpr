@@ -331,3 +331,17 @@
     min-height: 250px;
   }
 }
+
+/* News & Events - Home */
+.view-id-events.view-display-id-home_highlighted .event-highlighted .event-title a,
+.view-id-events.view-display-id-home_featured .event-featured .event-title a {
+  text-decoration: none;
+  color: var(--blue);
+}
+
+.event-read-more a {
+  font-family: 'Ideal Sans', 'Helvetica', sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+}
