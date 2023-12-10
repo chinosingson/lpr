@@ -71,7 +71,8 @@
  }
 
  .region {
-   margin: 20px 0 20px;
+   margin-top: 20px;
+   margin-bottom: 20px;
  }
 
 
@@ -152,8 +153,20 @@
    text-decoration: none;
  }
  ul.sf-menu.sf-style-white .sf-depth-3 {
-   margin-left: 10px
+   margin-left: 10px;
  }
+
+ /* Slideshow */
+ .flex-caption {
+   position: absolute;
+   left: 4px;
+   bottom: 4px;
+   right: 4px;
+   background: rgba(0, 0, 0, 0.51);
+   color: #fff;
+   padding: 10px;
+   z-index: 2;
+ } 
 
 
  /* Profile Page */
@@ -204,6 +217,12 @@
       border-radius: 10px;
       margin-top: 0;
    }
+
+   .flex-caption {
+      position: relative;
+      background: #000;
+    } 
+   
 
 }
 
