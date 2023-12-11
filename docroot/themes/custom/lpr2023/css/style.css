@@ -12,6 +12,7 @@
  :root {
    --green: #39A186;
    --blue: #0088C7;
+   --gray: #E5E5E5;
  }
 
  body,p {
@@ -52,6 +53,10 @@
  .bg-blue, .bg-blue a, .bg-blue a:hover {
    background: var(--blue);
    color: #fff;
+ }
+
+ .bg-gray {
+   background: var(--gray);
  }
  
  h1 {
@@ -95,6 +100,7 @@
    height: 9px;
    width: 75px;
    background-color: var(--green);
+   margin-bottom: 25px;
  }
 
  .line-right-green {
@@ -103,6 +109,7 @@
    height: 9px;
    width: 75px;
    background-color: var(--green); 
+   margin-bottom: 25px;
  }
 
  .line-left-blue {
@@ -111,6 +118,7 @@
    height: 9px;
    width: 75px;
    background-color: var(--blue);
+   margin-bottom: 25px;
  }
 
  .line-right-blue {
@@ -119,6 +127,7 @@
    height: 9px;
    width: 75px;
    background-color: var(--blue); 
+   margin-bottom: 25px;
  }
  
  .background-box-green {
