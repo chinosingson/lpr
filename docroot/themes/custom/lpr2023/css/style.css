@@ -403,23 +403,29 @@
    }
  }
  
- /* News & Events - Home */
- #events-highlighted .event-title a,
- #events-featured .event-title a {
+ /* News & Events */
+ .news-highlighted .news-title a,
+ .news-featured .news-title a,
+ .event-highlighted .event-title a,
+ .event-featured .event-title a {
    text-decoration: none;
    color: var(--blue);
  }
  
- #events-highlighted .event-read-more a,
- #events-featured .event-read-more a {
+ .news-highlighted .news-read-more a,
+ .news-featured .news-read-more a,
+ .event-highlighted .event-read-more a,
+ .event-featured .event-read-more a {
    font-family: "Ideal Sans", "Helvetica", sans-serif;
    text-decoration: none;
    text-transform: uppercase;
    color: #333;
  }
  
- #events-highlighted .event-read-more a:after,
- #events-featured .event-read-more a:after {
+ .news-highlighted .news-read-more a:after,
+ .news-featured .news-read-more a:after,
+ .event-highlighted .event-read-more a:after,
+ .event-featured .event-read-more a:after {
    margin-left: 10px;
    content: url("/themes/custom/lpr2023/images/chevron-right.svg");
  }
