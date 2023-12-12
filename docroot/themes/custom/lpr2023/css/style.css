@@ -120,6 +120,15 @@
    margin-top: 20px;
    margin-bottom: 20px;
  }
+
+ .header {
+   border-bottom: #ddd;
+   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.30);
+ }
+
+ .featured-top .region {
+   margin-top: 0px;
+ }
  
  .nav-link {
    color: #333 !important;
@@ -277,6 +286,12 @@
    .navbar-expand-lg .navbar-collapse {
      flex-direction: row-reverse;
    }
+ }
+
+ @media (max-width: 767px) {
+    #block-lpr2023-footer {
+      text-align: center;
+    }
  }
  
  /* Our LPR Champions grid */
@@ -488,3 +503,18 @@
    }
  }
  
+
+ /* Focus areas */
+ .focus-areas .section-two {
+  margin-top: 100px;
+ }
+
+ .focus-areas .overlay-box {
+  margin: -50px 0 0 -100px;
+ }
+
+ @media (max-width: 768px) {
+  .focus-areas .overlay-box {
+    margin: 0;
+   }
+}
