@@ -43,11 +43,11 @@ a:focus,
 .nav-item .dropdown-item a.active {
   color: white;
 }
-.nav-link {
+/* .nav-link {
   color: rgb(231, 231, 231);
-}
-.nav-link:hover,
-.nav-link:focus {
+} */
+#superfish-main-nav-2023 .nav-link:hover,
+#superfish-main-nav-2023 .nav-link:focus {
   color: rgb(231, 231, 231);
 }
 a:active,

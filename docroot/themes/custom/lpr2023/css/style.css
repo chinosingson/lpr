@@ -130,7 +130,7 @@
    margin-top: 0px;
  }
  
- .nav-link {
+ #superfish-main-nav-2023 .nav-link {
    color: #333 !important;
  }
  
@@ -215,7 +215,24 @@
  ul.sf-menu.sf-style-white .sf-depth-3 {
    margin-left: 10px;
  }
+ ul.sf-menu.sf-style-white li.sf-multicolumn-wrapper span.nolink.menuparent {
+  font-weight: 500 !important;
+ }
  
+ /* MMenu */
+ .mm-panels .mm-navbar__title,
+ .mm-panels .mm-listitem {
+  font-family: "Ideal Sans";
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+}
+
+.mm-panels .mm-navbar__title {
+  color: #333 !important;
+  font-weight: 500;
+}
+
  /* Slideshow */
  .flex-caption {
    position: absolute;
@@ -517,4 +534,12 @@
   .focus-areas .overlay-box {
     margin: 0;
    }
+}
+
+/* Flagship Events node view */
+
+#bootstrap-horizontal-tabs .nav-item {
+  font-family: 'Ideal Sans', Helvetica, Roboto, sans-serif;
+  font-weight: 300;
+
 }
