@@ -32,3 +32,61 @@ function lpr2023_form_system_theme_settings_alter(&$form, FormStateInterface $fo
     'bg-transparent' => t('Transparent'),
   ];
 }
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for views templates.
+ */
+function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, array $variables) {
+  // Get the current path.
+  $current_path = \Drupal::service('path.current')->getPath();
+  $current_path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+
+  // Check for specific paths and add theme suggestions accordingly.
+  // suggestions for the News & Events page
+  if ($current_path_alias == '/news-events'){
+    // if ($variables['view']->id() == 'news' && $variables['view']->current_display == 'news_highlighted') {
+    //   $suggestions[] = 'views_view_fields__news__news_highlighted';
+    // }
+
+    // suggestions for events displays
+    if ($variables['view']->id() == 'events'){
+      if ($variables['view']->current_display == 'news_events_highlighted') {
+        $suggestions[] = 'views_view_fields__events__news_events_highlighted';
+      }
+
+      if ($variables['view']->current_display == 'news_events_list') {
+        $suggestions[] = 'views_view_fields__events__news_events_list';
+      }
+
+    } 
+  }
+
+  // suggestions for the homepage
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    if ($variables['view']->id() == 'events'){
+      if ($variables['view']->current_display == 'homepage_highlighted') {
+        $suggestions[] = 'views_view_fields__events__homepage_highlighted';
+      }
+
+      if ($variables['view']->current_display == 'homepage_list') {
+        $suggestions[] = 'views_view_fields__events__homepage_list';
+      }
+    }
+  }
+
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+
+function lpr2023_theme_suggestions_node_alter(array &$suggestions, array $variables) {
+  $node = $variables['elements']['#node'];
+  // use a custom template for flagship events
+  if ($node->bundle() == 'event' && $node->get('field_flagship_event')->value == "1") {
+    // dpm($node->get('field_flagship_event')->value);
+    $view_mode = $variables['elements']['#view_mode'];
+    $suggestions[] = 'node__event__flagship';
+    dpm($suggestions);
+  }
+}
