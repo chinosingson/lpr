@@ -31,24 +31,20 @@
  * @ingroup themeable
  */
 #}
-{% for field in fields -%}
-  {{ field.separator }}
-  {%- if field.wrapper_element -%}
-    <{{ field.wrapper_element }}{{ field.wrapper_attributes }}>
-  {%- endif %}
-  {%- if field.label -%}
-    {%- if field.label_element -%}
-      <{{ field.label_element }}{{ field.label_attributes }}>{{ field.label }}{{ field.label_suffix }}</{{ field.label_element }}>
-    {%- else -%}
-      {{ field.label }}{{ field.label_suffix }}
-    {%- endif %}
-  {%- endif %}
-  {%- if field.element_type -%}
-    <{{ field.element_type }}{{ field.element_attributes }}>{{ field.content }}</{{ field.element_type }}>
-  {%- else -%}
-    {{ field.content }}
-  {%- endif %}
-  {%- if field.wrapper_element -%}
-    </{{ field.wrapper_element }}>
-  {%- endif %}
-{%- endfor %}
+<div class="row event-highlighted mb-5">
+  <div class="col-md-8">
+    <div class="event-image pb-lg-0 pb-sm-3">{{ fields.field_image.content }}</div>
+  </div>
+  <div class="col-md-4 d-flex flex-column">
+    <div class="event-info">
+      <h5>{{ fields.field_article_type.content }}{{ fields.type.content }} &mdash; {{ fields.created.content }}</h5>
+    </div>
+    <div class="event-title">
+      <h3>{{ fields.title.content }}</h3>
+      <p>{{ fields.body.content }}</p>
+    </div>
+    <div class="event-read-more mt-auto">
+      <a href="{{ fields.view_node.content|striptags }}">Read more</a>
+    </div>
+  </div>
+</div>
