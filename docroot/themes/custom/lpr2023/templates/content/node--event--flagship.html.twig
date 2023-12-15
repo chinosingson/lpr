@@ -1,0 +1,46 @@
+{# {% if node.field_flagship_event.value %} #}
+    <div class="container-fluid" style="background-color: {{ content.field_image_backdrop_color.0 }}; ">
+        
+        <div class="container">
+        <img src="{{ file_url(content.field_image_backdrop['#items'].entity.uri.value) }}" class="img-fluid img-border" />
+        </div>
+       
+    </div>
+    
+    <div class="clearfix">&nbsp;</div>
+        
+    <div class="container event-tabs">   
+        <h1 class="text-center">{{ label }}</h1>
+         <div class="metadata-top text-center">
+                {{ content.field_event_date.0 }}
+         </div>
+         
+         <div class="clearfix">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-8">
+                {{ content.body }} 
+            </div>
+            <div class="col-md-4">
+                
+                {{ content.field_session_materials }}
+                
+            
+            </div>
+        
+            
+        
+        </div>
+        
+        <hr />
+        
+        {{ content.field_event_tabs }}
+        <div class="clearfix">&nbsp;</div>
+        <hr />
+        <div class="clearfix">&nbsp;</div>
+        {{ content.field_other_resources }}
+        
+    </div> 
+    	
+    
+    
+{# {% else %} #}
