@@ -30,9 +30,9 @@
         "drupal/ckeditor": "^1.0",
         "drupal/collapsiblock": "^4.1",
         "drupal/color_field": "^3.0",
-        "drupal/core-composer-scaffold": "^10.1",
-        "drupal/core-project-message": "^10.1",
-        "drupal/core-recommended": "^10.1",
+        "drupal/core-composer-scaffold": "^10.2",
+        "drupal/core-project-message": "^10.2",
+        "drupal/core-recommended": "^10.2",
         "drupal/core-vendor-hardening": "^10",
         "drupal/ctools": "^4.0",
         "drupal/datalayer": "^2.0",
@@ -102,7 +102,7 @@
         "drupal/viewsreference": "^2.0@beta",
         "drush/drush": "^12",
         "laminas/laminas-feed": "^2.22",
-        "symfony/psr-http-message-bridge": "^2.2"
+        "symfony/psr-http-message-bridge": "^6.4"
     },
     "conflict": {
         "drupal/drupal": "*"
