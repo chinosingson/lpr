@@ -97,6 +97,7 @@
         "drupal/views_data_export": "^1.4",
         "drupal/views_parity_row": "^1.13",
         "drupal/views_row_insert": "^2.1",
+        "drupal/views_slideshow": "5.0",
         "drupal/views_striping": "^1.0",
         "drupal/viewsreference": "^2.0@beta",
         "drush/drush": "^12",
