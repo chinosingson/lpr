@@ -121,9 +121,15 @@ function lpr2023_preprocess_field($variables){
       foreach ($variables['items'] as &$item) {
       // $item['body_attributes'] = $item['content']['#body_attributes'];
       // $item['header_attributes'] = $item['content']['#header_attributes'];
-      // $item['tabs_item_attributes'] = $item['content']['#tabs_item_attributes'];
+
+      // bootstrap 5 tab attributes
+      $item['content']['#header_attributes']['data-bs-toggle'] = 'tab';
+      $item['content']['#header_attributes']['data-bs-target'] = $item['content']['#header_attributes']['href'];
+      $item['content']['#header_attributes']['aria-controls'] = $item['content']['#body_attributes']['id'];
+      $item['content']['#header_attributes']['aria-selected'] = 'false';
+
+      $item['tabs_item_attributes']['role'] = 'presentation';
       $item['tabs_item_attributes']['class'][] = 'flex-sm-fill';
-      // dpm($item['content']['#tabs_item_attributes']['class']);
     }
   }
 }
