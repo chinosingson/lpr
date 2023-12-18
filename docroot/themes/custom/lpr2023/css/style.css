@@ -234,14 +234,14 @@
 }
 
  /* Slideshow */
- .flex-caption {
+ .view-homepage-slideshow .overlay {
    position: absolute;
-   left: 4px;
-   bottom: 4px;
-   right: 4px;
+   left: 0px;
+   bottom: 0px;
+   right: 0px;
    background: rgba(0, 0, 0, 0.51);
    color: #fff;
-   padding: 10px;
+   padding: 50px;
    z-index: 2;
  }
  
@@ -293,7 +293,7 @@
      margin-top: 0;
    }
  
-   .flex-caption {
+   .view-homepage-slideshow .overlay {
      position: relative;
      background: #000;
    }
