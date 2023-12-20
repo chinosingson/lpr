@@ -112,7 +112,7 @@ $config['system.performance']['js']['preprocess'] = FALSE;
  * be gained by generating a query string from rebuild_token_calculator.sh and
  * using these parameters in a request to rebuild.php.
  */
-$settings['rebuild_access'] = TRUE;
+$settings['rebuild_access'] = FALSE;
 
 /**
  * Skip file system permissions hardening.
@@ -150,31 +150,10 @@ $settings['skip_permissions_hardening'] = TRUE;
  */
 # $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy'];
 
-$databases['default']['default'] = array (
-    'database' => 'lprxqa4d2bcbu',
-    'username' => 's327454',
-    'password' => 'JasTgfQkqd4Xg2o',
-    'prefix' => '',
-    // 'host' => 'localhost',
-    'host' => 'srv-9020',
-    'port' => '3306',
-    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-    'driver' => 'mysql',
-  );
-// $databases['default']['default'] = array (
-//   'database' => 'drupal10',
-//   'username' => 'drupal10',
-//   'password' => 'drupal10',
-//   'prefix' => '',
-//   'host' => 'database',
-//   'port' => '3306',
-//   'isolation_level' => 'READ COMMITTED',
-//   'driver' => 'mysql',
-//   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
-//   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
-// );
-// $settings['hash_salt'] = 'J3fQZg7N6_Tu98jNehEElE3PVuWmYRLqzw0pkTUQR07tpMPE0od-gTnonXtZIuW5lpXX1iftIA';
-// $settings['config_sync_directory'] = 'sites/default/files/config_hf8ydXrjkRGLdeZXBN5w3pwrjglXbhcxJuI8u1tnC4cmJaduzE8SLxkhLRxtJaaKjvnxVRgPMw/sync';
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
+
 $databases['default']['default'] = array (
   'database' => 'lprxqa4d2bcbu',
   'username' => 's327454',
