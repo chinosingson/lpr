@@ -151,12 +151,12 @@ $settings['skip_permissions_hardening'] = TRUE;
 # $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy'];
 
 $databases['default']['default'] = array (
-    'database' => 'drupal10',
-    'username' => 'drupal10',
-    'password' => 'drupal10',
+    'database' => 'lprxqa4d2bcbu',
+    'username' => 's327454',
+    'password' => 'JasTgfQkqd4Xg2o',
     'prefix' => '',
     // 'host' => 'localhost',
-    'host' => 'database',
+    'host' => 'srv-9020',
     'port' => '3306',
     'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
     'driver' => 'mysql',
