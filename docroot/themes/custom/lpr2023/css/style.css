@@ -530,6 +530,18 @@
   margin: -50px 0 0 -100px;
  }
 
+ .section-two .impact {
+  border-top: 5px solid var(--blue) !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 20px !important; 
+  border-bottom-right-radius: 20px !important;
+ }
+
+ .section-two ul li {
+  margin-top: 10px;
+ }
+
  @media (max-width: 768px) {
   .focus-areas .overlay-box {
     margin: 0;
