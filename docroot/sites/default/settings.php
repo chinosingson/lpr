@@ -175,3 +175,17 @@ $databases['default']['default'] = array (
 // );
 // $settings['hash_salt'] = 'J3fQZg7N6_Tu98jNehEElE3PVuWmYRLqzw0pkTUQR07tpMPE0od-gTnonXtZIuW5lpXX1iftIA';
 // $settings['config_sync_directory'] = 'sites/default/files/config_hf8ydXrjkRGLdeZXBN5w3pwrjglXbhcxJuI8u1tnC4cmJaduzE8SLxkhLRxtJaaKjvnxVRgPMw/sync';
+$databases['default']['default'] = array (
+  'database' => 'lprxqa4d2bcbu',
+  'username' => 's327454',
+  'password' => 'JasTgfQkqd4Xg2o',
+  'prefix' => '',
+  'host' => 'srv-9020',
+  'port' => '3306',
+  'isolation_level' => 'READ COMMITTED',
+  'driver' => 'mysql',
+  'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
+  'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
+);
+$settings['hash_salt'] = 'M47eJ6Lgy-JwgBRA199l1iaMMTP6ZusEnyXWVGnLGXt6xb2UbcbYXOfaR2aCpfxN2c5a_ncXGQ';
+$settings['config_sync_directory'] = 'sites/default/files/config_MsKKjv2-Qq3qgvj0TDpSy84a2grcGykVp6KMEGutJEZrd17GYZ7ddUuLLtTQyKH8AqGNIztNwQ/sync';
