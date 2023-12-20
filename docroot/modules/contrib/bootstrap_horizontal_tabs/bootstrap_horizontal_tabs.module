@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Horizontal Tabs module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function bootstrap_horizontal_tabs_theme($existing, $type, $theme, $path) {
+  $variables = [
+    'field__bootstrap_horizontal_tabs' => [
+      'base hook' => 'field',
+    ],
+  ];
+  return $variables;
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function bootstrap_horizontal_tabs_preprocess_field(&$variables) {
+  if ($variables['field_type'] === 'bootstrap_horizontal_tabs') {
+    $variables['tabs_wrapper_attributes'] = $variables['element']['#tabs_wrapper_attributes'];
+    $variables['content_wrapper_attributes'] = $variables['element']['#content_wrapper_attributes'];
+
+    // Store these attributes as valid twig vars (see #3275309).
+    foreach ($variables['items'] as &$item) {
+      $item['body_attributes'] = $item['content']['#body_attributes'];
+      $item['header_attributes'] = $item['content']['#header_attributes'];
+      $item['tabs_item_attributes'] = $item['content']['#tabs_item_attributes'];
+    }
+  }
+}

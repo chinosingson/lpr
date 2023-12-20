@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.basic_page.field_horizontal_tabs
+    - node.type.basic_page
+  module:
+    - bootstrap_horizontal_tabs
+    - user
+id: node.basic_page.default
+targetEntityType: node
+bundle: basic_page
+mode: default
+content:
+  field_horizontal_tabs:
+    weight: 101
+    label: above
+    settings:
+      tab_display: tabs
+    third_party_settings: {  }
+    type: bootstrap_horizontal_tabs
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

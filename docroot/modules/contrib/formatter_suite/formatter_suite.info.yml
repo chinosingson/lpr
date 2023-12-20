@@ -1,0 +1,17 @@
+# Declares module information, including the module's name, description,
+# and dependencies.
+name: Formatter Suite
+type: module
+description: 'Field formatters to present numbers, text, links, etc.'
+package: San Diego Supercomputer Center (SDSC)
+dependencies:
+  - drupal:field
+  - drupal:system
+libraries:
+  - formatter_suite/formatter_suite
+core_version_requirement: ^9 || ^10
+
+# Information added by Drupal.org packaging script on 2023-09-06
+version: '2.0.0'
+project: 'formatter_suite'
+datestamp: 1694036574

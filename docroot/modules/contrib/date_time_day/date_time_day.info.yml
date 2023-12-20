@@ -1,0 +1,12 @@
+name: 'Date time day'
+type: module
+description: 'Provides the ability to store date (start, end) time of single day.'
+package: Field types
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - drupal:datetime
+
+# Information added by Drupal.org packaging script on 2023-04-23
+version: '2.0.1'
+project: 'date_time_day'
+datestamp: 1682281901

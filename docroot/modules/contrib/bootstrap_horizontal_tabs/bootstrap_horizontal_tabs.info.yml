@@ -1,0 +1,14 @@
+name: 'Bootstrap Horizontal Tabs'
+description: 'Provides a custom field type displayed as horizontal tabs'
+type: module
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - drupal:field
+  - drupal:text
+package: Field
+core_incompatible: false
+
+# Information added by Drupal.org packaging script on 2023-05-31
+version: '2.0.4'
+project: 'bootstrap_horizontal_tabs'
+datestamp: 1685547976

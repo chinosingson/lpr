@@ -1,0 +1,26 @@
+{
+    "name": "drupal/views_parity_row",
+    "type": "drupal-module",
+    "description": "This module provide a new Row Style Plugin for Views.",
+    "homepage": "https://drupal.org/project/views_parity_row",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Pol Dellaiera (@drupol)",
+            "homepage": "https://www.drupal.org/u/pol",
+            "role": "Maintainer"
+        }
+    ],
+    "require-dev": {
+        "drupol/drupal-conventions": "^1.7",
+        "drupal/drupal": "^9"
+    },
+    "extra": {
+        "grumphp": {
+            "config-default-path": "vendor/drupol/drupal-conventions/config/drupal8/grumphp.yml"
+        }
+    },
+    "scripts": {
+        "grumphp": "./vendor/bin/grumphp run"
+    }
+}
