@@ -1,0 +1,23 @@
+/* ---------- Open Sans ---------- */
+
+h1,
+h2,
+h1 a,
+h2 a {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+h3,
+h4,
+h5,
+h6,
+h3 a {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+}
+body,
+p,
+a,
+li {
+  font-family: 'Open Sans', sans-serif;
+}

@@ -1,0 +1,225 @@
+
+{% if node.field_flagship_event.value %}
+    
+    <div class="container-fluid" style="background-color: {{ content.field_image_backdrop_color.0 }}; ">
+        
+        <div class="container">
+        <img src="{{ file_url(content.field_image_backdrop['#items'].entity.uri.value) }}" class="img-fluid img-border" />
+        </div>
+       
+    </div>
+    
+    <div class="clearfix">&nbsp;</div>
+        
+    <div class="container event-tabs">   
+        <h1 class="text-center">{{ label }}</h1>
+         <div class="metadata-top text-center">
+                {{ content.field_event_date.0 }}
+         </div>
+         
+         <div class="clearfix">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-8">
+                {{ content.body }} 
+            </div>
+            <div class="col-md-4">
+                
+                {{ content.field_session_materials }}
+                
+            
+            </div>
+        
+            
+        
+        </div>
+        
+        <hr />
+        
+        {{ content.field_event_tabs }}
+        <div class="clearfix">&nbsp;</div>
+        <hr />
+        <div class="clearfix">&nbsp;</div>
+        {{ content.field_other_resources }}
+        
+    </div> 
+    	
+    
+    
+{% else %}
+
+
+<div class="container header-spacer">
+<div class="row">
+    <div class="col-md-8">
+        <h1>{{ label }}</h1>
+        <div class="metadata-top">{{ content.field_event_class.0 }} | 
+                 {{ content.field_event_date.0 }}</div>
+        <div>{{ drupal_block("social_sharing_buttons_block") }}</div>
+        {% if (node.field_image.value) and (node.field_video is empty)  %}
+        <img src="{{ file_url(content.field_image['#items'].entity.uri.value) }}" class="img-fluid img-border" />
+        
+        <div class="clearfix">&nbsp;</div>
+        {% endif %}
+        
+        {% if (content.field_video is not empty) %}
+           {{ content.field_video }}
+        <div class="clearfix">&nbsp;</div>
+        {% endif %}
+        
+        
+
+        
+        
+        
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            {% if node.body.value %}
+            <li class="nav-item">
+                <a class="nav-link active" id="intro-tab" data-toggle="tab" href="#intro" role="tab" aria-controls="intro=" aria-selected="true">Introduction</a>
+            </li>
+            {% endif %}
+            {% if node.field_agenda.value %}
+            <li class="nav-item">
+                <a class="nav-link" id="agenda-tab" data-toggle="tab" href="#agenda" role="tab" aria-controls="agenda" aria-selected="false">Agenda</a>
+            </li>
+            {% endif %}     
+            {% if node.field_speakers.value %}
+            <li class="nav-item">
+                <a class="nav-link" id="speakers-tab" data-toggle="tab" href="#speakers" role="tab" aria-controls="speakers" aria-selected="false">Speakers</a>
+            </li>
+            {% endif %}
+            {% if node.field_session_materials.value %}
+            <li class="nav-item">
+                <a class="nav-link" id="session-materials-tab" data-toggle="tab" href="#session-materials" role="tab" aria-controls="session-materials" aria-selected="false">Session Materials</a>
+            </li>
+            {% endif %} 
+            {% if node.field_other_resources.value %}
+            <li class="nav-item">
+                <a class="nav-link" id="other-resources-tab" data-toggle="tab" href="#other-resources" role="tab" aria-controls="other-resources" aria-selected="false">Other Resources</a>
+            </li>
+            {% endif %} 
+       </ul>
+            <div class="tab-content tab-content-event" id="myTabContent">
+                {% if node.body.value %}
+                <div class="tab-pane fade show active" id="intro" role="tabpanel" aria-labelledby="intro-tab">
+                    {{ content.body }}     
+                </div>
+                {% endif %}
+                {% if node.field_agenda.value %}                
+                <div class="tab-pane fade" id="agenda" role="tabpanel" aria-labelledby="agenda-tab">
+                    {{ content.field_agenda }}                       
+                </div>
+                {% endif %}
+                {% if node.field_speakers.value %}                
+                <div class="tab-pane fade" id="speakers" role="tabpanel" aria-labelledby="speakers-tab">
+                {{ content.field_speakers }}    
+                </div>
+                {% endif %} 
+                {% if node.field_session_materials.value %}                
+                <div class="tab-pane fade" id="session-materials" role="tabpanel" aria-labelledby="session-materials-tab">
+                {{ content.field_session_materials }}      
+                </div>
+                {% endif %} 
+                {% if node.field_other_resources.value %}                
+                <div class="tab-pane fade" id="other-resources" role="tabpanel" aria-labelledby="other-resources-tab">
+                {{ content.field_other_resources }}       
+                </div>
+                {% endif %} 
+            </div>
+        
+        
+        {% if content.field_document %}
+        
+        <div class="metadata-bottom">
+        <h2>Event Materials</h2>
+        {% if content.field_files %}
+        <a class="resource-button" href="{{ file_url(node.field_files.entity.uri.value) }}" target="_blank"><i class="fas fa-angle-double-down document-download-button"></i>{{ node.field_files.description }}</a>
+        {% endif %}
+        
+        </div>
+        
+        {% endif %}
+    
+    </div>
+    <div class="col-md-4">
+        
+         {% if node.field_contact_information.value %}
+        
+           <h3>Contact Person</h3>  
+           {{ content.field_contact_information }}
+        <hr />
+        {% endif %}
+        
+         {% if node.field_related_content.value %}
+        
+           <div class="related-links">
+           <h3>Related Links</h3>
+              <ul class="related-links-set">
+                  {{ content.field_related_content }}
+              </ul>    
+           </div>  
+        <hr />   
+        {% endif %}
+        
+        {% if node.field_focus_areas.value %}
+        
+           <div class="related-links">
+           <h3>Focus Areas</h3>
+              <ul class="related-links-set">
+                  {{ content.field_focus_areas }}
+              </ul>    
+           </div>   
+        <hr />   
+        {% endif %}
+        
+        {% if node.field_subjects.value %}
+        
+           <div class="related-links">
+           <h3>Subjects</h3>
+              <ul class="related-links-set">
+                  {{ content.field_subjects }}
+              </ul>    
+           </div>   
+        <hr />   
+        {% endif %}
+        
+        {% if node.field_topics.value %}
+        
+           <div class="related-links">
+           <h3>Topics</h3>
+              <ul class="related-links-set">
+                  {{ content.field_topics }}
+              </ul>    
+           </div>   
+        <hr />   
+        {% endif %} 
+        
+        {% if node.field_photo_album.value %}
+        
+           <div class="related-links">
+           <h3>Photo Album</h3>
+              
+            {{ content.field_photo_album }}
+                 
+           </div>    
+        <hr />
+        {% endif %}
+        
+        {% if node.field_organization.value %}
+        
+           <div class="related-links">
+           <h3>Organizations</h3>
+              <ul class="related-links-set">
+                  {{ content.field_organization }}
+              </ul>    
+           </div>    
+        <hr />
+        {% endif %}
+        
+    </div>
+
+
+
+</div>
+</div>
+
+{% endif %}

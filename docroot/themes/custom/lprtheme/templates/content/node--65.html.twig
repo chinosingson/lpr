@@ -1,0 +1,93 @@
+<div class="article-row header-spacer">
+<div class="clearfix">&nbsp;</div>
+<div class="clearfix">&nbsp;</div>
+<h3 class="text-center">EVENTS</h3>
+<div class="clearfix">&nbsp;</div>
+
+<div class="container listing-content-area">
+    <div class="row">
+        <div class="col-md-6">
+           <h4 class="text-center">Upcoming Events</h4>
+           {{ drupal_view('featured_content_lists', 'upcoming_events') }}
+        </div>   
+        <div class="col-md-6">
+            <h4 class="text-center mobile-divider1">Previous Events</h4>
+           {{ drupal_view('featured_content_lists', 'previous_events') }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 list-more-links">
+           <hr />
+           <p class="text-right"><a href="/search?search_api_fulltext=&f%5B0%5D=content_type%3Aevent">» More events</a></p>
+        </div>   
+    </div>
+</div>
+<div class="clearfix">&nbsp;</div>
+<div class="clearfix">&nbsp;</div>
+
+
+
+<div class="container-fluid calendar-row">
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix">&nbsp;</div>
+    <h3 class="text-center">NEWS</h3>
+    <div class="clearfix">&nbsp;</div>
+    
+
+    <div class="container listing-content-area">
+    <div class="row">
+        <div class="col-md-6">
+           {{ drupal_view('featured_homepage_content', 'featured_article') }}
+        </div>   
+        <div class="col-md-6 mobile-divider1">
+           {{ drupal_view('featured_content_lists', 'listed_articles') }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 list-more-links">
+           <hr />
+           <p class="text-right"><a href="/search?search_api_fulltext=&f%5B0%5D=article_type%3A59&f%5B1%5D=content_type%3Aarticle">» More news</a></p>
+        </div>   
+    </div>
+<div class="clearfix">&nbsp;</div>
+<div class="clearfix">&nbsp;</div>
+</div>
+</div>
+
+
+
+
+<div class="container listing-content-area">
+    
+    <div class="row"></div>
+    <div class="multimedia-row">
+    <div class="clearfix">&nbsp;</div>
+    <div class="clearfix">&nbsp;</div>
+    <h3 class="text-center">MULTIMEDIA</h3>
+    <div class="clearfix">&nbsp;</div>
+    </div>
+
+<div class="container">    
+    <div class="row">
+        <div class="col-md-6">
+           <h4 class="text-center">PHOTO GALLERIES</h4>
+           <div class="clearfix">&nbsp;</div>
+            {{ drupal_view('featured_content_lists', 'listed_photo_galleries') }}
+             <div class="list-more-links"><hr />
+           <p class="text-right"><a href="/search?search_api_fulltext=&f%5B0%5D=content_type%3Amedia&f%5B1%5D=media_type%3A32">» See all photo galleries</a></p></div>
+        </div>   
+        <div class="col-md-6">
+           <h4 class="text-center mobile-divider1">VIDEOS</h4>
+           <div class="clearfix">&nbsp;</div>
+                        {{ drupal_view('featured_content_lists', 'listed_videos') }}         
+            <div class="list-more-links"><hr />
+           <p class="text-right"><a href="/search?search_api_fulltext=&f%5B0%5D=content_type%3Amedia&f%5B1%5D=media_type%3A33">» See all videos</a></p></div>            
+        </div>
+    </div>
+</div>
+    
+<div class="clearfix">&nbsp;</div>
+<div class="clearfix">&nbsp;</div>
+    
+</div>
+</div>
