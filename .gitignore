@@ -1,12 +1,13 @@
-/vendor
-/docroot/sites/development.services.yml
-/docroot/sites/default/files
-/docroot/sites/default/settings.php
-/docroot/sites/default/settings.local.php
-/docroot/sites/default/error_log
-/old
-/docroot/modules/contrib
-/docroot/themes/contrib
+# Ignore paths that contain user-generated content.
+docroot/files
+docroot/sites/*/files
+docroot/sites/*/private
+
+docroot/sites/development.services.yml
+docroot/sites/default/settings.php
+docroot/sites/default/settings.local.php
+docroot/sites/default/error_log
+old
 
 *.sql
 *.sql.gz

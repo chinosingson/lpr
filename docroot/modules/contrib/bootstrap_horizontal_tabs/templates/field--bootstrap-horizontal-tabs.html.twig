@@ -1,0 +1,78 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ *   *** Added by Bootstrap Horizontal Tabs ***
+ *   - content.header: The header tab sub-field.
+ *   - content.body: The body content sub-field.
+ *   - tabs_item_attributes: List of HTML attributes for each tab list item.
+ *   - header_attributes: List of HTML attributes for each content.header.
+ *   - body_attributes: List of HTML attributes for each content.body.
+ *   ******************************************
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ * *** Added by Bootstrap Horizontal Tabs ***
+ * - tabs_wrapper_attributes: List of HTML attributes for the tabs wrapper.
+ * - content_wrapper_attributes: List of HTML attributes for the content wrapper.
+ * ******************************************
+ * @see template_preprocess_field()
+ */
+#}
+{%
+  set title_classes = [
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+<div{{ attributes }}>
+  {% if not label_hidden %}
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+  {% endif %}
+
+  {# Only print headers if there are multiple items #}
+  {% if items|length > 1 %}
+    <ul{{ tabs_wrapper_attributes }}>
+    {% for item in items %}
+      <li{{ item.tabs_item_attributes }}>
+        <a{{ item.header_attributes }}>{{ item.content.header }}</a>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+  {# Print the body regardless of the number of items #}
+  <div{{ content_wrapper_attributes }}>
+    {% for item in items %}
+      <div{{ item.body_attributes }}>{{ item.content.body }}</div>
+    {% endfor %}
+  </div>
+
+</div>

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_horizontal_tabs
+    - node.type.basic_page
+  module:
+    - bootstrap_horizontal_tabs
+id: node.basic_page.field_horizontal_tabs
+field_name: field_horizontal_tabs
+entity_type: node
+bundle: basic_page
+label: tabs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: bootstrap_horizontal_tabs

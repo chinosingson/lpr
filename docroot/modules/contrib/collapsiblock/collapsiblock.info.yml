@@ -1,0 +1,11 @@
+name: 'Collapsiblock'
+type: 'module'
+description: 'Makes individual blocks collapsible.'
+package: 'User interface'
+core_version_requirement: ^9.2 || ^10
+configure: collapsiblock.global_settings
+
+# Information added by Drupal.org packaging script on 2023-08-15
+version: '4.1.0'
+project: 'collapsiblock'
+datestamp: 1692141655

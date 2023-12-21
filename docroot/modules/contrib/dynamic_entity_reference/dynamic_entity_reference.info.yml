@@ -1,0 +1,19 @@
+name: Dynamic Entity Reference
+type: module
+description: 'Provides an entity reference field that can reference multiple entity types.'
+package: Field types
+core_version_requirement: ^10 || ^11
+php: 8.1
+dependencies:
+  - drupal:field
+test_dependencies:
+  - drupal:field_ui
+  - drupal:language
+  - drupal:locale
+  - drupal:node
+  - drupal:taxonomy
+
+# Information added by Drupal.org packaging script on 2023-07-08
+version: '4.0.0-alpha3'
+project: 'dynamic_entity_reference'
+datestamp: 1688838698

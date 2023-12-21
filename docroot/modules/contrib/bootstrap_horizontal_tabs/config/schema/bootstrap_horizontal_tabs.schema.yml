@@ -1,0 +1,7 @@
+field.formatter.settings.bootstrap_horizontal_tabs:
+  type: mapping
+  label: 'Bootstrap horizontal tabs header display options'
+  mapping:
+    tab_display:
+      type: string
+      label: 'Header display'

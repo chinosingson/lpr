@@ -1,0 +1,23 @@
+views.row.views_parity_row_entity:*:
+  type: views_entity_row
+  label: 'Entity options'
+  mapping:
+    views_parity_row_enable:
+      type: boolean
+      label: 'Alternate with a different view mode every X rows ?'
+    views_parity_row:
+      type: mapping
+      label: 'Configuration of Views Parity Row'
+      mapping:
+        frequency:
+          type: string
+          label: 'Frequency of view mode change.'
+        start:
+          type: string
+          label: 'Start'
+        end:
+          type: string
+          label: 'End'
+        view_mode:
+          type: string
+          label: 'Alternate view mode'
