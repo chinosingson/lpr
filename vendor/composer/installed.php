@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '10131b01e90bcfdec71f4e53f6b210fb3bf065f9',
+        'reference' => 'fb43498a8a33e1d3ca3928c252a155b90ad870c1',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -47,12 +47,12 @@
             'dev_requirement' => false,
         ),
         'consolidation/annotated-command' => array(
-            'pretty_version' => '4.9.1',
-            'version' => '4.9.1.0',
+            'pretty_version' => '4.9.2',
+            'version' => '4.9.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../consolidation/annotated-command',
             'aliases' => array(),
-            'reference' => 'e01152f698eff4cb5df3ebfe5e097ef335dbd3c9',
+            'reference' => 'b5255dcbee1de95036185062a103dabc622224de',
             'dev_requirement' => false,
         ),
         'consolidation/config' => array(
@@ -269,12 +269,12 @@
             'dev_requirement' => false,
         ),
         'drupal/bootstrap_horizontal_tabs' => array(
-            'pretty_version' => '2.0.4',
-            'version' => '2.0.4.0',
+            'pretty_version' => '2.0.5',
+            'version' => '2.0.5.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../docroot/modules/contrib/bootstrap_horizontal_tabs',
             'aliases' => array(),
-            'reference' => '2.0.4',
+            'reference' => '2.0.5',
             'dev_requirement' => false,
         ),
         'drupal/bootstrap_paragraphs' => array(
@@ -539,12 +539,12 @@
             'dev_requirement' => false,
         ),
         'drupal/date_range_formatter' => array(
-            'pretty_version' => '4.0.1',
-            'version' => '4.0.1.0',
+            'pretty_version' => '4.0.2',
+            'version' => '4.0.2.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../docroot/modules/contrib/date_range_formatter',
             'aliases' => array(),
-            'reference' => '4.0.1',
+            'reference' => '4.0.2',
             'dev_requirement' => false,
         ),
         'drupal/date_time_day' => array(
@@ -566,12 +566,12 @@
             'dev_requirement' => false,
         ),
         'drupal/ds' => array(
-            'pretty_version' => '3.15.0',
-            'version' => '3.15.0.0',
+            'pretty_version' => '3.16.0',
+            'version' => '3.16.0.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../docroot/modules/contrib/ds',
             'aliases' => array(),
-            'reference' => '8.x-3.15',
+            'reference' => '8.x-3.16',
             'dev_requirement' => false,
         ),
         'drupal/dynamic_entity_reference' => array(
@@ -665,12 +665,12 @@
             'dev_requirement' => false,
         ),
         'drupal/file_mdm' => array(
-            'pretty_version' => '2.6.0',
-            'version' => '2.6.0.0',
+            'pretty_version' => '3.0.0',
+            'version' => '3.0.0.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../docroot/modules/contrib/file_mdm',
             'aliases' => array(),
-            'reference' => '8.x-2.6',
+            'reference' => '3.0.0',
             'dev_requirement' => false,
         ),
         'drupal/filefield_paths' => array(
@@ -809,12 +809,12 @@
             'dev_requirement' => false,
         ),
         'drupal/legacy-project' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '10131b01e90bcfdec71f4e53f6b210fb3bf065f9',
+            'reference' => 'fb43498a8a33e1d3ca3928c252a155b90ad870c1',
             'dev_requirement' => false,
         ),
         'drupal/linkit' => array(
@@ -1456,9 +1456,9 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.1|2.0',
-                1 => '^1.1 || ^2.0',
-                2 => '^1.0',
+                0 => '^1.1 || ^2.0',
+                1 => '^1.0',
+                2 => '1.1|2.0',
             ),
         ),
         'psr/event-dispatcher' => array(

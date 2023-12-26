@@ -6,7 +6,7 @@ core_version_requirement: ^8 || ^9 || ^10
 dependencies:
   - datetime_range
 
-# Information added by Drupal.org packaging script on 2022-08-29
-version: '4.0.1'
+# Information added by Drupal.org packaging script on 2023-12-21
+version: '4.0.2'
 project: 'date_range_formatter'
-datestamp: 1661752211
+datestamp: 1703156624

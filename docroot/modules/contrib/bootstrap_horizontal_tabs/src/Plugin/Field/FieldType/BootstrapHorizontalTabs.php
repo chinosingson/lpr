@@ -14,8 +14,7 @@ use Drupal\Core\TypedData\DataDefinition;
  * @FieldType(
  *   id = "bootstrap_horizontal_tabs",
  *   label = @Translation("Horizontal Tabs"),
- *   description = @Translation("Horizontal Tabs"),
- *   category = @Translation("Text"),
+ *   description = @Translation("Grouped label+body fields, displayed as tabs"),
  *   default_widget = "bootstrap_horizontal_tabs",
  *   default_formatter = "bootstrap_horizontal_tabs"
  * )
