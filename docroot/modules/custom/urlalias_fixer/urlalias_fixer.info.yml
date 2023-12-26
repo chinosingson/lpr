@@ -1,0 +1,5 @@
+name: 'URL Alias Entity Fixer'
+type: module
+description: 'fix for url alias entity mismatch'
+package: Custom
+core_version_requirement: ^10
