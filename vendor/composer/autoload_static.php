@@ -23,8 +23,6 @@ class ComposerStaticInitf10c9829732dc35fa954c784d07f6218
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         '2f69d3914119f042cca9e44442d5ce95' => __DIR__ . '/../..' . '/docroot/core/includes/bootstrap.inc',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
-        '9b38cf48e83f5d8f60375221cd213eee' => __DIR__ . '/..' . '/phpstan/phpstan/bootstrap.php',
-        'c9d07b32a2e02bc0fc582d4f0c1b56cc' => __DIR__ . '/..' . '/laminas/laminas-servicemanager/src/autoload.php',
         '9e4824c5afbdc1482b6025ce3d4dfde8' => __DIR__ . '/..' . '/league/csv/src/functions_include.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
     );
@@ -35,10 +33,6 @@ class ComposerStaticInitf10c9829732dc35fa954c784d07f6218
             'phpowermove\\docblock\\' => 21,
             'phootwork\\lang\\' => 15,
             'phootwork\\collection\\' => 21,
-        ),
-        'm' => 
-        array (
-            'mglaman\\PHPStanDrupal\\' => 22,
         ),
         'l' => 
         array (
@@ -100,20 +94,16 @@ class ComposerStaticInitf10c9829732dc35fa954c784d07f6218
             'Psr\\Cache\\' => 10,
             'PhpParser\\' => 10,
             'Peast\\' => 6,
-            'PHPStan\\' => 8,
         ),
         'M' => 
         array (
-            'MathieuViossat\\Util\\' => 20,
             'Masterminds\\' => 12,
         ),
         'L' => 
         array (
             'League\\Csv\\' => 11,
             'League\\Container\\' => 17,
-            'Laminas\\Text\\' => 13,
             'Laminas\\Stdlib\\' => 15,
-            'Laminas\\ServiceManager\\' => 23,
             'Laminas\\Feed\\' => 13,
             'Laminas\\Escaper\\' => 16,
         ),
@@ -137,7 +127,6 @@ class ComposerStaticInitf10c9829732dc35fa954c784d07f6218
         'D' => 
         array (
             'Drush\\' => 6,
-            'Drupal\\facets_pretty_paths\\' => 27,
             'Drupal\\Core\\' => 12,
             'Drupal\\Composer\\Plugin\\VendorHardening\\' => 39,
             'Drupal\\Composer\\Plugin\\Scaffold\\' => 32,
@@ -181,10 +170,6 @@ class ComposerStaticInitf10c9829732dc35fa954c784d07f6218
         'phootwork\\collection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phootwork/collection',
-        ),
-        'mglaman\\PHPStanDrupal\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mglaman/phpstan-drupal/src',
         ),
         'lsolesen\\pel\\' => 
         array (
@@ -371,14 +356,6 @@ class ComposerStaticInitf10c9829732dc35fa954c784d07f6218
         array (
             0 => __DIR__ . '/..' . '/mck89/peast/lib/Peast',
         ),
-        'PHPStan\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
-        ),
-        'MathieuViossat\\Util\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/mathieuviossat/arraytotexttable/src',
-        ),
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
@@ -391,17 +368,9 @@ class ComposerStaticInitf10c9829732dc35fa954c784d07f6218
         array (
             0 => __DIR__ . '/..' . '/league/container/src',
         ),
-        'Laminas\\Text\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laminas/laminas-text/src',
-        ),
         'Laminas\\Stdlib\\' => 
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-stdlib/src',
-        ),
-        'Laminas\\ServiceManager\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laminas/laminas-servicemanager/src',
         ),
         'Laminas\\Feed\\' => 
         array (
@@ -446,10 +415,6 @@ class ComposerStaticInitf10c9829732dc35fa954c784d07f6218
         'Drush\\' => 
         array (
             0 => __DIR__ . '/..' . '/drush/drush/src',
-        ),
-        'Drupal\\facets_pretty_paths\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/docroot/modules/contrib/facets_pretty_paths/src',
         ),
         'Drupal\\Core\\' => 
         array (

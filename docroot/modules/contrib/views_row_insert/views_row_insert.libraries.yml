@@ -1,7 +1,0 @@
-vri-plugin-admin:
-  version: 1.x
-  js:
-    js/helper.js: {}
-  dependencies:
-  - core/jquery
-  - core/once
