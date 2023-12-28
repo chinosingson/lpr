@@ -1,0 +1,12 @@
+name: Content Security Policy Extras
+type: module
+description: Optional extra features for Content Security Policy
+core_version_requirement: ^9.5 || ^10
+
+dependencies:
+  - csp:csp
+
+# Information added by Drupal.org packaging script on 2023-12-23
+version: '8.x-1.24'
+project: 'csp'
+datestamp: 1703324721

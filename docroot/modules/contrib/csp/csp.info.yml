@@ -1,0 +1,10 @@
+name: Content Security Policy
+type: module
+description: Provide Content-Security-Policy headers
+core_version_requirement: ^9.5 || ^10
+configure: csp.settings
+
+# Information added by Drupal.org packaging script on 2023-12-23
+version: '8.x-1.24'
+project: 'csp'
+datestamp: 1703324721
