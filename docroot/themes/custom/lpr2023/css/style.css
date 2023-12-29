@@ -551,6 +551,7 @@
 
 /* Flagship Events node view */
 
+.node--type-event .nav-item,
 #bootstrap-horizontal-tabs .nav-item {
   font-family: 'Ideal Sans', Helvetica, Roboto, sans-serif;
   font-weight: 300;
