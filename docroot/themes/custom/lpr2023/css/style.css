@@ -41,7 +41,8 @@
  p {
    font-family: "Roboto", "Helvetica", sans-serif;
    font-weight: 300;
-   font-size: 20px;
+   font-size: 1.1rem;
+   /* font-size: 20px; */
  }
  
  h1,
@@ -101,19 +102,19 @@
  }
  
  h1 {
-   font-size: 2.625em; /* 42px */
+   font-size: 2em; /* 40px */
  }
  
  h2 {
-   font-size: 2em; /* 32px */
+   font-size: 1.6em; /* 28px */
  }
  
  h3 {
-   font-size: 1.625em; /* 28px */
+   font-size: 1.4em; /* 24px */
  }
  
  h4 {
-   font-size: 1.25em; /* 20px */
+   font-size: 1.25em; /* 22px */
  }
  
  .region {
@@ -564,3 +565,8 @@
   margin-bottom: 10px;
   filter: grayscale(1);
 }
+
+/*  Related Fields */
+.related-list { list-style-type: none; padding-left: 0px; }
+.related-item .field__item, .related-list .related-item { margin-bottom: 10px; }
+.related-links-set { padding-left: 0px; }
