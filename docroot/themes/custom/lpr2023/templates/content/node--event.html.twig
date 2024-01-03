@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-lg-8">
         <h1>{{ label }}</h1>
-        <div class="metadata-top"><h4>{{ content.field_event_class.0 }} &mdash; {{ content.field_event_date.0 }}</h4></div>
+        <div class="metadata-top">{{ content.field_event_class.0 }} | {{ content.field_event_date.0 }}</div>
         <div>{{ drupal_block("social_sharing_buttons_block") }}</div>
         {% if (node.field_image.value) and (node.field_video is empty)  %}
         <img src="{{ file_url(content.field_image['#items'].entity.uri.value) }}" class="img-fluid img-border mb-3" />
