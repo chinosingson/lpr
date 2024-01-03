@@ -96,6 +96,12 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
     } 
   }
 
+  if ($current_path_alias  == '/search') {
+    if ($variables['view']->current_display == 'site_search') {
+      $suggestions[] = 'views_view_fields__site_search';
+    }
+}
+
 }
 
 /**

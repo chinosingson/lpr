@@ -116,6 +116,10 @@
  h4 {
    font-size: 1.25em; /* 22px */
  }
+
+ h5 {
+  font-size: 1.05em;
+ }
  
  .region {
    margin-top: 20px;
@@ -613,3 +617,56 @@ a.resource-button:link, a.resource-button:visited {
   width: 150px;
   margin: 0 20px 20px 0;
 }
+
+p.search-summary {
+  overflow: hidden;
+}
+
+/*  Site Search Classes */
+
+ul.js-facets-widget {
+  padding: 0 0 0 0px !important;
+  list-style-type: none; 
+}
+
+.facets-checkbox {
+  float: left;
+  margin-right: 5px !important;
+  margin-top: 3px;
+}
+
+.facet-item label {
+  display: inline-block;
+  margin-left: 5px;
+  width: 90%;
+}
+
+
+/* facet styles */
+#block-filterbylawinstrument .facets-widget- ul 
+{
+  list-style-type: none;
+  padding-left: 15px;
+}
+
+#block-filterbylawinstrument .facets-widget- ul li  {
+  display: flex;
+}
+
+#block-filterbylawinstrument .facets-widget-  ul li input {
+  align-self: flex-start;
+}
+
+#block-filterbylawinstrument .facets-widget- ul li label,
+#block-filterbylawinstrument .facets-widget- ul li .facet-item-value
+ {
+  width: auto;
+}
+
+#block-lprtheme-content .view-display-id-asia_pacific_law_database h3 a {
+  color: #699457;
+}
+
+/* flickr gallery */
+.flickrwrap {position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden;}
+.flickrwrap iframe {position:absolute;top:0;left:0;width:100%;height:100%;}
