@@ -1,5 +1,4 @@
-    <div class="container-fluid" style="background-color: {{ content.field_image_backdrop_color.0 }}; ">
-    {{ dump(content.field_image_backdrop_color.0) }}
+    <div class="container-fluid mb-3" style="background-color: {{ content.field_image_backdrop_color.0 }}; ">
         
         <div class="container">
         <img src="{{ file_url(content.field_image_backdrop['#items'].entity.uri.value) }}" class="img-fluid img-border" />
@@ -7,12 +6,10 @@
        
     </div>
     
-    <div class="clearfix">&nbsp;</div>
-        
     <div class="container event-tabs">   
-        <h1 class="text-center">{{ label }}</h1>
-         <div class="metadata-top text-center pb-4">
-                {{ content.field_event_date.0 }}
+        <h1>{{ label }}</h1>
+         <div class="metadata-top pb-4">
+                {{ content.field_event_class.0 }} | {{ content.field_event_date.0 }}
          </div>
          
         <div class="row">
