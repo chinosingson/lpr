@@ -571,3 +571,10 @@
 .related-list { list-style-type: none; padding-left: 0px; }
 .related-item .field__item, .related-list .related-item { margin-bottom: 10px; }
 .related-links-set { padding-left: 0px; }
+
+/* force 'img-fluid' property on images */
+.page-view-site-search .views-field img.site-search-thumbnail,
+.field--name-body img {
+  max-width: 100%;
+  height: auto;
+}
