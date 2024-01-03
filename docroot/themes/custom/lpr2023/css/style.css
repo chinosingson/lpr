@@ -578,3 +578,32 @@
   max-width: 100%;
   height: auto;
 }
+
+/* force width of pdf previews */
+.field--name-field-presentation-file iframe.pdf {
+  width: 100%;
+  height: 100%;
+}
+
+/*  Button Classes */
+
+a.resource-button:link, a.resource-button:visited {
+  background-color: var(--green);
+  border-color: var(--green);
+  font-size: 1.2rem;
+}
+
+.file-metadata {
+  font-size: 0.6em;
+  display: block;
+  height: 20px;
+  text-transform: uppercase;
+}
+
+.resource-cover {
+  float: left;
+  width: 200px;
+  margin: 0 20px 20px 0;
+}
+
+.cover-image { border: 1px solid var(--gray); }
