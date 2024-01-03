@@ -607,3 +607,9 @@ a.resource-button:link, a.resource-button:visited {
 }
 
 .cover-image { border: 1px solid var(--gray); }
+
+.site-search-thumbnail {
+  float: left;
+  width: 150px;
+  margin: 0 20px 20px 0;
+}
