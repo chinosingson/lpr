@@ -41,7 +41,7 @@
  p {
    font-family: "Roboto", "Helvetica", sans-serif;
    font-weight: 300;
-   font-size: 1.1rem;
+   font-size: 1rem;
    /* font-size: 20px; */
  }
  
@@ -670,3 +670,26 @@ ul.js-facets-widget {
 /* flickr gallery */
 .flickrwrap {position:relative;padding-bottom:56.25%;padding-top:30px;height:0;overflow:hidden;}
 .flickrwrap iframe {position:absolute;top:0;left:0;width:100%;height:100%;}
+
+
+/* focus area styles */
+.success-story-read-more a {
+  font-family: "Ideal Sans", "Helvetica", sans-serif;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #333;
+}
+
+.success-story-read-more a:after {
+  margin-left: 10px;
+  content: url("/themes/custom/lpr2023/images/chevron-right.svg");
+}
+
+.success-story-image img {
+  border-radius: 30px;
+}
+
+.featured-resource-type {
+  font-weight: 500;
+  font-size: .8em;
+}

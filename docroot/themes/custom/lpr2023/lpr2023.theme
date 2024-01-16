@@ -86,21 +86,22 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
   }
 
   // suggestions for all news page
-  if ($current_path_alias == '/news'){
-    // suggestions for news displays
-    if ($variables['view']->id() == 'news'){
-      if ($variables['view']->current_display == 'all_news') {
-        $suggestions[] = 'views_view_fields__news__news_list';
-      }
+    if ($current_path_alias == '/news'){
+      // suggestions for news displays
+      if ($variables['view']->id() == 'news'){
+        if ($variables['view']->current_display == 'all_news') {
+          $suggestions[] = 'views_view_fields__news__news_list';
+        }
 
-    } 
-  }
+      } 
+    }
 
+  // suggestions for search pages
   if ($current_path_alias  == '/search') {
     if ($variables['view']->current_display == 'site_search') {
       $suggestions[] = 'views_view_fields__site_search';
     }
-}
+  }
 
 }
 
