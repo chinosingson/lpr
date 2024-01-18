@@ -318,13 +318,13 @@
  
  /* Our LPR Champions grid */
  .view-profile-listing .views-row .profile-listing-image {
-   height: 220px;
-   width: 220px;
+   height: 185px;
+   width: 185px;
    overflow: hidden;
  }
  
  .view-profile-listing .views-row .profile-listing-image img {
-   height: 220px;
+   height: 185px;
  }
  
  .view-profile-listing .views-row .profile-listing-name a {
