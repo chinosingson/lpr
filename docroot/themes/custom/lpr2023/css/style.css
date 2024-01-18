@@ -261,12 +261,13 @@
    box-shadow: 5px 5px #d9d9d9;
    margin-left: 15px;
  }
- 
- .node--type-profile .node__content .field--name-body {
+
+ .node--type-profile .node__content .layout.layout--onecol .block.block-layout-builder.block-field-blocknodeprofilebody .field--name-body {
    padding: 100px;
    border: 3px solid var(--blue);
    border-radius: 10px;
    margin-top: -25px;
+   margin-bottom: 25px;
  }
  
  .site-footer {
@@ -424,6 +425,10 @@
  }
  
  @media (min-width: 768px) {
+  #our-focus-home .focus-logo {
+    min-height: 120px;
+  }
+
    #our-focus-home .focus-title {
      min-height: 80px;
    }
@@ -432,14 +437,14 @@
    }
  }
  
- @media (min-width: 992px) {
+ /* @media (min-width: 992px) {
    #our-focus-home .focus-title {
-     min-height: 140px;
+     min-height: 90px;
    }
    #our-focus-home .focus-blurb {
      min-height: 250px;
    }
- }
+ } */
  
  /* News & Events */
  .news-highlighted .news-title a,
