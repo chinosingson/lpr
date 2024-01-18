@@ -219,6 +219,8 @@
  }
  ul.sf-menu.sf-style-white .sf-depth-3 {
    margin-left: 10px;
+   font-family: Roboto, sans-serif;
+   text-transform: capitalize;
  }
  ul.sf-menu.sf-style-white li.sf-multicolumn-wrapper span.nolink.menuparent {
   font-weight: 500 !important;
@@ -292,7 +294,7 @@
      padding: 10px 0 10px;
    }
  
-   .node--type-profile .node__content .field--name-body {
+   .node--type-profile .node__content .layout.layout--onecol .block.block-layout-builder.block-field-blocknodeprofilebody .field--name-body {
      padding: 30px;
      border: 3px solid var(--blue);
      border-radius: 10px;
