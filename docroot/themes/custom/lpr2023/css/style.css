@@ -380,9 +380,10 @@
  }
  
  /* Flagship Programs - Home */
- #flagship-programs-home .program-title {
+ #flagship-programs-home .program-title,
+ #flagship-programs-home .program-title a{
    text-transform: uppercase;
-   color: #39a186;
+   color: var(--green) !important;
  }
  
  #flagship-programs-home .program-image {
@@ -400,11 +401,11 @@
  
  @media (min-width: 992px) {
    #flagship-programs-home .program-title {
-     min-height: 150px !important;
+     min-height: 90px !important;
    }
  
    #flagship-programs-home .program-blurb {
-     min-height: 200px !important;
+     min-height: 120px !important;
    }
  }
  
