@@ -318,6 +318,13 @@
       text-align: center;
     }
  }
+
+ /* Profile misc */
+ .circle-frame { 
+  border-radius: 50%;
+  border: 5px solid var(--green);
+ }
+
  
  /* Our LPR Champions grid */
  .view-profile-listing .views-row .profile-listing-image {
