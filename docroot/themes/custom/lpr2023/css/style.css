@@ -367,6 +367,7 @@
    .view-profile-listing .views-row:hover .profile-listing-name {
      display: table-cell;
      background: rgba(66, 169, 216, 0.5);
+     top: -185px;
    }
  
    .view-profile-listing .views-row .profile-listing-image img {
