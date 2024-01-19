@@ -709,3 +709,10 @@ ul.js-facets-widget {
   font-weight: 500;
   font-size: .8em;
 }
+
+/* Knowledge & Resources */
+.apac-facet-contents {
+  border-radius: 30px;
+background: #FFF;
+box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
