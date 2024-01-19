@@ -559,6 +559,11 @@
   border-bottom-right-radius: 20px !important;
  }
 
+ .focus-areas .impact strong {
+  font-size: 1.2em;
+  font-weight: 500;
+ }
+
  .section-two ul li {
   margin-top: 10px;
  }
@@ -718,3 +723,4 @@ ul.js-facets-widget {
 background: #FFF;
 box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
