@@ -705,6 +705,8 @@ ul.js-facets-widget {
   border-radius: 30px;
 }
 
+.featured-publication-type,
+.elearning-type,
 .featured-resource-type {
   font-weight: 500;
   font-size: .8em;
