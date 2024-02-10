@@ -183,6 +183,10 @@
           return currentEditorInstance;
         }
 
+        if (this._$textareas.length) {
+          return this._$textareas.get(0);
+        }
+
         return null;
       }
 

@@ -5,7 +5,7 @@ tab label and tab body elements. The number of allowed tabs can be set when
 adding the field to an entity. Tab labels can be set to display as either
 traditional tabs or as pill buttons.
 
-<img src="/bootstrap_horizontal_tabs.gif" alt="Screencast of horizontal tab behavior" />
+![Screencast of horizontal tab behavior](./bootstrap_horizontal_tabs.gif)
 
 This module depends on the [Bootstrap framework](https://getbootstrap.com/).
 It does not prescribe how Bootstrap should be integrated with the site, but
@@ -36,12 +36,12 @@ components. See [JavaScript behavior](https://getbootstrap.com/docs/4.0/componen
 
 ## Installation & management in the UI
 
-- After enabling this module, go to an entity's "Manage fields" page and click
-"Add field."
-- A new field type, "Horizontal Tabs," will be available.
-- Follow standard Drupal field steps for adding the field.
+- After enabling this module, go to an entity's "Manage fields" page and click on
+  "Add field"
+- A new field type, "Horizontal Tabs," will be available
+- Follow standard Drupal field steps for adding the field
 - Under the "Manage Display" page, choose whether the tab headers should display
-as standard "Tabs" or "Pill buttons".
+  as standard "Tabs" or "Pill buttons"
 
 
 ## Configuration

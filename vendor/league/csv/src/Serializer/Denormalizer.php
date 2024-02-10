@@ -107,6 +107,16 @@ final class Denormalizer
     }
 
     /**
+     * @return array<string>
+     */
+    public static function types(): array
+    {
+        $default = [...array_column(Type::cases(), 'value'), ...CallbackCasting::types()];
+
+        return array_values(array_unique($default));
+    }
+
+    /**
      * @return array<string, string>
      */
     public static function aliases(): array

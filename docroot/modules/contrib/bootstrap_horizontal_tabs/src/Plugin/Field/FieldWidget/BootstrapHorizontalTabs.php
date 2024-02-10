@@ -27,7 +27,7 @@ class BootstrapHorizontalTabs extends WidgetBase {
     $element['header'] = [
       '#title' => 'Tab Label',
       '#type' => 'textfield',
-      '#default_value' => isset($items[$delta]->header) ? $items[$delta]->header : NULL,
+      '#default_value' => $items[$delta]->header ?? NULL,
       '#size' => '60',
       '#placeholder' => '',
       '#maxlength' => 255,
@@ -35,7 +35,7 @@ class BootstrapHorizontalTabs extends WidgetBase {
     $element['body'] = [
       '#title' => 'Tab Body',
       '#type' => 'text_format',
-      '#default_value' => isset($items[$delta]->body_value) ? $items[$delta]->body_value : NULL,
+      '#default_value' => $items[$delta]->body_value ?? NULL,
       '#format' => $items[$delta]->body_format,
     ];
 
@@ -61,7 +61,7 @@ class BootstrapHorizontalTabs extends WidgetBase {
     $duplicate_keys = array_keys(array_intersect($headers, $duplicates));
     $field_name = $this->fieldDefinition->getName();
     foreach ($duplicate_keys as $key) {
-      $form_state->setError($form[$field_name]['widget'][$key]['header'], t('Tab header has to be unique'));
+      $form_state->setError($form[$field_name]['widget'][$key]['header'], $this->t('Tab header has to be unique'));
     }
 
     return $values;

@@ -7,6 +7,7 @@ use Drupal\Core\Asset\LibraryDependencyResolverInterface;
 use Drupal\Core\Cache\CacheableResponseInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Render\AttachmentsInterface;
+use Drupal\Core\Utility\Error;
 use Drupal\csp\Csp;
 use Drupal\csp\CspEvents;
 use Drupal\csp\Event\PolicyAlterEvent;
@@ -238,7 +239,8 @@ class ResponseCspSubscriber implements EventSubscriberInterface {
             ->alterPolicy($policy);
         }
         catch (PluginException $e) {
-          watchdog_exception('csp', $e);
+          \Drupal::logger('csp')
+            ->error(Error::DEFAULT_ERROR_MESSAGE, Error::decodeException($e));
         }
       }
 

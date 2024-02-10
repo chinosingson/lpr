@@ -69,10 +69,10 @@ class BootstrapHorizontalTabs extends FormatterBase {
     $settings = $this->getSettings();
 
     if (!empty($settings['tab_display'])) {
-      $summary[] = t('Header display: @display', ['@display' => $settings['tab_display']]);
+      $summary[] = $this->t('Header display: @display', ['@display' => $settings['tab_display']]);
     }
     if (!empty($settings['tab_orientation'])) {
-      $summary[] = t('Header orientation: @display', ['@display' => $settings['tab_orientation']]);
+      $summary[] = $this->t('Header orientation: @display', ['@display' => $settings['tab_orientation']]);
     }
 
     return $summary;
@@ -102,7 +102,7 @@ class BootstrapHorizontalTabs extends FormatterBase {
       // Convert settings to values for use.
       $settings = $this->getSettings();
       $tab_display = $settings['tab_display'] ?? 'tabs';
-      $tab_orientation = $settings['tab_orientation'] === 'vertical' ? 'flex-column' : '';
+      $tab_orientation = $settings['tab_orientation'] === 'vertical' ? 'flex-column nav-stacked' : '';
       // Generate a unique id for the tabs instance.
       $instance_id = HtmlUtility::getUniqueId('bootstrap-horizontal-tabs');
       // Create new tabs wrapper attributes object for use in the template.
