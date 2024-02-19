@@ -734,3 +734,17 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
     margin-bottom: 5px;
   }
 }
+
+.elearning-image {
+  max-height: 380px;
+  overflow:hidden; 
+  position:relative;
+  background-color: #F0F0F0;
+}
+
+
+@media (min-width: 992px){
+.elearning-image img {
+  width: 100%;
+}
+}
