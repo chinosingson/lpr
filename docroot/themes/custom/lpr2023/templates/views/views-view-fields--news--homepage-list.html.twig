@@ -31,18 +31,16 @@
  * @ingroup themeable
  */
 #}
-{# {{ dump(fields)}} #}
 <div class="row news-list mb-5">
-  <div class="col-md-4">
+  <div class="col-md-6">
     <div class="news-image pb-lg-0 pb-sm-3">{{ fields.field_image.content }}</div>
   </div>
-  <div class="col-md-8 d-flex flex-column">
-    <div class="news-info">
-      <h5>{{ fields.field_article_type.content }}</h5>
-    </div>
+  <div class="col-md-6 d-flex flex-column">
     <div class="news-title mb-auto">
       <h4>{{ fields.title.content }}</h4>
-      <p class="small">{{ fields.body.content }}</p>
+    </div>
+    <div class="news-info">
+      <h5>{{ fields.field_article_type.content }}</h5>
     </div>
     <div class="news-read-more">
       <a href="{{ fields.view_node.content|striptags }}">Read more</a>
