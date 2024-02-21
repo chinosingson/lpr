@@ -96,11 +96,33 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
     } 
   }
 
+  // suggestions for publications page
+  if ($current_path_alias == '/publications'){
+    // suggestions for publications displays
+    if ($variables['view']->id() == 'knowledge_and_resources'){
+      if ($variables['view']->current_display == 'publications_list') {
+        $suggestions[] = 'views_view_fields__knowledge_and_resources__publications_list';
+      }
+
+    } 
+  }
+
+  // suggestions for elearning page
+  if ($current_path_alias == '/elearning' || $current_path_alias == '/e-learning'){
+    // suggestions for elearning displays
+    if ($variables['view']->id() == 'knowledge_and_resources'){
+      if ($variables['view']->current_display == 'elearning_list') {
+        $suggestions[] = 'views_view_fields__knowledge_and_resources__elearning_list';
+      }
+
+    } 
+  }
+  // suggestions for search pages
   if ($current_path_alias  == '/search') {
     if ($variables['view']->current_display == 'site_search') {
       $suggestions[] = 'views_view_fields__site_search';
     }
-}
+  }
 
 }
 

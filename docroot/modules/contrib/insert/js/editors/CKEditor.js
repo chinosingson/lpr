@@ -62,7 +62,7 @@
        * @inheritDoc
        */
       getCurrentInstance: function() {
-        return CKEDITOR.currentInstance;
+        return CKEDITOR?.currentInstance;
       },
 
       /**

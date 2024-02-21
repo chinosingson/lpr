@@ -6,7 +6,7 @@ package: Testing
 dependencies:
   - drupal:bootstrap_horizontal_tabs
 
-# Information added by Drupal.org packaging script on 2023-12-22
-version: '2.0.5'
+# Information added by Drupal.org packaging script on 2024-01-26
+version: '2.0.6'
 project: 'bootstrap_horizontal_tabs'
-datestamp: 1703281208
+datestamp: 1706289956

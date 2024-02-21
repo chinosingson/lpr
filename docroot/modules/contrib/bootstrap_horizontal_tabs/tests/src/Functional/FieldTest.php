@@ -2,9 +2,9 @@
 
 namespace Drupal\Tests\bootstrap_horizontal_tabs\Functional;
 
-use Drupal\Tests\node\Traits\ContentTypeCreationTrait;
-use Drupal\Tests\BrowserTestBase;
 use Drupal\Core\Url;
+use Drupal\Tests\BrowserTestBase;
+use Drupal\Tests\node\Traits\ContentTypeCreationTrait;
 
 /**
  * Tests that the module custom field work within node entities.

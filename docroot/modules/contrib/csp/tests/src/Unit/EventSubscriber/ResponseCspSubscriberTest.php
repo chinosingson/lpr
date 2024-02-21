@@ -82,7 +82,7 @@ class ResponseCspSubscriberTest extends UnitTestCase {
     $this->event = new ResponseEvent(
       $this->createMock(HttpKernelInterface::class),
       $this->createMock(Request::class),
-      HttpKernelInterface::MASTER_REQUEST,
+      HttpKernelInterface::MAIN_REQUEST,
       $this->response
     );
 

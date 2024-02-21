@@ -8,7 +8,7 @@ dependencies:
   - colorbox:colorbox
   - insert:insert
 
-# Information added by Drupal.org packaging script on 2023-11-01
-version: '3.0.0-beta2'
+# Information added by Drupal.org packaging script on 2024-01-01
+version: '3.0.0-beta3'
 project: 'insert'
-datestamp: 1698851037
+datestamp: 1704123696

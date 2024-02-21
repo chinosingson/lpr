@@ -64,7 +64,7 @@
       /**
        * @type {Object}
        */
-      _selectors: SELECTORS,
+      _selectors: $.extend({}, PARENT.prototype._selectors, SELECTORS),
 
       /**
        * @type {string}

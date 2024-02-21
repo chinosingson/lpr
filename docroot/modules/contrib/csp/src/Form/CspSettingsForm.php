@@ -7,6 +7,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
+use Drupal\Core\Utility\Error;
 use Drupal\csp\Csp;
 use Drupal\csp\LibraryPolicyBuilder;
 use Drupal\csp\ReportingHandlerPluginManager;
@@ -404,7 +405,8 @@ class CspSettingsForm extends ConfigFormBase {
           );
         }
         catch (PluginException $e) {
-          watchdog_exception('csp', $e);
+          \Drupal::logger('csp')
+            ->error(Error::DEFAULT_ERROR_MESSAGE, Error::decodeException($e));
           continue;
         }
 
