@@ -465,6 +465,7 @@
    color: var(--blue);
  }
  
+ .elearning-list .elearning-read-more a,
  .publications-list .publications-read-more a,
  .news-highlighted .news-read-more a,
  .news-list .news-read-more a,
@@ -476,6 +477,7 @@
    color: #333;
  }
  
+ .elearning-list .elearning-read-more a:after,
  .publications-list .publications-read-more a:after,
  .news-highlighted .news-read-more a:after,
  .news-list .news-read-more a:after,
