@@ -86,15 +86,26 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
   }
 
   // suggestions for all news page
-    if ($current_path_alias == '/news'){
-      // suggestions for news displays
-      if ($variables['view']->id() == 'news'){
-        if ($variables['view']->current_display == 'all_news') {
-          $suggestions[] = 'views_view_fields__news__news_list';
-        }
+  if ($current_path_alias == '/news'){
+    // suggestions for news displays
+    if ($variables['view']->id() == 'news'){
+      if ($variables['view']->current_display == 'all_news') {
+        $suggestions[] = 'views_view_fields__news__news_list';
+      }
 
-      } 
-    }
+    } 
+  }
+
+  // suggestions for publications page
+  if ($current_path_alias == '/publications'){
+    // suggestions for publications displays
+    if ($variables['view']->id() == 'knowledge_and_resources'){
+      if ($variables['view']->current_display == 'publications_list') {
+        $suggestions[] = 'views_view_fields__knowledge_and_resources__publications_list';
+      }
+
+    } 
+  }
 
   // suggestions for search pages
   if ($current_path_alias  == '/search') {

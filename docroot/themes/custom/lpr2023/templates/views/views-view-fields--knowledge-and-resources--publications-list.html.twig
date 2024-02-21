@@ -31,13 +31,21 @@
  * @ingroup themeable
  */
 #}
-<div class="knowledge-resource featured-publication mb-5 d-flex flex-column">
-  <div class="">
-    <div class="featured-publication-image d-flex mb-3 w-100 border align-items-baseline justify-content-center">{{ fields.field_image.content }}</div>
-    <div class="featured-publication-type mb-1">{{ fields.field_resource_type.content }}</div>
-    <div class="featured-publication-title">
-      <h3>{{ fields.title.content }}</h3>
-      <p>{{ fields.body.content }}</p>
+{# {{ dump(fields)}} #}
+<div class="row publications-list mb-5">
+  <div class="col-md-4">
+    <div class="publications-image pb-lg-0 pb-sm-3 d-flex mb-3 w-100 border align-items-baseline justify-content-center">{{ fields.field_image.content }}</div>
+  </div>
+  <div class="col-md-8 d-flex flex-column">
+    <div class="publications-info">
+      <h5>{{ fields.field_article_type.content }}</h5>
+    </div>
+    <div class="publications-title mb-auto">
+      <h4>{{ fields.title.content }}</h4>
+      <p class="small">{{ fields.body.content }}</p>
+    </div>
+    <div class="publications-read-more">
+      <a href="{{ fields.view_node.content|striptags }}">Read more</a>
     </div>
   </div>
 </div>
