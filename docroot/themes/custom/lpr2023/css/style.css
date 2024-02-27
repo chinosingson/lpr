@@ -741,12 +741,12 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 }
 
-.featured-publication-image {
+/* .featured-publication-image {
   max-height: 380px;
   overflow:hidden; 
   position:relative;
   background-color: #F0F0F0;
-}
+} */
 
 .publications-image {
   max-height: 300px;
