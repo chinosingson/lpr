@@ -63,6 +63,15 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
 
   // suggestions for the homepage
   if (\Drupal::service('path.matcher')->isFrontPage()) {
+    if ($variables['view']->id() == 'news'){
+      if ($variables['view']->current_display == 'news_highlighted') {
+        $suggestions[] = 'views_view_fields__news__homepage_highlighted';
+      }
+      if ($variables['view']->current_display == 'homepage_list') {
+        $suggestions[] = 'views_view_fields__news__homepage_list';
+      }
+    }
+
     if ($variables['view']->id() == 'events'){
       if ($variables['view']->current_display == 'homepage_highlighted') {
         $suggestions[] = 'views_view_fields__events__homepage_highlighted';
