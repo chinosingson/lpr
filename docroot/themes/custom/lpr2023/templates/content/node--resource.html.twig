@@ -1,12 +1,14 @@
+{% set ratio_type = node.field_presentation_aspect_ratio.value == "embed-responsive-4by3" ? "ratio-4x3" : "ratio-16x9" %}
+{% set resource_type = content.field_resource_type.0 %}
+{% set publish_date = content.field_publish_date.0 %}
 <div class="container header-spacer">
 <div class="row">
-    
-   
-    
+
     <div class="col-lg-8">
         
          <h1>{{ label }}</h1>
-    <div class="metadata-top">{{ content.field_resource_type.0 }} | {{ content.field_publish_date.0 }}</div>    
+    <div class="metadata-top">{{ resource_type }}{{ publish_date is not null ? ' | ' ~ publish_date['#markup'] : "" }}
+    </div> 
     <div>{{ drupal_block("social_sharing_buttons_block") }}</div>
         {% if node.field_image.value %}
         
@@ -18,7 +20,7 @@
         
         {% if node.field_presentation_file.value %}
         
-        <div class="presentation-window mb-3 ratio {{ node.field_presentation_aspect_ratio.value == "embed-responsive-4by3" ? "ratio-4x3" : "ratio-16x9" }}">
+        <div id="presentation-window" class="presentation-window border border-secondary border-2 mb-3 ratio {{ resource_type['#title'] == "Presentations" ? "presentations" : ""}} {{ ratio_type }}">
             {{ content.field_presentation_file }}
         </div>    
         
