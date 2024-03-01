@@ -26,3 +26,7 @@
   font-family: "Ideal Sans";
   font-weight: 400 !important;
 }
+
+.ck.ck-editor__main .banner-text {
+    z-index: 2;
+}
