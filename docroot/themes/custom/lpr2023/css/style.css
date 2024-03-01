@@ -37,7 +37,7 @@
    --gray: #e5e5e5;
  }
  
- body:not(.path-node),
+ body,
  p {
    font-family: "Roboto", "Helvetica", sans-serif;
    font-weight: 300;
@@ -58,7 +58,7 @@
  .h5,
  .h6 {
    font-family: "Ideal Sans";
-   font-weight: 400 !important;
+   font-weight: 400;
  }
  
  /* .h4 strong {

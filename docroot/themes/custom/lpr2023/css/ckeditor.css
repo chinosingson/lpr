@@ -1,8 +1,28 @@
 @import url('//cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css');
 @import url('./style.css');
 
+/* .ck.ck-editor__main {
+    
+} */
+
 /* override existing styles for editor */
 .focus-areas .overlay-box {
     position: relative;
     z-index: 2;
+}
+
+.ck.ck-editor__main h1,
+.ck.ck-editor__main h2,
+.ck.ck-editor__main h3,
+.ck.ck-editor__main h4,
+.ck.ck-editor__main h5,
+.ck.ck-editor__main h6,
+.ck.ck-editor__main .h1,
+.ck.ck-editor__main .h2,
+.ck.ck-editor__main .h3,
+.ck.ck-editor__main .h4,
+.ck.ck-editor__main .h5,
+.ck.ck-editor__main .h6 {
+  font-family: "Ideal Sans";
+  font-weight: 400 !important;
 }
