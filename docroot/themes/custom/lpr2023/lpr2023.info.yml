@@ -37,3 +37,6 @@ regions:
 version: '5.5.14'
 project: 'bootstrap_barrio'
 datestamp: 1696219327
+
+ckeditor5-stylesheets:
+  - css/ckeditor.css
