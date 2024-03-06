@@ -144,6 +144,9 @@
   margin-right: 10px;
 }
 
+#superfish-main-nav-2023 a.sf-depth-1 {
+  font-weight: 500!important;
+}
 #superfish-main-nav-2023 a.sf-depth-1:hover,
 #superfish-main-nav-2023 a.is-active {
   background:rgba(66, 169, 216, 0.5)!important;
@@ -803,6 +806,7 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 #views-exposed-form-asia-law-database-asia-pacific-law-database [id^=edit-search-api-fulltext]
 {
   border-color: black;
+  border-right: none;
   border-radius: 20px 0px 0px 20px;
 }
 
@@ -829,7 +833,8 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
 #block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database [id^=edit-actions--] [id^=edit-submit-asia-law-database--]{
   background-color: var(--green);
-  border-color: var(--green);
+  border-color: black;
+  border-left: none!important;
 }
 
 
