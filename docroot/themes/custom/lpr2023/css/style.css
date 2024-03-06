@@ -881,12 +881,17 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* homepage - news and events styles  */
-body.page-node-68 .view-news.view-id-news.view-display-id-news_highlighted .news-image > a > img,
-body.page-node-68 .view-events.view-id-events.view-display-id-homepage_highlighted .event-image > a > img,
-body.page-node-68 .view-events.view-id-events.view.view-display-id-homepage_list .event-list .event-image > a > img,
-body.page-node-68 .view-news.view-id-news.view-display-id-homepage_list .news-list .news-image > a > img {
+.path-frontpage .view-news.view-id-news.view-display-id-news_highlighted .news-image > a > img,
+.path-frontpage .view-events.view-id-events.view-display-id-homepage_highlighted .event-image > a > img,
+.path-frontpage .view-events.view-id-events.view.view-display-id-homepage_list .event-list .event-image > a > img,
+.path-frontpage .view-news.view-id-news.view-display-id-homepage_list .news-list .news-image > a > img {
   border-radius: 35px !important;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.view-events.view-id-events .more-link,
+.view-news.view-id-news .more-link {
+  text-align: right;
 }
 
 /* our work video */
