@@ -1,0 +1,120 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "mmenu-js@^8.5.6",
+        "scope": null,
+        "escapedName": "mmenu-js",
+        "name": "mmenu-js",
+        "rawSpec": "^8.5.6",
+        "spec": ">=8.5.6 <9.0.0",
+        "type": "range"
+      },
+      "/Users/chinosingson/Desktop/DIGSOL/LPR/code/lpr_digsol/docroot/modules/contrib/responsive_menu"
+    ]
+  ],
+  "_from": "mmenu-js@>=8.5.6 <9.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "mmenu-js@8.5.24",
+  "_inCache": true,
+  "_location": "/mmenu-js",
+  "_nodeVersion": "12.18.3",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/mmenu-js_8.5.24_1624306350060_0.3859801535482279"
+  },
+  "_npmUser": {
+    "name": "fredheusschen",
+    "email": "info@frebsite.nl"
+  },
+  "_npmVersion": "6.14.6",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "mmenu-js@^8.5.6",
+    "scope": null,
+    "escapedName": "mmenu-js",
+    "name": "mmenu-js",
+    "rawSpec": "^8.5.6",
+    "spec": ">=8.5.6 <9.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/mmenu-js/-/mmenu-js-8.5.24.tgz",
+  "_shasum": "86011ac002be62da70a5848fd6a730fba84b31f1",
+  "_shrinkwrap": null,
+  "_spec": "mmenu-js@^8.5.6",
+  "_where": "/Users/chinosingson/Desktop/DIGSOL/LPR/code/lpr_digsol/docroot/modules/contrib/responsive_menu",
+  "author": {
+    "name": "Fred Heusschen",
+    "email": "info@frebsite.nl"
+  },
+  "bugs": {
+    "url": "https://github.com/FrDH/mmenu-js/issues"
+  },
+  "dependencies": {},
+  "description": "The best javascript plugin for app look-alike on- and off-canvas menus with sliding submenus for your website and webapp.",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^4.1.0",
+    "gulp-typescript": "^5.0.1",
+    "typescript": "^3.9.9",
+    "webpack-stream": "^5.2.1"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-IfWtD2J13mLv2g3NOVNsfiDiWutzdLsFkNeFrtlWYKYVT/UnycXA/ud7buXw6BWZkhJpW7zIGLNGzTkaBsKgkQ==",
+    "shasum": "86011ac002be62da70a5848fd6a730fba84b31f1",
+    "tarball": "https://registry.npmjs.org/mmenu-js/-/mmenu-js-8.5.24.tgz",
+    "fileCount": 368,
+    "unpackedSize": 741855,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.13\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJg0PKuCRA9TVsSAnZWagAAITkP/RkyOLTUdkuAQhMvcXwY\nPAOyXp0QE7xB60iJ+rb4IBlZPElyLQHyBkdwjBqlNt2k6k1ml2h2+vIpQ3OL\noaEKr2qSJ1oURwThV9S402ZdBj4ouNMB9IDMQeNiofoXS8o9nzf8UTGAkobl\nqYMPF1zrJ0HyVHUVg7eDjGHrmDutKKVPAog+xgt1DpXP82BB2SbMwQ+n7LHt\nlkRsTXj1qKfM1n74EcMkRyqqs2Ore6JAIU2iJSwnJcrP6y58DQ814R+DSLfW\nH4bcnZx+USNRxeFkIc1sJNkeJLGAcsLtDb/QsKB6ckaD+sLEDBXstHavCRhn\nHd+rFRCkjQas2GXa+cw8IeoSXR4MiHa4pzfmH0xDm/ax2NZ29P6w5I1aMKhB\n+DR3wZtUVCdj/YP/mHT71o2SQ+C8nZaZLKnv59YS1jV0sX6zzpwvnpIYqzMu\nHxpgxk0GcgCmZbWBrzyuZoqm/CP5XoZM0v1l85KAETS21Eu6EGcwWqy86lVj\nzJ7BHzpCvUbjl3EEg8vP5IxHzAZujeCLy+zSYoZWi7y8lVtonUZSbXsIwvo2\nI+D9pkgQXTrHnaAQIrO5qjYyKnKeaDpqh7ixXkqANlZPkhuqXCCbqe3QvtuH\nZX3DEKQZ6dimHO4/w2OJXfgOUQsjG6sctc+NSAPduHB5rDg0xgF3TWXg1TF3\nXzwf\r\n=b94K\r\n-----END PGP SIGNATURE-----\r\n",
+    "signatures": [
+      {
+        "keyid": "SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA",
+        "sig": "MEUCIEOqvXux13msX6Td8OeXlxBcYW5Dc8Ht0hU/MTqVKfcNAiEA4PyinbX8bLlRloBwLPv5xsSW+vOSJgRPE5OheBpwFis="
+      }
+    ]
+  },
+  "gitHead": "cc566754025757a4f7dcf00f4b807311c15eba5d",
+  "homepage": "https://github.com/FrDH/mmenu-js#readme",
+  "keywords": [
+    "app",
+    "list",
+    "listview",
+    "megamenu",
+    "menu",
+    "mmenu",
+    "mobile",
+    "navigation",
+    "off-canvas",
+    "on-canvas",
+    "curtain",
+    "panels",
+    "submenu"
+  ],
+  "license": "CC-BY-NC-4.0",
+  "main": "dist/mmenu.js",
+  "maintainers": [
+    {
+      "name": "fredheusschen",
+      "email": "info@frebsite.nl"
+    }
+  ],
+  "module": "src/mmenu.js",
+  "name": "mmenu-js",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrDH/mmenu-js.git"
+  },
+  "scripts": {
+    "build": "gulp default"
+  },
+  "version": "8.5.24"
+}
