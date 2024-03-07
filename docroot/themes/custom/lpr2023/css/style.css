@@ -202,6 +202,19 @@
   object-fit: cover;
   object-position: -10px;
 }
+
+.line {
+  height: 9px;
+  width: 75px;
+}
+
+.line-green {
+    background-color: var(--green);
+}
+.line-blue {
+    background-color: var(--blue);
+}
+
  
  .line-left-green {
    position: relative;
