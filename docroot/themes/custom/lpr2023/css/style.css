@@ -625,11 +625,14 @@
 
  .section-two .impact {
   border-top: 5px solid var(--blue) !important;
-  border-top-left-radius: 0px !important;
-  border-top-right-radius: 0px !important;
-  border-bottom-left-radius: 20px !important; 
-  border-bottom-right-radius: 20px !important;
+  border-radius: 0px 0px 20px 20px !important; /* rounded bottom left and right only */
  }
+
+ @media (max-width:767px){
+ .section-two .impact {
+  margin-bottom: 2em;
+ }
+}
 
  .focus-areas .impact strong {
   font-size: 1.2em;
