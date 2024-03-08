@@ -35,7 +35,9 @@
    --green: #39a186;
    --blue: #0088c7;
    --gray: #e5e5e5;
- }
+   --dark-blue: #0088C7;
+   --light-green: #8BD573;
+  }
  
  body,
  p {
@@ -101,6 +103,20 @@
    background: var(--gray);
  }
  
+  .border-green {
+    border-color: var(--green) !important;
+  }
+  .border-blue {
+    border-color: var(--blue) !important;
+  }
+  .border-dark-blue {
+    border-color: var(--dark-blue) !important;
+  }
+  .border-light-green {
+    border-color: var(--light-green) !important;
+  }
+
+
  h1 {
    font-size: 2em; /* 40px */
  }
@@ -288,7 +304,7 @@
  ul.sf-menu.sf-style-white .sf-depth-3 {
    margin-left: 10px;
    font-family: Roboto, sans-serif;
-   text-transform: capitalize;
+   text-transform: unset;
  }
  ul.sf-menu.sf-style-white li.sf-multicolumn-wrapper span.nolink.menuparent {
   font-weight: 500 !important;
