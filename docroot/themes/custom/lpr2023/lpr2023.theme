@@ -7,6 +7,69 @@
 
 use Drupal\Core\Form\FormStateInterface;
 
+// lpr2023_exposedformsite_searchsite_search_2
+ 
+/**
+ * Implements hook_theme().
+ */
+function lpr2023_theme($existing, $type, $theme, $path) {
+  return [
+    'views_exposed_form__lpr2023_exposedformsite_searchsite_search_2' => [
+      'render element' => 'form',
+    ],
+    'views_exposed_form_lpr2023_exposedformasia_law_databaseasia_pacific_law_database' => [
+      'render element' => 'form',
+    ],
+  ];
+}
+ 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function lpr2023_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form['#id'] == 'views-exposed-form-site-search-site-search') {
+    if ($form['#theme'][1] == 'views_exposed_form__site_search' && isset($form['search_api_fulltext']) && $form['search_api_fulltext']['#type'] == 'textfield') {
+      $form['search_api_fulltext']['#attributes']['placeholder'] = t('Search');
+    }
+  }
+
+  if ($form['#id'] = 'views-exposed-form-asia-law-database-asia-pacific-law-database'){
+    if ($form['#theme'][1] == 'views_exposed_form__asia_pacific_law_database' && isset($form['search_api_fulltext']) && $form['search_api_fulltext']['#type'] == 'textfield') {
+      $form['search_api_fulltext']['#attributes']['placeholder'] = t('Search the APAC Law Database');
+    }
+  }
+}
+
+/**
+ * @param $suggestions
+ * @param array $variables
+ */
+function lpr2023_theme_suggestions_input_alter(&$suggestions, array $variables) {
+  $element = $variables['element'];
+  // dpm($element);
+
+  if (isset($element['#attributes']['data-twig-suggestion'])) {
+    $suggestions[] = 'input__' . $element['#type'] . '__' . $element['#attributes']['data-twig-suggestion'];
+  }
+}
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function lpr2023_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form['#id'] == 'views-exposed-form-site-search-site-search') {  
+    $form['actions']['submit']['#attributes']['data-twig-suggestion'] = 'site_search_submit';
+  }
+
+  if ($form['#id'] == 'views-exposed-form-asia-law-database-asia-pacific-law-database') {
+    // dpm($form_id);
+    $form['actions']['submit']['#attributes']['data-twig-suggestion'] = 'apac_db_search_submit';
+  }
+}
+
+
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
  *
@@ -63,6 +126,15 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
 
   // suggestions for the homepage
   if (\Drupal::service('path.matcher')->isFrontPage()) {
+    if ($variables['view']->id() == 'news'){
+      if ($variables['view']->current_display == 'news_highlighted') {
+        $suggestions[] = 'views_view_fields__news__homepage_highlighted';
+      }
+      if ($variables['view']->current_display == 'homepage_list') {
+        $suggestions[] = 'views_view_fields__news__homepage_list';
+      }
+    }
+
     if ($variables['view']->id() == 'events'){
       if ($variables['view']->current_display == 'homepage_highlighted') {
         $suggestions[] = 'views_view_fields__events__homepage_highlighted';

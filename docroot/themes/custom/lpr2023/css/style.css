@@ -35,7 +35,9 @@
    --green: #39a186;
    --blue: #0088c7;
    --gray: #e5e5e5;
- }
+   --dark-blue: #0088C7;
+   --light-green: #8BD573;
+  }
  
  body,
  p {
@@ -101,6 +103,20 @@
    background: var(--gray);
  }
  
+  .border-green {
+    border-color: var(--green) !important;
+  }
+  .border-blue {
+    border-color: var(--blue) !important;
+  }
+  .border-dark-blue {
+    border-color: var(--dark-blue) !important;
+  }
+  .border-light-green {
+    border-color: var(--light-green) !important;
+  }
+
+
  h1 {
    font-size: 2em; /* 40px */
  }
@@ -122,8 +138,8 @@
  }
  
  .region {
-   margin-top: 20px;
-   margin-bottom: 20px;
+   margin-top: 10px;
+   margin-bottom: 10px;
  }
 
  .header {
@@ -139,6 +155,46 @@
    color: #333 !important;
  }
  
+#superfish-main-nav-2023 {
+  margin-bottom: 0px!important;
+  margin-right: 10px;
+}
+
+#superfish-main-nav-2023 a.sf-depth-1 {
+  font-weight: 500!important;
+}
+#superfish-main-nav-2023 a.sf-depth-1:hover,
+#superfish-main-nav-2023 a.is-active {
+  background:rgba(66, 169, 216, 0.5)!important;
+}
+
+#CollapsingNavbar {
+  display:flex;
+  flex-direction: row;
+}
+
+#CollapsingNavbar #block-lpr2023-exposedformsite-searchsite-search-2 {
+  width: 260px!important;
+}
+
+#CollapsingNavbar #edit-search-api-fulltext {
+  width: 160px!important;
+}
+
+#CollapsingNavbar > .content > #views-exposed-form-site-search-site-search > .d-flex {
+  flex-wrap: nowrap!important;
+}
+
+#CollapsingNavbar #views-exposed-form-site-search-site-search .form-item-search-api-fulltext,
+#CollapsingNavbar #views-exposed-form-site-search-site-search #edit-actions
+{
+  margin-bottom: 0px!important;
+}
+
+.navbar-brand img {
+  width: 75px;
+}
+
  .navbar .nav-link {
    color: #000 !important;
  }
@@ -147,6 +203,34 @@
    background: var(--green) !important;
    color: #fff !important;
  }
+
+ .site-footer .content h1 {
+  color: #fff !important;
+ }
+
+ .site-footer p {
+  color: #fff !important;
+  font-family: 'Ideal Sans', sans-serif !important;
+  font-weight: 300;
+}
+
+.site-footer img#lpr-logo {
+  object-fit: cover;
+  object-position: -10px;
+}
+
+.line {
+  height: 9px;
+  width: 75px;
+}
+
+.line-green {
+    background-color: var(--green);
+}
+.line-blue {
+    background-color: var(--blue);
+}
+
  
  .line-left-green {
    position: relative;
@@ -220,10 +304,17 @@
  ul.sf-menu.sf-style-white .sf-depth-3 {
    margin-left: 10px;
    font-family: Roboto, sans-serif;
-   text-transform: capitalize;
+   text-transform: unset;
  }
  ul.sf-menu.sf-style-white li.sf-multicolumn-wrapper span.nolink.menuparent {
   font-weight: 500 !important;
+ }
+ ul.sf-menu.sf-style-white .sf-depth-2.nolink,
+ ul.sf-menu.sf-style-white li.sf-depth-2:hover,
+ ul.sf-menu.sf-style-white .sf-depth-2 a:hover,
+ ul.sf-menu.sf-style-white li.sf-depth-3:hover,
+ ul.sf-menu.sf-style-white .sf-depth-3 a:hover {
+  background: #f4f4f4 !important;
  }
  
  /* MMenu */
@@ -313,11 +404,11 @@
    }
  }
 
- @media (max-width: 767px) {
+ /* @media (max-width: 767px) {
     #block-lpr2023-footer {
       text-align: center;
     }
- }
+ } */
 
  /* Profile misc */
  .circle-frame { 
@@ -557,11 +648,14 @@
 
  .section-two .impact {
   border-top: 5px solid var(--blue) !important;
-  border-top-left-radius: 0px !important;
-  border-top-right-radius: 0px !important;
-  border-bottom-left-radius: 20px !important; 
-  border-bottom-right-radius: 20px !important;
+  border-radius: 0px 0px 20px 20px !important; /* rounded bottom left and right only */
  }
+
+ @media (max-width:767px){
+ .section-two .impact {
+  margin-bottom: 2em;
+ }
+}
 
  .focus-areas .impact strong {
   font-size: 1.2em;
@@ -593,7 +687,9 @@
   float: left;
   margin-right: 20px;
   margin-bottom: 10px;
-  filter: grayscale(1);
+  border-radius: 50%;
+  border: 5px solid var(--green);
+  /* filter: grayscale(1); */
 }
 
 /*  Related Fields */
@@ -602,8 +698,9 @@
 .related-links-set { padding-left: 0px; }
 
 /* force 'img-fluid' property on images */
-.page-view-site-search .views-field img.site-search-thumbnail,
-.field--name-body img {
+/* .field--name-body img  */
+body.page-view-site-search img.site-search-thumbnail
+{
   max-width: 100%;
   height: auto;
 }
@@ -728,23 +825,104 @@ background: #FFF;
 box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+
+/* search inputs */
+/* site-wide search */
+#block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database h2 {
+  display: none;
+}
+
+#edit-search-api-fulltext,
+#block-lpr2023-exposedformsite-searchsite-search #edit-search-api-fulltext--2
+{
+  border-radius: 20px 0px 0px 20px;
+  border-right: none;
+  border-color: black;
+}
+
+#edit-submit-site-search,
+[id^=edit-submit-site-search--],
+#edit-submit-site-search--3
+{
+  border-radius: 0px 20px 20px 0px;
+  border-color: black !important;
+  border-left: none !important;
+  background-color: var(--green) !important;
+}
+
+/* search pages */
+.page-view-asia-law-database #main-wrapper,
+.page-view-site-search #main-wrapper {
+  padding-top: 30px;
+}
+
+#block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database [id^=edit-search-api-fulltext],
+#views-exposed-form-asia-law-database-asia-pacific-law-database [id^=edit-search-api-fulltext]
+{
+  border-color: black;
+  border-right: none;
+  border-radius: 20px 0px 0px 20px;
+}
+
+#views-exposed-form-asia-law-database-asia-pacific-law-database .d-flex.flex-wrap
+{
+  flex-direction: column;
+}
+
+#block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database #edit-actions--2,
+#block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database [id^=edit-actions--]
+{
+  width: 100%;
+}
+
+#block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database #views-exposed-form-asia-law-database-asia-pacific-law-database [id^=edit-search-api-fulltext] {
+  width: auto;
+}
+
+#block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database #edit-actions--2 #edit-submit-asia-law-database--2,
+#block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database [id^=edit-actions--] button
+{
+  border-radius: 0px 20px 20px 0px;
+}
+
+#block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database [id^=edit-actions--] [id^=edit-submit-asia-law-database--]{
+  background-color: var(--green);
+  border-color: black;
+  border-left: none!important;
+}
+
+
+#block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database [id^=edit-actions--] [id^=edit-reset--]{
+  background-color: var(--bs-gray-700);
+  border-color: var(--bs-gray-700);
+}
+
+
+
+/*resources/publications */
+#presentation-window:not(.presentations) {
+  --bs-aspect-ratio: calc(4 / 3 * 100%);
+}
+
 /* Page banners - About Us, Our Work, News & Events, Knowledge & Resources */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .banner-text {
-    position: absolute;
-    bottom:0;
-    left:0;
     width: 84%;
-    margin-bottom: 5px;
   }
 }
 
-.featured-publication-image {
+@media (max-width: 772px){
+  .banner-text {
+    position: relative !important;
+  }
+}
+
+/* .featured-publication-image {
   max-height: 380px;
   overflow:hidden; 
   position:relative;
   background-color: #F0F0F0;
-}
+} */
 
 .publications-image {
   max-height: 300px;
@@ -760,3 +938,30 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   width: 100%;
 }
 }
+
+/* homepage - news and events styles  */
+.path-frontpage .view-news.view-id-news.view-display-id-news_highlighted .news-image > a > img,
+.path-frontpage .view-events.view-id-events.view-display-id-homepage_highlighted .event-image > a > img,
+.path-frontpage .view-events.view-id-events.view.view-display-id-homepage_list .event-list .event-image > a > img,
+.path-frontpage .view-news.view-id-news.view-display-id-homepage_list .news-list .news-image > a > img {
+  border-radius: 35px !important;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.view-events.view-id-events .more-link,
+.view-news.view-id-news .more-link {
+  text-align: right;
+}
+
+/* our work video */
+#our-work-video iframe {
+  border-radius: 35px;
+  background: #fafafa;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+/* legal readiness */ 
+  #legal-readiness-preview {
+    --bs-aspect-ratio: calc(3.97 / 3 * 100%);
+  }
+
