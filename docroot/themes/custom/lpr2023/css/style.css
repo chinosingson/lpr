@@ -309,6 +309,13 @@
  ul.sf-menu.sf-style-white li.sf-multicolumn-wrapper span.nolink.menuparent {
   font-weight: 500 !important;
  }
+ ul.sf-menu.sf-style-white .sf-depth-2.nolink,
+ ul.sf-menu.sf-style-white li.sf-depth-2:hover,
+ ul.sf-menu.sf-style-white .sf-depth-2 a:hover,
+ ul.sf-menu.sf-style-white li.sf-depth-3:hover,
+ ul.sf-menu.sf-style-white .sf-depth-3 a:hover {
+  background: #f4f4f4 !important;
+ }
  
  /* MMenu */
  .mm-panels .mm-navbar__title,
