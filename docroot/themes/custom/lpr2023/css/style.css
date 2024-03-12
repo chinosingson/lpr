@@ -309,6 +309,13 @@
  ul.sf-menu.sf-style-white li.sf-multicolumn-wrapper span.nolink.menuparent {
   font-weight: 500 !important;
  }
+
+ ul.sf-menu.sf-style-white li.sfHover,
+ ul.sf-menu.sf-style-white a:hover,
+ ul.sf-menu.sf-style-white span.nolink:hover,
+ ul.sf-menu.sf-style-white li li li:hover   {
+  background:rgba(66, 169, 216, 0.5)!important;
+ }
  
  /* MMenu */
  .mm-panels .mm-navbar__title,
