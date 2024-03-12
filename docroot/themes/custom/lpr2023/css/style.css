@@ -473,11 +473,22 @@
      filter: grayscale(0%);
    }
  }
+
+ @media (pointer:none), (pointer:coarse) {
+  .view-profile-listing .views-row:hover .profile-listing-image img {
+    filter: grayscale(0%);
+  }
+}
+@media (max-width: 576px) {
+  .view-profile-listing .views-row:hover .profile-listing-image img {
+    filter: grayscale(0%);
+  }
+}
  
  @media (max-width: 768px) {
-   .view-profile-listing .views-row .profile-listing-image img {
+   /* .view-profile-listing .views-row .profile-listing-image img {
      filter: grayscale(100%);
-   }
+   } */
  
    .view-profile-listing .views-row .profile-listing-name {
      display: table-cell;
