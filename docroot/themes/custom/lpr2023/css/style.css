@@ -314,7 +314,7 @@
  ul.sf-menu.sf-style-white a:hover,
  ul.sf-menu.sf-style-white span.nolink:hover,
  ul.sf-menu.sf-style-white li li li:hover   {
-  background:rgba(66, 169, 216, 1.0)!important;
+  background-color: #a3d2e9 !important;
  }
  
  /* MMenu */
