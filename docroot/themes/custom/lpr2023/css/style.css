@@ -314,7 +314,7 @@
  ul.sf-menu.sf-style-white a:hover,
  ul.sf-menu.sf-style-white span.nolink:hover,
  ul.sf-menu.sf-style-white li li li:hover   {
-  background:rgba(66, 169, 216, 0.5)!important;
+  background:rgba(66, 169, 216, 1.0)!important;
  }
  
  /* MMenu */
@@ -856,8 +856,9 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
 /* search pages */
 .page-view-asia-law-database #main-wrapper,
-.page-view-site-search #main-wrapper {
-  padding-top: 30px;
+.page-view-site-search #main-wrapper,
+#main-wrapper {
+  padding-top: 1.5rem !important;
 }
 
 #block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database [id^=edit-search-api-fulltext],
