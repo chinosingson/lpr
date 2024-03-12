@@ -331,6 +331,10 @@
   font-weight: 500;
 }
 
+.mm-slideout {
+  z-index: 0;
+}
+
  /* Slideshow */
  .view-homepage-slideshow .overlay {
    position: absolute;
