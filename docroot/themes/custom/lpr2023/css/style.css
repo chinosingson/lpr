@@ -1004,3 +1004,7 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
     --bs-aspect-ratio: calc(3.97 / 3 * 100%);
   }
 
+/* removes overflow on smaller devices */
+.row.region.region-featured-top {
+  --bs-gutter-x: none;
+}
