@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'e1126330d7f08d2d115b5f0edb2b6ddde3aae971',
+        'reference' => 'ad848984ff7bef65b027ed4079236d10ffc178a2',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -772,7 +772,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'e1126330d7f08d2d115b5f0edb2b6ddde3aae971',
+            'reference' => 'ad848984ff7bef65b027ed4079236d10ffc178a2',
             'dev_requirement' => false,
         ),
         'drupal/linkit' => array(
@@ -1264,7 +1264,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../pear/pear-core-minimal',
             'aliases' => array(),
-            'reference' => 'd457b5c93e5001fbf4b5726d21038266e029e3be',
+            'reference' => 'ce0adade8b97561656ace07cdaac4751c271ea8c',
             'dev_requirement' => false,
         ),
         'pear/pear_exception' => array(
