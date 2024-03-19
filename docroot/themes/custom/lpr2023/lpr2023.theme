@@ -196,6 +196,12 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
     }
   }
 
+  if ($current_path_alias == '/search/asia-pacific-law-database') {
+    if ($variables['view']->current_display == 'asia_pacific_law_database'){
+      $suggestions[] = 'views_view_fields__asia_pacific_law_database';
+    }
+  }
+
 }
 
 /**
