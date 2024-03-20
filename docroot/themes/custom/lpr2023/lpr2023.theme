@@ -205,6 +205,21 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
 }
 
 /**
+ * Implements template_preprocess_views_view()
+ * @param array $vars
+ */
+function lpr2023_preprocess_views_view(&$variables){
+  // Get the current path.
+  $current_path = \Drupal::service('path.current')->getPath();
+  $current_path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+  if ($variables['view']->id() == 'news'){
+      $variables['more']['#options']['attributes']['class'] = ['btn','bg-green'];
+  }
+  if ($variables['view']->id() == 'events'){
+      $variables['more']['#options']['attributes']['class'] = ['btn','bg-green'];
+  }
+}
+/**
  * Implements hook_theme_suggestions_HOOK_alter().
  */
 
