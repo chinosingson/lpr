@@ -11,6 +11,13 @@
    font-weight: 700;
    font-style: normal;
  }
+
+ @font-face {
+  font-family: "Ideal Sans";
+  src: url(../fonts/IdealSans-Semibold-Pro.otf);
+  font-weight: 600;
+  font-style: normal;
+ }
  
  @font-face {
    font-family: "Ideal Sans";
@@ -405,7 +412,13 @@
  }
  
  .site-footer {
-   margin-top: 100px;
+   margin-top: 2rem;
+   padding-top: 1rem;
+ }
+
+ .site-footer__bottom {
+  border: none;
+  margin-top: 0px;
  }
  
  .navbar-toggler-icon {
@@ -502,9 +515,9 @@
      top: -185px;
    }
  
-   .view-profile-listing .views-row .profile-listing-image img {
+   /* .view-profile-listing .views-row .profile-listing-image img {
      filter: grayscale(100%);
-   }
+   } */
  
    .view-profile-listing .views-row:hover .profile-listing-image img {
      filter: grayscale(0%);
@@ -700,7 +713,7 @@
 
  /* Focus areas */
  .focus-areas .section-two {
-  margin-top: 50px;
+  margin-top: 30px;
  }
 
  .focus-areas .overlay-box {
@@ -920,6 +933,14 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   padding-top: 1.5rem !important;
 }
 
+#main-wrapper.landing-page {
+  padding-top: 0px !important;
+}
+
+#main-wrapper.landing-page .node__content {
+  margin-top: 0px !important;
+}
+
 #block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database [id^=edit-search-api-fulltext],
 #views-exposed-form-asia-law-database-asia-pacific-law-database [id^=edit-search-api-fulltext]
 {
@@ -970,7 +991,7 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
 /* Page banners - About Us, Our Work, News & Events, Knowledge & Resources + Focus Area Pages */
 .banner-text .h1 {
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }
 
 @media (min-width: 992px) {
@@ -983,10 +1004,14 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 }
 
-@media (max-width: 772px){
+@media (max-width: 992px){
   .banner-text {
-    position: relative !important;
-    color: var(--bs-dark) !important;
+    /* position: relative !important;
+    color: var(--bs-dark) !important; */
+    display: flex;
+    align-items: end;
+    height: 100%;
+    font-size: .9em;
   }
 }
 
@@ -1043,10 +1068,19 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 /* removes overflow on smaller devices */
 .row.region.region-featured-top {
   --bs-gutter-x: none;
+  margin-bottom: 0px;
 }
 
 /* social sharing buttons */
 .social-sharing-buttons {
   justify-content: start;
   margin: 1em 0;
+}
+
+/* Focus area page quote source */
+@media (max-width: 768px) {
+  .quote-source {
+    border-left: none !important;
+    border-top: 5px solid var(--green);
+  }
 }
