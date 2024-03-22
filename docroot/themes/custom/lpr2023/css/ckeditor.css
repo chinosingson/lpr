@@ -30,3 +30,19 @@
 .ck.ck-editor__main .banner-text {
     z-index: 2;
 }
+
+.ck.ck-editor__main .row,
+.ck.ck-editor__main [class*=col] {
+  border: 1px solid red !important;
+}
+.ck.ck-editor__main p,
+.ck.ck-editor__main h1,
+.ck.ck-editor__main h2,
+.ck.ck-editor__main h3,
+.ck.ck-editor__main h4,
+.ck.ck-editor__main h5,
+.ck.ck-editor__main h6,
+.ck.ck-editor__main li span
+{
+  border: 2px dotted green !important;
+}

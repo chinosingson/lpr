@@ -317,6 +317,7 @@
  
  .background-box-green {
    background: url(../images/green-box.png) no-repeat top right;
+   background-size: contain;
  }
  
  .background-circle-blue-left {
@@ -700,6 +701,7 @@
    position: relative;
    top: 22px;
    left: -21px;
+   font-variant-numeric: lining-nums;
  }
  
  ol#our-work-core-instruments .instrument-1:before {
@@ -1039,7 +1041,8 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
     /* position: relative !important;
     color: var(--bs-dark) !important; */
     display: flex;
-    align-items: end;
+    flex-direction: column;
+    justify-content: end;
     height: 100%;
     font-size: .9em;
   }
