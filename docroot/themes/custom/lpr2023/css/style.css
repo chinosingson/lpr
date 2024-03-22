@@ -143,11 +143,11 @@
   h5 1.05
   -- New values
   h1 1.75
-  h2 1.35
-  h3 1.15
-  h4 0.95
-  h5 0.75
-  h6 0.55 
+  h2 1.40
+  h3 1.23
+  h4 1.09
+  h5 0.92
+  h6 0.74 
 */
 
  h1, .h1, .fs-1 {
@@ -155,23 +155,23 @@
  }
  
  h2, .h2, .fs-2 {
-   font-size: 1.35rem !important; /* 28px */
+   font-size: 1.40rem !important; /* 28px */
  }
  
  h3, .h3, .fs-3 {
-   font-size: 1.15rem !important; /* 24px */
+   font-size: 1.23rem !important; /* 24px */
  }
  
  h4, .h4, .fs-4 {
-   font-size: 0.95rem !important; /* 22px */
+   font-size: 1.09rem !important; /* 22px */
  }
 
  h5, .h5, .fs-5 {
-  font-size: 0.75rem !important;
+  font-size: 0.92rem !important;
  }
 
  h6, .h6, .fs-6 {
-  font-size: 0.55rem !important;
+  font-size: 0.74rem !important;
  }
  
  .region {
@@ -1030,7 +1030,7 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 
   .banner-text .h1 {
-    font-size: 2.5rem !important;
+    font-size: 2.4rem !important;
   }
 }
 
