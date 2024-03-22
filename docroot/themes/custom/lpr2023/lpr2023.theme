@@ -212,10 +212,9 @@ function lpr2023_preprocess_views_view(&$variables){
   // Get the current path.
   $current_path = \Drupal::service('path.current')->getPath();
   $current_path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
-  if ($variables['view']->id() == 'news'){
-      $variables['more']['#options']['attributes']['class'] = ['btn','bg-green'];
-  }
-  if ($variables['view']->id() == 'events'){
+  if ($variables['view']->id() == 'news' || 
+      $variables['view']->id() == 'events' ||
+      $variables['view']->id() == 'knowledge_and_resources'){
       $variables['more']['#options']['attributes']['class'] = ['btn','bg-green'];
   }
 }
