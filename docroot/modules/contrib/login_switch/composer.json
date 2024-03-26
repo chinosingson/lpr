@@ -1,0 +1,13 @@
+{
+    "name": "drupal/login_switch",
+    "description": "Secure the default login route in Drupal 8",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Matthew Sherman",
+            "email": "matthewsherman25@gmail.com"
+        }
+    ],
+    "require": {}
+}

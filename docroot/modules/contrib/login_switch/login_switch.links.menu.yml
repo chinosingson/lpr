@@ -1,0 +1,5 @@
+login_switch.settings:
+  title: 'Login Switch Settings'
+  description: 'Settings for Login Switch'
+  parent: system.admin_config_system
+  route_name: login_switch_admin

@@ -1,0 +1,7 @@
+login_switch_admin:
+  path: '/admin/config/login_switch'
+  defaults:
+    _title: 'Login Switch Settings'
+    _form: '\Drupal\login_switch\Form\LoginSwitchSettingsForm'
+  requirements:
+    _role: 'administrator'

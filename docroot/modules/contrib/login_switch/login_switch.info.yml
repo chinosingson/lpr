@@ -1,0 +1,11 @@
+name: Login Switch
+description: 'Switches default user login path and adds custom user login routing and template.'
+package: Authentication
+type: module
+core_version_requirement: ^9 || ^10
+configure: login_switch_admin
+
+# Information added by Drupal.org packaging script on 2022-07-05
+version: '3.0.3'
+project: 'login_switch'
+datestamp: 1657033312

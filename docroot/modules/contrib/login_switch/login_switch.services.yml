@@ -1,0 +1,18 @@
+services:
+  login_switch.route_subscriber:
+    class: Drupal\login_switch\Routing\LoginSwitchRouteSubscriber
+    tags:
+      - { name: event_subscriber }
+    arguments: ['@config.factory']
+
+  login_switch.exception_subscriber:
+    class: Drupal\login_switch\Routing\ExceptionEventSubscriber
+    tags:
+      - { name: event_subscriber }
+    arguments: ['@config.factory', '@current_user']
+
+  login_switch.noindex_subscriber:
+    class: Drupal\login_switch\EventSubscriber\AddNoIndexHeader
+    arguments: ['@config.factory']
+    tags:
+      - { name: event_subscriber }

@@ -1,0 +1,9 @@
+login_disabled: false
+login_route: ''
+login_noindex: false
+register_disabled: false
+register_route: ''
+register_noindex: false
+password_disabled: false
+password_route: ''
+password_noindex: false
