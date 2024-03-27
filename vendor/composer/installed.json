@@ -4846,6 +4846,54 @@
             "install-path": "../../docroot/modules/contrib/linkit"
         },
         {
+            "name": "drupal/login_switch",
+            "version": "3.0.3",
+            "version_normalized": "3.0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/login_switch.git",
+                "reference": "3.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/login_switch-3.0.3.zip",
+                "reference": "3.0.3",
+                "shasum": "ec0d0e08167fa97bae10ba1861acdc2938eb0644"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.3",
+                    "datestamp": "1657033310",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Sherman",
+                    "homepage": "https://www.drupal.org/user/3431259",
+                    "email": "matthewsherman25@gmail.com"
+                }
+            ],
+            "description": "Secure the default login route in Drupal 8",
+            "homepage": "https://www.drupal.org/project/login_switch",
+            "support": {
+                "source": "https://git.drupalcode.org/project/login_switch"
+            },
+            "install-path": "../../docroot/modules/contrib/login_switch"
+        },
+        {
             "name": "drupal/metatag",
             "version": "2.0.0",
             "version_normalized": "2.0.0.0",
@@ -6826,6 +6874,53 @@
                 "source": "https://git.drupalcode.org/project/views_striping"
             },
             "install-path": "../../docroot/modules/contrib/views_striping"
+        },
+        {
+            "name": "drupal/views_taxonomy_radios_filter",
+            "version": "1.0.5",
+            "version_normalized": "1.0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/views_taxonomy_radios_filter.git",
+                "reference": "1.0.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views_taxonomy_radios_filter-1.0.5.zip",
+                "reference": "1.0.5",
+                "shasum": "5c4f8422b29e46736b30f2c340b8a47fe06c5206"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.5",
+                    "datestamp": "1661480407",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "matthieuscarset",
+                    "homepage": "https://www.drupal.org/user/3471281"
+                }
+            ],
+            "description": "Adds a new filter type for taxonomy filter in Views.",
+            "homepage": "https://www.drupal.org/project/views_taxonomy_radios_filter",
+            "support": {
+                "source": "https://git.drupalcode.org/project/views_taxonomy_radios_filter"
+            },
+            "install-path": "../../docroot/modules/contrib/views_taxonomy_radios_filter"
         },
         {
             "name": "drupal/viewsreference",

@@ -66,8 +66,9 @@ a:active,
 }
 
 .sidebar .block {
-  background-color: #f6f6f2;
-  border-color: #f9f9f9;
+  background-color: #ffffff;
+  border: none;
+  /* border-color: #f9f9f9; */
 }
 
 .btn-primary {

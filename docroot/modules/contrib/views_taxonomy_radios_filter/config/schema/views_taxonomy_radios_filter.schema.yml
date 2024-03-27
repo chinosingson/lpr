@@ -1,0 +1,7 @@
+views.filter.taxonomy_index_tid_radios:
+  type: views.filter.taxonomy_index_tid
+  label: 'Taxonomy term ID radios'
+  mapping:
+    all_label:
+      type: string
+      label: '<Any> label'
