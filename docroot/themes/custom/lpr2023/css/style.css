@@ -581,7 +581,28 @@
 #block-lpr2023-homepagebanner p.h1,
 .maintenance-page #page-1 > div.position-relative > div > p {
   font-weight: 600 !important;
-  font-size: 3rem !important;
+}
+
+@media (max-width: 576px){
+  #block-lpr2023-homepagebanner p.h1,
+  .maintenance-page #page-1 > div.position-relative > div > p {
+    font-size: 1.2rem !important;
+  }  
+}
+
+
+@media (min-width: 768px){
+  #block-lpr2023-homepagebanner p.h1,
+  .maintenance-page #page-1 > div.position-relative > div > p {
+    font-size: 2.5rem !important;
+  }  
+}
+
+@media (min-width: 992px){
+  #block-lpr2023-homepagebanner p.h1,
+  .maintenance-page #page-1 > div.position-relative > div > p {
+    font-size: 3rem !important;
+  }  
 }
 
  
