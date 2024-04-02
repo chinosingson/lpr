@@ -693,6 +693,7 @@
  .success-story-read-more a {
    text-decoration: none;
    color: #333;
+   font-size: .9rem;
  }
  
  /* .elearning-list .elearning-read-more a:after,
@@ -1105,11 +1106,12 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 .view.view-knowledge-and-resources .more-link,
 .view-events.view-id-events .more-link,
 .view-news.view-id-news .more-link {
-  text-align: right;
+  /* text-align: right; */
   margin-top: 1rem;
 }
 
-/* our work video */
+/* our work and ttt videos */
+#ttt-video iframe,
 #our-work-video iframe {
   border-radius: 20px;
   background: #fafafa;

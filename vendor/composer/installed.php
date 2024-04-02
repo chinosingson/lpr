@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f536ac417f7a9ea367c98bb2d8a5c073b1404be5',
+        'reference' => '0a7b2c23c3dfb09eedc0ccd1b20a929221e22bbe',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -631,6 +631,15 @@
             'reference' => '3.0.0-beta1',
             'dev_requirement' => false,
         ),
+        'drupal/fast_404' => array(
+            'pretty_version' => '3.2.0',
+            'version' => '3.2.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../docroot/modules/contrib/fast_404',
+            'aliases' => array(),
+            'reference' => '8.x-3.2',
+            'dev_requirement' => false,
+        ),
         'drupal/field_group' => array(
             'pretty_version' => '3.4.0',
             'version' => '3.4.0.0',
@@ -772,7 +781,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f536ac417f7a9ea367c98bb2d8a5c073b1404be5',
+            'reference' => '0a7b2c23c3dfb09eedc0ccd1b20a929221e22bbe',
             'dev_requirement' => false,
         ),
         'drupal/linkit' => array(
