@@ -108,6 +108,46 @@ function _insert_media_settings_form(array $settings) {
 }
 
 /**
+ * Implements hook_insert_styles().
+ */
+function insert_media_insert_styles($insertType) {
+  if ($insertType !== INSERT_TYPE_MEDIA) {
+    return [];
+  }
+
+  $insertStyles = [];
+
+  foreach (_insert_media_get_view_modes() as $id => $label) {
+    $insertStyles[$id] = [
+      'label' => $label,
+    ];
+  }
+
+  return $insertStyles;
+}
+
+/**
+ * Implements hook_insert_variables().
+ */
+function insert_media_insert_variables($insertType, array &$element, $styleName, &$vars) {
+  if ($insertType === INSERT_TYPE_MEDIA) {
+    $vars['media_entity'] = $element['selection'][0]['rendered_entity']['#media'];
+    $element['#name'] = 'media_ ' . $vars['media_entity']->id();
+  }
+}
+
+/**
+ * Implements hook_insert_render().
+ */
+function insert_media_insert_render($styleName, array $vars, $insertElement) {
+  if ($vars['field_type'] === INSERT_TYPE_MEDIA && isset($vars['media_entity'])) {
+    /** @var \Drupal\media\MediaInterface $media */
+    $media = $insertElement['rendered_entity']['#media'];
+    return ['<drupal-media data-entity-type="media" data-view-mode="' . $vars['style_name'] .'" data-entity-uuid="' . $media->uuid() . '"></drupal-media>'];
+  }
+}
+
+/**
  * Implements hook_insert_process().
  */
 function insert_media_insert_process(&$insertType, array &$element) {
@@ -128,43 +168,7 @@ function insert_media_insert_process(&$insertType, array &$element) {
       continue;
     }
 
-    $media = Media::load($element['selection'][$key]['target_id']['#value']);
     $selectionElement['insert'] = $element['insert'];
-
-    $selectionElement['insert']['templates'] = [
-      '#type' => 'container',
-      '#attributes' => ['class' => ['insert-templates']],
-    ];
-
-    $options = [];
-
-    foreach ($settings['view_modes'] as $viewMode => $viewModeLabel) {
-      if ($viewModeLabel === 0) {
-        continue;
-      }
-
-      $selectionElement['insert']['templates'][$viewMode] = [
-        '#type' => 'hidden',
-        '#name' => 'template[' . $viewMode . ']',
-        '#value' => '<drupal-media data-entity-type="media" data-view-mode="' . $viewMode .'" data-entity-uuid="' . $media->uuid() . '"></drupal-media>',
-      ];
-
-      $options[$viewMode] = $viewModeLabel;
-    }
-
-    if (count($options) === 1) {
-      $selectionElement['insert']['view_modes'] = [
-        '#type' => 'hidden',
-        '#value' => array_keys($options)[0],
-      ];
-    }
-    else {
-      $selectionElement['insert']['view_modes'] = [
-        '#type' => 'select',
-        '#options' => $options,
-        '#default_value' => $settings['default'],
-      ];
-    }
   }
 
   $element['#attached']['library'][] = 'insert_media/insert_media';

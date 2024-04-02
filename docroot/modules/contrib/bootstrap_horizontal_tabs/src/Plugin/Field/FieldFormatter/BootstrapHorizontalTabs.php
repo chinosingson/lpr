@@ -82,6 +82,10 @@ class BootstrapHorizontalTabs extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
+
+    $bootstrap_settings = \Drupal::configFactory()->getEditable('bootstrap_horizontal_tabs.settings');
+    $bs_version = $bootstrap_settings->get('version');
+
     if (empty($items->getValue())) {
       return [];
     }
@@ -148,10 +152,16 @@ class BootstrapHorizontalTabs extends FormatterBase {
       if ($has_multiple) {
         // Generate a unique id for every tab header.
         // Transliterate the header (#3293143) following Drupal core's
-        // approach in migrate/process/MachineName.php
+        // approach in migrate/process/MachineName.php.
         $transformed = \Drupal::transliteration()->transliterate($item->header, LanguageInterface::LANGCODE_DEFAULT);
         $item_header_text = preg_replace('/[^a-z0-9_]+/', '_', strtolower($transformed));
         $unique_item_id = HtmlUtility::getUniqueId($item_header_text);
+
+        $toggle = 'data-toggle';
+        if ($bs_version == '5') {
+          $toggle = 'data-bs-toggle';
+        }
+
         // Create new body attributes object for use in the template.
         $body_attributes = [
           'aria-labelledby' => $unique_item_id . '-tab',
@@ -168,7 +178,7 @@ class BootstrapHorizontalTabs extends FormatterBase {
           'class' => [
             'nav-link',
           ],
-          'data-toggle' => 'tab',
+          $toggle => 'tab',
           'href' => '#' . $unique_item_id,
           'id' => $unique_item_id . '-tab',
           'role' => 'tab',
@@ -187,11 +197,15 @@ class BootstrapHorizontalTabs extends FormatterBase {
 
       // Add active/selected states to first of multiple items.
       if ($delta === 0 && $has_multiple) {
-        $elements[$delta]['#tabs_item_attributes']->addClass('active');
+        if ($bs_version != '5') {
+          $elements[$delta]['#tabs_item_attributes']->addClass('active');
+        }
         $elements[$delta]['#header_attributes']->addClass('active');
         $elements[$delta]['#header_attributes']->setAttribute('aria-selected', 'true');
         $elements[$delta]['#body_attributes']->addClass('active');
-        $elements[$delta]['#body_attributes']->addClass('show');
+        if ($bs_version != '3') {
+          $elements[$delta]['#body_attributes']->addClass('show');
+        }
         $elements[$delta]['#body_attributes']->addClass('in');
       }
     }

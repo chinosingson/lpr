@@ -6,6 +6,9 @@ use Drupal\Component\Utility\Html;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\file\FileInterface;
 use Drupal\image\Entity\ImageStyle;
+use Masterminds\HTML5\Parser\DOMTreeBuilder;
+use Masterminds\HTML5\Parser\Scanner;
+use Masterminds\HTML5\Parser\Tokenizer;
 
 /**
  *
@@ -196,18 +199,26 @@ class InsertUtility {
    *
    * @return string
    */
-  public static function addAllowedHtml($value, array $tags, array $attributes) {
-    // See \Drupal\filter\Plugin\Filter\FilterHtml::prepareAttributeValues.
+  public static function addAllowedHtml(string $value, array $tags, array $attributes) {
+    // See \Drupal\filter\Plugin\Filter\FilterHtml::getHTMLRestrictions.
     $html = str_replace('>', ' />', $value);
     $star_protector = '__zqh6vxfbk3cg__';
     $html = str_replace('*', $star_protector, $html);
-    $body_child_nodes = Html::load($html)->getElementsByTagName('body')->item(0)->childNodes;
+
+    $events = new DOMTreeBuilder(FALSE, ['disable_html_ns' => TRUE]);
+    $scanner = new Scanner('<body>' . $html);
+    $parser = new class($scanner, $events) extends Tokenizer {
+      public function setTextMode($textmode, $untilTag = NULL) {
+        // Do nothing, we never enter text mode.
+      }
+    };
+    $parser->parse();
+
+    $dom = $events->document();
+    $xpath = new \DOMXPath($dom);
 
     // Detect which tags an attributes are allowed already.
-    foreach ($body_child_nodes as $node) {
-      if ($node->nodeType !== XML_ELEMENT_NODE) {
-        continue;
-      }
+    foreach ($xpath->query('//body//*') as $node) {
       $tag = $node->tagName;
 
       if (array_key_exists($tag, $tags)) {

@@ -1,68 +1,42 @@
-(function(QUnit, $, Drupal, CKEDITOR) {
+(function(QUnit, Drupal) {
 
   QUnit.module('Inserter', {
-    afterEach: function() {
-      $.each(CKEDITOR.instances, function(id, editor) {
-        var element = editor.element;
-        editor.destroy();
-        element.$.remove();
-      });
-
-      CKEDITOR.currentInstance = undefined;
-
-      $('.insert-test').remove();
+    afterEach: () => {
+      for (const temp of document.getElementsByClassName('insert-test')) {
+        temp.remove();
+      }
     }
   });
 
-  var editorInterface = Drupal.insert.editors.interfaces.CKEditor;
-  var focusManager = new Drupal.insert.FocusManager(editorInterface);
-
-  var $dom = $('<div class="insert-test" data-insert-type="test">\
-    <input class="insert-style" type="hidden" value="test">\
+  const dom = '<input class="insert-style" type="hidden" value="test">\
     <div class="insert-templates">\
     <input class="insert-template" type="hidden" name="insert-template[test]" value="<span attr=&quot;__unused__&quot;>__filename__</span>">\
     </div>\
-    </div>\
-    ').appendTo('body');
+    <button class="insert-button">Insert</button>';
 
-  QUnit.test('getFocusManager()', function(assert) {
-    var inserter = new Drupal.insert.Inserter(
-      $dom.get(0),
-      focusManager,
-      editorInterface
+  QUnit.test('Insert content into textarea', assert => {
+    const container = document.createElement('div');
+    container.classList.add('insert-test');
+    container.innerHTML = dom;
+    document.querySelector('body').append(container);
+
+    const textarea = document.createElement('textarea');
+
+    Drupal.insert.FocusManager = new Drupal.insert.Manager();
+    Drupal.insert.FocusManager.addTextarea(textarea);
+
+    const inserter = new Drupal.insert.Inserter(
+      container,
+      new Drupal.insert.FileHandler(container)
     );
 
-    assert.strictEqual(inserter.getFocusManager(), focusManager, 'Verified returning FocusManager instance.');
-  });
+    document.querySelector('.insert-button').dispatchEvent(new Event('click'));
 
-  QUnit.test('getEditorInterface()', function(assert) {
-    var inserter = new Drupal.insert.Inserter(
-      $dom.get(0),
-      focusManager,
-      editorInterface
+    assert.strictEqual(
+      textarea.value,
+      '<span attr="__unused__">__filename__</span>',
+      'Content is inserted'
     );
-
-    assert.strictEqual(inserter.getEditorInterface(), editorInterface, 'Verified returning EditorInterface instance.');
   });
 
-  QUnit.test('getType()', function(assert) {
-    var inserter = new Drupal.insert.Inserter(
-      $dom.get(0),
-      focusManager,
-      editorInterface
-    );
-
-    assert.strictEqual(inserter.getType(), 'test', 'Verified returning insert type.');
-  });
-
-  QUnit.test('getTemplate()', function(assert) {
-    var inserter = new Drupal.insert.Inserter(
-      $dom.get(0),
-      focusManager,
-      editorInterface
-    );
-
-    assert.strictEqual(inserter.getTemplate(), $dom.find('[name="insert-template[test]"]').val(), 'Verified returning template.');
-  });
-
-})(QUnit, jQuery, Drupal, CKEDITOR);
+})(QUnit, Drupal);

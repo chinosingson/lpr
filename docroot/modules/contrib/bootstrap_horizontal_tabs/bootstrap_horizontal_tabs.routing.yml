@@ -1,0 +1,7 @@
+bootstrap_horizontal_tabs.configuration:
+  path: '/admin/config/content/bootstrap-horizontal-tabs'
+  defaults:
+    _form: '\Drupal\bootstrap_horizontal_tabs\Form\BaseConfigurationForm'
+    _title: 'Bootstrap Horizontal Tabs'
+  requirements:
+    _permission: 'administer site configuration'

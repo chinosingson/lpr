@@ -5,3 +5,9 @@ field.formatter.settings.bootstrap_horizontal_tabs:
     tab_display:
       type: string
       label: 'Header display'
+bootstrap_horizontal_tabs.settings:
+  type: config_entity
+  mapping:
+    version:
+      type: string
+      label: 'Bootstrap version'

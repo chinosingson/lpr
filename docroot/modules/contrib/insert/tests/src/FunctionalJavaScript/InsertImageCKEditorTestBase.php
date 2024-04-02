@@ -29,9 +29,6 @@ abstract class InsertImageCKEditorTestBase extends InsertImageTestBase {
       'name' => 'Full HTML',
       'weight' => 0,
       'filters' => [
-        'filter_align' => [
-          'status' => 1,
-        ],
         'filter_caption' => [
           'status' => 1,
         ],

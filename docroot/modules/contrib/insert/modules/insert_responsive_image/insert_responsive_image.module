@@ -48,11 +48,19 @@ function insert_responsive_image_insert_variables($insertType, array &$element, 
     return;
   }
 
+  $image = \Drupal::service('image.factory')->get($file->getFileUri());
+
+  if (!$image->isValid()) {
+    return;
+  }
+
   $responsiveImageVars = [
+    'height' => $image->getHeight(),
     'item' => NULL,
     'item_attributes' => NULL,
     'responsive_image_style_id' => $styleName,
     'uri' => $file->getFileUri(),
+    'width' => $image->getWidth(),
   ];
 
   $style = ImageStyle::load($responsiveStyle->getFallbackImageStyle());

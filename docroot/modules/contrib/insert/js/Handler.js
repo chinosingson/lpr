@@ -1,263 +1,393 @@
-(function($, Drupal) {
+(function (Drupal) {
   'use strict';
 
   /**
-   * Builds content to be inserted.
-   * @constructor
-   *
-   * @param {Drupal.insert.Inserter} inserter
-   * @param {Object} [widgetSettings]
-   * @param {HTMLElement} [wrapper]
+   * Finds descending elements of a CKEditor model element according to a
+   * predicate function looping through the provided element's descendants.
+   * @param {ckeditor.Element} element
+   * @param {(child: ckeditor.Element) => boolean} predicate
+   * @returns {ckeditor.Element[]}
    */
-  Drupal.insert.Handler = Drupal.insert.Handler || (function() {
+  function findDescendants(element, predicate) {
+    let elements = [];
 
-    /**
-     * @constructor
-     *
-     * @param {Drupal.insert.Inserter} inserter
-     * @param {Object} [widgetSettings]
-     * @param {HTMLElement} [wrapper]
-     */
-    function Handler(inserter, widgetSettings, wrapper) {
-      if (typeof inserter === 'undefined') {
-        throw new Error('inserter needs to be specified.');
+    if (predicate(element)) {
+      elements = [...elements, element];
+    } else if (element.getChildren) {
+      for (const child of element.getChildren()) {
+        const childElements = findDescendants(child, predicate);
+        if (childElements) {
+          elements = [...elements, ...childElements];
+        }
+      }
+    }
+
+    return elements;
+  }
+
+  /**
+   * Returns whether a provided editor element is the one to be synced by
+   * Insert.
+   * @param {ckeditor.Element} element
+   * @param {string} syncId
+   * @returns {boolean}
+   */
+  function isSyncedElement(element, syncId) {
+    for (const key of element.getAttributeKeys()) {
+      const attribute = element.getAttribute(key);
+      const attributes = attribute.attributes;
+
+      if (!attributes || !attributes['data-insert-attach']) {
+        continue;
       }
 
-      this._inserter = inserter;
+      const attach = JSON.parse(attributes['data-insert-attach']);
+
+      if (attach.id === syncId) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * Base class for handling content types, that is building the content to be
+   * inserted as per content type, e.g. image or (non-image) file.
+   */
+  Drupal.insert.Handler = class {
+
+    /**
+     * Selectors for accessing input elements of the field Insert is attached
+     * to.
+     * @type {{[key: string]: string}}
+     * @protected
+     */
+    _selectors;
+
+    /**
+     * The HTML element Insert is initialized on.
+     * @type {HTMLFieldSetElement}
+     * @protected
+     */
+    _container;
+
+    /**
+     * Insert widget settings.
+     * @type {object}
+     * @protected
+     */
+    _settings;
+
+    /**
+     * @type {HTMLElement}
+     */
+    #wrapper;
+
+    /**
+     * @type {HTMLButtonElement}
+     */
+    #button;
+
+    /**
+     * The button overlay allows hover events over the button in disabled
+     * state. The overlay is used only when the button is disabled and is used
+     * to highlight invalid components when hovering the button.
+     * @type {HTMLSpanElement|undefined}
+     * @protected
+     */
+    _buttonOverlay;
+
+    /**
+     * @param {HTMLFieldSetElement} container
+     * @param {object} widgetSettings
+     * @param {{[key: string]: string}} selectors
+     * @param {HTMLElement} wrapper
+     */
+    constructor(container, widgetSettings, selectors, wrapper) {
+      this._container = container;
       this._settings = widgetSettings || {};
+      this._selectors = selectors;
+      this.#wrapper = wrapper || container.parentElement;
+      this.#button = container.querySelector('.insert-button');
 
-      var self = this;
-      var $wrapper = typeof wrapper === 'undefined'
-        ? this._inserter.$container.parent() : $(wrapper);
+      this.#connectSelectors();
+    }
 
-      $.each(this._selectors, function() {
-        $wrapper.find(this).on('input.insert', function() {
-          self._update();
+    /**
+     * Attaches the "input" event to this handler's selectors for updating
+     * attached values of inserted elements
+     */
+    #connectSelectors() {
+      Object.values(this._selectors).forEach(selector => {
+        this.#wrapper
+          .querySelector(selector)?.addEventListener('input', () => {
+          this.#update();
         });
       });
     }
 
-    $.extend(Handler.prototype, {
+    /**
+     * @returns {string}
+     */
+    buildContent() {
+      return this._attachValues(this.#getTemplate());
+    }
 
-      /**
-       * @type {Object}
-       */
-      _selectors: {},
+    /**
+     * Returns the template for the currently selected insert style.
+     * @returns {string}
+     */
+    #getTemplate() {
+      const style = this._container.querySelector('.insert-style').value;
+      return this._container
+        .querySelector('input.insert-template[name$="[' + style + ']"]').value;
+    }
 
-      /**
-       * @type {Drupal.insert.Inserter}
-       */
-      _inserter: undefined,
+    /**
+     * Attaches attributes and content according to data-insert-attach
+     * definition.
+     * @param {string} template
+     * @returns {string}
+     * @protected
+     */
+    _attachValues(template) {
+      const values = this.#aggregateValues();
+      const tempContainer = document.createElement('div');
 
-      /**
-       * @type {Object}
-       */
-      _settings: null,
+      tempContainer.innerHTML = template;
+      tempContainer.querySelectorAll('[data-insert-attach]').forEach(element => {
+        this.#setValues(element, values);
+      });
 
-      /**
-       * The button overlay allows hover events over the button in disabled
-       * state. The overlay is used only when the button is disabled and is used
-       * to highlight invalid components when hovering the button.
-       * @type {jQuery|undefined}
-       */
-      _$buttonOverlay: undefined,
+      return tempContainer.innerHTML;
+    }
 
-      /**
-       * @return {string}
-       */
-      buildContent: function() {
-        var template = this._inserter.getTemplate();
-        return this._attachValues(template);
-      },
+    /**
+     * Updates all registered textareas and editors with the current values
+     * managed by this Handler instance.
+     */
+    #update() {
+      const syncId = this.#button.dataset.insertId;
 
-      /**
-       * Attaches attributes and content according to data-insert-attach
-       * definition.
-       *
-       * @param {string} template
-       * @return {string}
-       */
-      _attachValues: function(template) {
-        var self = this;
-        var values = this._aggregateValues();
-        var $tempContainer = $('<div>').html(template);
-
-        $tempContainer.find('[data-insert-attach]').each(function() {
-          self._setValues($(this), values);
-        });
-
-        return $tempContainer.html();
-      },
-
-      /**
-       * Updates all registered textareas and editors with the current values
-       * managed by this Handler instance.
-       */
-      _update: function() {
-        var self = this;
-        var syncId = this._inserter.$button.data('insert-id');
-
-        if (typeof syncId === 'undefined') {
-          return;
-        }
-
-        var values = this._aggregateValues();
-
-        this._inserter.getFocusManager().getTextareas().each(function() {
-          self._updateTextarea($(this), syncId, values);
-        });
-
-        $.each(this._inserter.getFocusManager().getEditors(), function() {
-          self._updateEditor(this, syncId, values);
-        });
-      },
-
-      /**
-       * Updates a particular textarea with a set of values.
-       *
-       * @param {jQuery} $textarea
-       * @param {string|int} syncId
-       * @param {Object} values
-       */
-      _updateTextarea: function($textarea, syncId, values) {
-        var self = this;
-        var $dom = $('<div>').html($textarea.val());
-        var $attachments = this._findByAttachmentId($dom, syncId);
-
-        if ($attachments.length) {
-          $attachments.each(function() {
-            self._setValues($(this), values);
-          });
-          $textarea.val($dom.html());
-        }
-      },
-
-      /**
-       * Updates a particular editor with a set of values.
-       *
-       * @param {Drupal.insert.EditorInterface} editor
-       * @param {string|int} syncId
-       * @param {Object} values
-       */
-      _updateEditor: function(editor, syncId, values) {
-        var self = this;
-        var editorInterface = this._inserter.getEditorInterface();
-        var $dom;
-
-        try {
-          $dom = editorInterface.getDom(editor);
-        }
-        catch(error) {
-          // That editor has not been initialized yet.
-          return;
-        }
-
-        this._findByAttachmentId($dom, syncId).each(function() {
-          self._setValues($(this), values);
-        });
-      },
-
-      /**
-       * Finds attachments for a specific syncId.
-       *
-       * @param {jQuery} $dom
-       * @param {string|int} syncId
-       * @return {jQuery}
-       */
-      _findByAttachmentId: function($dom, syncId) {
-        var $attachments = $();
-
-        $dom.find('[data-insert-attach]').each(function() {
-          if ($(this).data('insert-attach').id === syncId.toString()) {
-            $attachments = $attachments.add(this);
-          }
-        });
-
-        return $attachments;
-      },
-
-      /**
-       * Sets attributes and/or content on a node according to its
-       * data-insert-attach definition.
-       *
-       * @param {jQuery} $node
-       * @param {Object} values
-       */
-      _setValues: function($node, values) {
-        var attach = $node.data('insert-attach');
-
-        if (attach.attributes) {
-          $.each(attach.attributes, function(attributeName, keys) {
-            $.each(keys, function() {
-              if (values[this]) {
-                if (values[this] === '') {
-                  $node.removeAttr(attributeName);
-                }
-                else {
-                  $node.attr(attributeName, values[this]);
-                }
-                return false;
-              }
-            });
-          });
-        }
-
-        if (attach.content) {
-          $.each(attach.content, function() {
-            if (values[this]) {
-              $node.text(values[this]);
-              return false;
-            }
-          });
-        }
-      },
-
-      /**
-       * Returns all values gathered using this._selectors.
-       *
-       * @return {Object}
-       */
-      _aggregateValues: function() {
-        var self = this;
-        var values = {};
-        var $fieldDataWrapper = this._inserter.$container.parent();
-
-        $.each(this._selectors, function(key, selector) {
-          var value = $(selector, $fieldDataWrapper).val();
-          values[key] = value ? self._htmlEntities(value) : value;
-        });
-
-        return values;
-      },
-
-      /**
-       * @param string
-       * @return string
-       */
-      _htmlEntities: function(string) {
-        return string
-          .replace(/&/g, '&amp;')
-          .replace(/"/g, '&quot;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;');
-      },
-
-      /**
-       * @param {boolean} disable
-       */
-      _disable: function(disable) {
-        if (!this._$buttonOverlay) {
-          var $container = this._inserter.$container;
-          this._$buttonOverlay = $container.find('.insert-button-overlay');
-        }
-        this._inserter.$button.prop('disabled', disable);
-        this._$buttonOverlay[disable ? 'show' : 'hide']();
+      if (syncId === undefined) {
+        return;
       }
 
-    });
+      const values = this.#aggregateValues();
 
-    return Handler;
+      Drupal.insert.FocusManager.textareas.forEach(textarea => {
+        this.#updateTextarea(textarea, syncId, values);
+      });
 
-  })();
+      Drupal.insert.FocusManager.editors.forEach(editor => {
+        this.#updateEditor(editor, syncId);
+      });
+    }
 
-})(jQuery, Drupal);
+    /**
+     * Updates a particular textarea with a set of values.
+     * @param {HTMLTextAreaElement} textarea
+     * @param {string} syncId
+     * @param {{[key: string]: string}} values
+     */
+    #updateTextarea(textarea, syncId, values) {
+      const temp = document.createElement('div');
+      temp.innerHTML = textarea.value;
+
+      const elements = this.#findByAttachmentId(temp, syncId);
+
+      if (elements.length) {
+        elements.forEach(element => {
+          this.#setValues(element, values);
+        });
+        textarea.value = temp.innerHTML;
+      }
+    }
+
+    /**
+     * Finds attachments for a specific syncId.
+     * @param {HTMLElement} dom
+     * @param {string} syncId
+     * @returns {HTMLElement[]}
+     */
+    #findByAttachmentId(dom, syncId) {
+      const attachments = [];
+
+      dom.querySelectorAll('[data-insert-attach]').forEach(element => {
+        const insertAttach = JSON.parse(element.dataset.insertAttach);
+
+        if (insertAttach.id === syncId) {
+          attachments.push(element);
+        }
+      });
+
+      return attachments;
+    }
+
+    /**
+     * Updates a particular editor with a set of values.
+     * @param {ckeditor.Editor} editor
+     * @param {string} syncId
+     */
+    #updateEditor(editor, syncId) {
+      editor.model.change(writer => {
+        writer.model.document.getRoot()
+
+        const elements = findDescendants(
+          writer.model.document.getRoot(),
+          element => isSyncedElement(element, syncId)
+        );
+
+        elements.forEach(element => {
+          const elementToReplace = element.is('element')
+            ? element
+            : element.parent;
+
+          const position = writer.createPositionAfter(elementToReplace);
+          const viewFragment = editor.data.processor
+            .toView(this.buildContent());
+          const modelFragment = editor.data.toModel(viewFragment);
+
+          // Updating an element that is already inserted, it might have
+          // received some alterations of attributes, i.e. aligning an image.
+          // Therefore, any missing attributes are just copied over to the new
+          // replacement element.
+          const childNode = modelFragment.getNodeByPath([0]);
+          for (const [key, value] of elementToReplace.getAttributes()) {
+            if (!childNode.hasAttribute(key)) {
+              childNode._setAttribute(key, value);
+            }
+          }
+
+          writer.model.insertContent(modelFragment, position);
+          writer.remove(elementToReplace);
+        });
+      });
+    }
+
+    /**
+     * Sets attributes and/or content on a node according to its
+     * data-insert-attach definition.
+     * @param {HTMLElement} element
+     * @param {{[key: string]: string}} values
+     * @returns {HTMLElement}
+     */
+    #setValues(element, values) {
+      const attach = JSON.parse(element.dataset.insertAttach || null);
+
+      this.#setAttributes(element, values, attach);
+      this.#setContent(element, values, attach);
+
+      return element;
+    }
+
+    /**
+     * @param {HTMLElement} element
+     * @param {{[key: string]: string}} values
+     * @param {object} attach
+     */
+    #setAttributes(element, values, attach) {
+      if (!attach?.attributes) {
+        return;
+      }
+      
+      for (const [attributeName, keys] of Object.entries(attach.attributes)) {
+        for (const key of keys) {
+          if (!values[key]) {
+            continue;
+          }
+
+          if (values[key] === '') {
+            element.removeAttribute(attributeName);
+          } else {
+            element.setAttribute(attributeName, values[key]);
+          }
+
+          break;
+        }
+      }
+    }
+
+    /**
+     * @param {HTMLElement} element
+     * @param {{[key: string]: string}} values
+     * @param {object} attach
+     */
+    #setContent(element, values, attach) {
+      if (!attach?.content) {
+        return;
+      }
+
+      for (const key of attach.content) {
+        if (values[key]) {
+          element.innerText = values[key];
+          break;
+        }
+      }
+    }
+
+    /**
+     * Returns all values gathered using this._selectors.
+     * @returns {{[key: string]: string}}
+     */
+    #aggregateValues() {
+      const values = {};
+      const fieldDataWrapper = this._container.parentNode;
+
+      Object.entries(this._selectors).forEach(([key, selector]) => {
+        var value = fieldDataWrapper.querySelector(selector)?.value;
+        values[key] = value ? this.#htmlEntities(value) : value;
+      });
+
+      return values;
+    }
+
+    /**
+     * @param {string} string
+     * @returns {string}
+     */
+    #htmlEntities(string) {
+      return string
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    /**
+     * Toggles disabled state of the insert button.
+     * @param {boolean} disable
+     * @protected
+     */
+    _disable(disable) {
+      const wrapper = this._container
+        .querySelector('.insert-button-wrapper');
+      const button = wrapper.querySelector('.insert-button');
+
+      if (disable) {
+        const overlay = document.createElement('span');
+        overlay.classList.add('insert-button-overlay');
+        wrapper.appendChild(overlay);
+        wrapper.removeChild(button);
+        overlay.appendChild(button);
+
+        button.setAttribute('disabled', 'true');
+      } else {
+
+        const overlay = wrapper.querySelector('.insert-button-overlay');
+
+        if (!overlay) {
+          return;
+        }
+
+        overlay.removeChild(button);
+        wrapper.removeChild(overlay);
+        wrapper.appendChild(button);
+
+        button.removeAttribute('disabled');
+      }
+    }
+  }
+
+})(Drupal);

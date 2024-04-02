@@ -8,7 +8,7 @@ dependencies:
   - drupal:image
   - drupal:file
 
-# Information added by Drupal.org packaging script on 2024-01-01
-version: '3.0.0-beta3'
+# Information added by Drupal.org packaging script on 2024-04-02
+version: '3.0.0-beta6'
 project: 'insert'
-datestamp: 1704123696
+datestamp: 1712055211

@@ -8,7 +8,7 @@ dependencies:
 package: Field
 core_incompatible: false
 
-# Information added by Drupal.org packaging script on 2024-01-26
-version: '2.0.6'
+# Information added by Drupal.org packaging script on 2024-04-01
+version: '2.0.7'
 project: 'bootstrap_horizontal_tabs'
-datestamp: 1706289956
+datestamp: 1712009549

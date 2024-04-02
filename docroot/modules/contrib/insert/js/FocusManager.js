@@ -1,199 +1,171 @@
-(function($, Drupal) {
+(function(Drupal) {
   'use strict';
 
   /**
-   * Keeps track of focusing elements that the Insert module interacts with.
-   * @constructor
-   *
-   * @param {Drupal.insert.EditorInterface} [editorInterface]
-   * @param {HTMLElement} [defaultTarget]
+   * The Focus Manager keeps track of the CKEditor instances and text areas on
+   * the page, including which of the elements is currently focused and was
+   * previously focused to determine the target for an insertion operation.
    */
-  Drupal.insert.FocusManager = Drupal.insert.FocusManager || (function() {
+  class FocusManager {
 
     /**
-     * @type {Drupal.insert.EditorInterface|undefined}
+     * Registry of the CKEditor instances tracked by the FocusManager
+     * @type {ckeditor.Editor[]}
      */
-    var eInterface;
+    #editors;
 
     /**
-     * @constructor
-     *
-     * @param {Drupal.insert.EditorInterface} [editorInterface]
-     * @param {HTMLElement} [defaultTarget]
+     * Registry of the textareas tracked by the FocusManager
+     * @type {HTMLTextAreaElement[]}
      */
-    function FocusManager(editorInterface, defaultTarget) {
-      if (editorInterface && typeof editorInterface !== 'object') {
-        throw new Error('editorInterface needs to be an instance of Drupal.insert.EditorInterface.');
-      }
+    #textareas;
 
-      eInterface = editorInterface;
-      this._$defaultTarget = $(defaultTarget);
-      this._editors = {};
-      this._$textareas = $();
+    /**
+     * The current target for inserting.
+     * @type {ckeditor.Editor|HTMLTextAreaElement|undefined}
+     */
+    #focusTarget;
+
+    /**
+     * The previous target used as a fallback when inserting while there is no
+     * current target.
+     * @type {ckeditor.Editor|HTMLTextAreaElement|undefined}
+     */
+    #previousFocusTarget;
+
+    /**
+     * The default target used when there has been no interaction with any
+     * editor or textarea yet.
+     * @type {ckeditor.Editor|HTMLTextAreaElement|undefined}
+     */
+    defaultTarget;
+
+    constructor() {
+      this.#editors = [];
+      this.#textareas = [];
+
+      const firstEditorElement
+        = document.querySelector('.ck-editor__editable');
+
+      this.defaultTarget = firstEditorElement
+        ? firstEditorElement.ckeditorInstance
+        : document.querySelector('textarea') || undefined;
     }
 
-    $.extend(FocusManager.prototype, {
+    /**
+     * @returns {ckeditor.Editor[]}
+     */
+    get editors() {
+      return this.#editors;
+    }
 
-      /**
-       * Target for inserting when no textarea was focused yet.
-       * @type {jQuery}
-       */
-      _$defaultTarget: undefined,
+    /**
+     * @returns {HTMLTextAreaElement[]}
+     */
+    get textareas() {
+      return this.#textareas;
+    }
 
-      /**
-       * @type {Object}
-       */
-      _editors: undefined,
+    /**
+     * @param {ckeditor.Editor} editor
+     */
+    addEditor(editor) {
+      if (!this.#editors.map(editor => editor.id).includes(editor.id)) {
+        this.#attachEditorEvents(editor);
+        this.#editors.push(editor);
+      }
+    }
 
-      /**
-       * @type {jQuery}
-       */
-      _$textareas: undefined,
+    /**
+     * @param {ckeditor.Editor} editor
+     */
+    #attachEditorEvents(editor) {
+      editor.editing.view.document.on('change:isFocused', (event, data, isFocused) => {
+        if (isFocused) {
+          this.#focusTarget = editor;
+        } else {
+          this.#previousFocusTarget = editor;
 
-      /**
-       * @param {HTMLElement} [element]
-       */
-      setDefaultTarget: function(element) {
-        this._$defaultTarget = $(element);
-      },
-
-      /**
-       * @param {eInterface.editorConstructor} editor
-       */
-      addEditor: function(editor) {
-        if (eInterface && !this._editors[eInterface.getId(editor)]) {
-          this._attachEvents(editor);
-          this._editors[eInterface.getId(editor)] = editor;
+          if (this.#focusTarget && this.#focusTarget.id === editor.id) {
+            this.#focusTarget = undefined;
+          }
         }
-      },
+      });
+    }
 
-      /**
-       * @param {jQuery} $textareas
-       */
-      addTextareas: function($textareas) {
-        var $unregistered = $textareas.not(this._$textareas);
+    /**
+     * @param {HTMLTextAreaElement} textarea
+     */
+    addTextarea(textarea) {
+      if (!this.#textareas.includes(textarea)) {
+        this.#attachTextareaEvents(textarea);
+        this.#textareas.push(textarea);
+      }
+    }
 
-        if ($unregistered.length) {
-          this._attachEvents($unregistered);
-          this._$textareas = this._$textareas.add($unregistered);
+    /**
+     * @param {HTMLTextAreaElement} textarea
+     */
+    #attachTextareaEvents(textarea) {
+      textarea.addEventListener('focus', event => {
+        this.#focusTarget = event.target;
+      });
+
+      textarea.addEventListener('blur', () => {
+        this.#previousFocusTarget = textarea;
+
+        if (this.#focusTarget && this.#focusTarget === textarea) {
+          this.#focusTarget = undefined;
         }
-      },
+      });
+    }
 
-      /**
-       * @return {*[]}
-       */
-      getEditors: function() {
-        var editors = [];
-        $.each(this._editors, function() {
-          editors.push(this);
-        });
-        return editors;
-      },
-
-      /**
-       * @return {jQuery}
-       */
-      getTextareas: function() {
-        return this._$textareas;
-      },
-
-      /**
-       * @param {eInterface.editorConstructor|jQuery} editorOrTextareas
-       */
-      _attachEvents: function(editorOrTextareas) {
-
-        // Beware: CKEditor neither supports chaining nor event namespaces!
-        editorOrTextareas.on('focus', function(event) {
-          $(':data(insertIsFocused)').removeData('insertIsFocused');
-          $(':data(insertLastFocused)').removeData('insertLastFocused');
-
-            var subject = (event.editor && event.editor instanceof eInterface.editorConstructor)
-              ? eInterface.getElement(event.editor)
-              : this;
-            $(subject).data('insertIsFocused', true).data('insertLastFocused', true);
-        });
-
-        editorOrTextareas.on('blur', function(event) {
-          var subject = (event.editor && event.editor instanceof eInterface.editorConstructor)
-            ? eInterface.getElement(event.editor)
-            : this;
-          // Delay removing focus marker, so, when instantly clicking on the
-          // Insert button, the focused subject will receive the input.
-          setTimeout(function() {
-            $(subject).removeData('insertIsFocused');
-          }, 1000);
-        });
-      },
-
-      /**
-       * @return {HTMLElement|null}
-       */
-      _getLastFocused: function() {
-        var $lastFocusedTextarea = $(':data(insertLastFocused)');
-        if (!$lastFocusedTextarea.length) {
-          $lastFocusedTextarea = this._$defaultTarget;
-        }
-        return $lastFocusedTextarea.length ? $lastFocusedTextarea.get(0) : null;
-      },
-
-      /**
-       * @return {jQuery}
-       */
-      _getCurrentlyFocusedTextarea: function() {
-        return this._$textareas.find(':data(insertIsFocused)');
-      },
-
-      /**
-       * @return {eInterface.editorConstructor|HTMLElement}
-       */
-      getActive: function() {
-        var subject = this._getCurrentlyFocusedTextarea();
-
-        if (subject.length !== 0) {
-          return subject.get(0);
-        }
-
-        var lastFocused = this._getLastFocused();
-        subject = undefined;
-
-        if (eInterface) {
-          $.each(this._editors, function(id, editor) {
-            // Editor element is undefined after switching to restricted HTML
-            // mode, as that mode detaches the WYSIWYG editor.
-            var editorElement = eInterface.getElement(editor);
-            if (editorElement && lastFocused && editorElement === lastFocused) {
-              subject = this;
-              return false;
-            }
-          });
-        }
-
-        if (subject) {
-          return subject;
-        }
-        if (lastFocused) {
-          return lastFocused;
-        }
-
-        var currentEditorInstance = eInterface
-          ? eInterface.getCurrentInstance()
-          : undefined;
-
-        if (currentEditorInstance) {
-          return currentEditorInstance;
-        }
-
-        if (this._$textareas.length) {
-          return this._$textareas.get(0);
-        }
-
-        return null;
+    /**
+     * Returns the best guessed target to insert content into.
+     * @returns {ckeditor.Editor|HTMLTextAreaElement|undefined}
+     */
+    getTarget() {
+      if (this.#focusTarget) {
+        return this.#focusTarget;
       }
 
-    });
+      if (this.#previousFocusTarget) {
+        return this.#previousFocusTarget;
+      }
 
-    return FocusManager;
+      // Only return the default target if it is tracked by the focus manager
+      if (this.defaultTarget) {
+        if (
+          typeof CKEditor5 !== 'undefined'
+          && this.defaultTarget instanceof CKEditor5.core.Editor
+          && this.#editors.find(
+            editor => editor.id === this.defaultTarget.id
+          )
+        ) {
+          return this.defaultTarget;
+        }
 
-  })();
+        if (
+          this.#textareas.find(
+            textarea => textarea === this.defaultTarget
+          )
+        ) {
+            return this.defaultTarget;
+        }
+      }
 
-})(jQuery, Drupal);
+      if (this.#editors.length) {
+        return this.#editors[0];
+      }
+
+      if (this.#textareas.length) {
+        return this.#textareas[0];
+      }
+
+      console.warn('Insert: Unable to determine the insertion target');
+    }
+  }
+
+  Drupal.insert.Manager = FocusManager;
+
+})(Drupal);

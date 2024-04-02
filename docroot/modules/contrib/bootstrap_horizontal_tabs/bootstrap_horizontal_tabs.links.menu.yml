@@ -1,0 +1,5 @@
+bootstrap_horizontal_tabs.configuration:
+  title: 'Bootstrap Horizontal Tabs'
+  description: 'Configure settings for horizontal tabs fields.'
+  route_name: bootstrap_horizontal_tabs.configuration
+  parent: system.admin_config_content

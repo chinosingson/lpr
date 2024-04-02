@@ -12,6 +12,8 @@ use Drupal\Tests\TestFileCreationTrait;
  */
 abstract class InsertFileTestBase extends WebDriverTestBase {
 
+  protected $defaultTheme = 'stark';
+
   use FileFieldCreationTrait {
     createFileField as drupalCreateFileField;
   }

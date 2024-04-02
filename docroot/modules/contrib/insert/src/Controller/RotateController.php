@@ -50,7 +50,7 @@ class RotateController extends ControllerBase {
     }
 
     $styleUrls = [
-      'image' => $this->convertUrl(file_create_url($image->getSource()), $absolute),
+      'image' => $this->convertUrl(\Drupal::service('file_url_generator')->generateAbsoluteString($image->getSource()), $absolute),
     ];
 
     /* @var ImageStyle $style */

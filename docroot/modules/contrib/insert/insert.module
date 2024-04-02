@@ -30,10 +30,7 @@ const INSERT_DEFAULT_SETTINGS = [
   'default' => 'insert__auto',
   'auto_image_style' => 'image',
   'link_image' => NULL,
-  'caption' => FALSE,
   'width' => '',
-  'align' => FALSE,
-  'rotate' => FALSE,
 ];
 
 /**
@@ -101,8 +98,14 @@ function insert_form_alter(array &$form, FormStateInterface $form_state, $form_i
 
     // Ensure attributes set by Insert are not stripped from the output:
     if (in_array($form['format']['#default_value'], $text_formats)) {
-      $form['filters']['settings']['filter_html']['allowed_html']['#element_validate'][]
-        = '_insert_allowed_html_validate';
+      if (isset($form['filters']['settings']['filter_html'])) {
+        $form['filters']['settings']['filter_html']['allowed_html']['#element_validate'][]
+          = '_insert_allowed_html_validate';
+      }
+      if (isset($form['editor']['settings']['subform']['plugins']['ckeditor5_sourceEditing'])) {
+        $form['editor']['settings']['subform']['plugins']['ckeditor5_sourceEditing']['allowed_tags']['#element_validate'][]
+          = '_insert_allowed_html_validate';
+      }
     }
   }
 }
@@ -142,8 +145,7 @@ function _insert_field_process(array $element, FormStateInterface $form_state, a
   $insertType = $element['#insert']['type'];
 
   $element['insert'] = [
-    '#type' => $element['#insert']['settings']['align']
-    ? 'fieldset' : 'container',
+    '#type' => 'container',
     '#attributes' => [
       'class' => [
         'insert',
@@ -214,7 +216,7 @@ function _insert_field_process(array $element, FormStateInterface $form_state, a
 
       $insertElement['insert']['insert_templates'][$styleName] = [
         '#type' => 'hidden',
-        '#value' => _insert_render($styleName, $vars),
+        '#value' => _insert_render($styleName, $vars, $insertElement),
         '#id' => $vars['id'] . '-insert-template-' . str_replace('_', '-', $styleName),
         '#name' => $element['#name'] . '[insert_template][' . $styleName . ']',
         '#attributes' => ['class' => ['insert-template']],
@@ -371,12 +373,13 @@ function _insert_get_style_classes(array $styles) {
  *
  * @param string $styleName
  * @param array $vars
+ * @param array $insertElement
  *
  * @return string
  */
-function _insert_render($styleName, array $vars) {
+function _insert_render($styleName, array $vars, array $insertElement) {
   $rendered
-    = \Drupal::moduleHandler()->invokeAll('insert_render', [$styleName, $vars]);
+    = \Drupal::moduleHandler()->invokeAll('insert_render', [$styleName, $vars, $insertElement]);
 
   if (count($rendered)) {
     $rendered = $rendered[0];
@@ -671,14 +674,6 @@ function _insert_settings_form(array $settings, $insertType) {
       '#weight' => 25,
     ];
 
-    $element['caption'] = [
-      '#type' => 'checkbox',
-      '#title' => t('Apply caption to images'),
-      '#default_value' => $settings['caption'],
-      '#description' => t('Applies a <code>data-caption</code> attribute to images. Transformation into an actual caption is performed by the caption filter that needs to be enabled for the text format in use. See text format configuration per @content_authoring and ensure <em>Caption images</em> in the <em>Enabled filters</em> section is checked. By default, the image title input field content will be used as caption.', ['@content_authoring' => Link::fromTextAndUrl(t('content authoring admin page'), Url::fromRoute('filter.admin_overview'))->toString()]),
-      '#weight' => 25,
-    ];
-
     $element['width'] = [
       '#title' => t('Maximum image insert width'),
       '#type' => 'textfield',
@@ -687,22 +682,6 @@ function _insert_settings_form(array $settings, $insertType) {
       '#default_value' => $settings['width'],
       '#description' => t('When inserting images, the height and width of images may be scaled down to fit within the specified width. Note that this does not resize the image, it only affects the HTML output.'),
       '#weight' => 26,
-    ];
-
-    $element['align'] = [
-      '#type' => 'checkbox',
-      '#title' => t('Alignment controls'),
-      '#default_value' => $settings['align'],
-      '#description' => t('Alignment may be applied using radio buttons.'),
-      '#weight' => 27,
-    ];
-
-    $element['rotate'] = [
-      '#type' => 'checkbox',
-      '#title' => t('Rotation controls'),
-      '#default_value' => $settings['rotate'],
-      '#description' => t('The image may be rotated by using rotation controls.'),
-      '#weight' => 28,
     ];
   }
 
@@ -819,27 +798,6 @@ function insert_editor_js_settings_alter(array &$settings) {
     'audio[contenteditable,controls,src,type,data-insert-attach]',
     'video[contenteditable,controls,src,type,data-insert-attach]',
   ]);
-
-  foreach (array_keys($settings['editor']['formats']) as $text_format_id) {
-    if (!isset($settings['editor']['formats'][$text_format_id]['editorSettings']['drupalExternalPlugins'])) {
-      continue;
-    }
-    // If drupalimage is disabled (the editor's image button is removed),
-    // still, CKEditor's naive image2 plugin wraps the image in a span tag
-    // blocking from applying a style to the image making it impossible to set
-    // alignment on the image. Therefore, the image2 plugin needs to be disabled
-    // in that case.
-    // With drupalimage enabled, the user has to set alignment using the
-    // editor's image button; With drupalimage disabled, the user has to set
-    // alignment using the styles drop-down which allows applying additional
-    // styles to images as well.
-    if (!in_array(
-      'drupalimage',
-      array_keys($settings['editor']['formats'][$text_format_id]['editorSettings']['drupalExternalPlugins'])
-    )) {
-      $settings['editor']['formats'][$text_format_id]['editorSettings']['removePlugins'] = 'image2';
-    }
-  }
 }
 
 /**
@@ -847,6 +805,9 @@ function insert_editor_js_settings_alter(array &$settings) {
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  */
 function _insert_allowed_html_validate(array $element, FormStateInterface &$form_state) {
+  $imagePluginActive
+    = $element['#groups']['editor][settings][plugins][ckeditor5_image']['#group_exists'];
+
   $tags = [
     'img' => NULL,
     'a' => NULL,
@@ -858,14 +819,14 @@ function _insert_allowed_html_validate(array $element, FormStateInterface &$form
   $attributes = [
     'img' => [
       'class' => NULL,
-      'src' => NULL,
-      'width' => NULL,
-      'height' => NULL,
-      'alt' => NULL,
+      'data-insert-attach' => NULL,
+      'data-insert-type' => NULL,
       'title' => NULL,
     ],
     'a' => [
       'class' => NULL,
+      'data-insert-attach' => NULL,
+      'data-insert-type' => NULL,
       'title' => NULL,
       'type' => NULL,
     ],
@@ -875,27 +836,48 @@ function _insert_allowed_html_validate(array $element, FormStateInterface &$form
       // white-listed:
       'contenteditable' => NULL,
       'controls' => NULL,
+      'data-insert-attach' => NULL,
+      'data-insert-type' => NULL,
       'src' => NULL,
       'type' => NULL,
     ],
     'span' => [
       'class' => NULL,
+      'data-insert-attach' => NULL,
+      'data-insert-type' => NULL,
     ],
     'video' => [
       'contenteditable' => NULL,
       'controls' => NULL,
+      'data-insert-attach' => NULL,
+      'data-insert-type' => NULL,
       'src' => NULL,
       'type' => NULL,
     ],
   ];
 
+  if (!$imagePluginActive) {
+    $attributes['img']['src'] = NULL;
+    $attributes['img']['alt'] = NULL;
+    $attributes['img']['width'] = NULL;
+    $attributes['img']['height'] = NULL;
+  }
+
   $additional = \Drupal::moduleHandler()->invokeAll('insert_allowed_html');
 
-  $form_state->setValueForElement($element, InsertUtility::addAllowedHtml(
-    $element['#value'],
-    NestedArray::mergeDeep($tags, isset($additional['tags']) ? $additional['tags'] : []),
-    NestedArray::mergeDeep($attributes, isset($additional['attributes']) ? $additional['attributes'] : [])
-  ));
+  if (isset($element['#value'])) {
+    $form_state->setValueForElement($element, InsertUtility::addAllowedHtml(
+      $element['#value'],
+      NestedArray::mergeDeep(
+        $tags,
+        isset($additional['tags']) ? $additional['tags'] : []
+      ),
+      NestedArray::mergeDeep(
+        $attributes,
+        isset($additional['attributes']) ? $additional['attributes'] : []
+      )
+    ));
+  }
 }
 
 /**

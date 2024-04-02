@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall functions for Bootstrap Horizontal Tabs.
+ */
+
+/**
+ * Set Bootstrap version to 4 on existing sites.
+ */
+function bootstrap_horizontal_tabs_update_8201() {
+  \Drupal::configFactory()->getEditable('bootstrap_horizontal_tabs.settings')
+    ->set('version', 4)->save();
+}

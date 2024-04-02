@@ -108,9 +108,10 @@ function hook_insert_variables($insertType, array &$element, $styleName, &$vars)
  *
  * @param string $styleName
  * @param array $vars
+ * @param array $insertElement
  *
  * @return array
  */
-function hook_insert_render($styleName, array $vars) {
+function hook_insert_render($styleName, array $vars, array $insertElement) {
   return [];
 }
