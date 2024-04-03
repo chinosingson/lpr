@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'db7ab5fac9264f137114ac2f8bf68596d037f579',
+        'reference' => 'df197fe5e032adadfc11fd73e19575f7f2328370',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -206,6 +206,15 @@
             'install_path' => __DIR__ . '/../../docroot/modules/contrib/asset_injector',
             'aliases' => array(),
             'reference' => '8.x-2.19',
+            'dev_requirement' => false,
+        ),
+        'drupal/autoban' => array(
+            'pretty_version' => '1.9.0',
+            'version' => '1.9.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../docroot/modules/contrib/autoban',
+            'aliases' => array(),
+            'reference' => '8.x-1.9',
             'dev_requirement' => false,
         ),
         'drupal/backup_migrate' => array(
@@ -781,7 +790,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'db7ab5fac9264f137114ac2f8bf68596d037f579',
+            'reference' => 'df197fe5e032adadfc11fd73e19575f7f2328370',
             'dev_requirement' => false,
         ),
         'drupal/linkit' => array(
@@ -1369,8 +1378,8 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.1|2.0',
-                1 => '^1.0',
+                0 => '^1.0',
+                1 => '1.1|2.0',
             ),
         ),
         'psr/event-dispatcher' => array(

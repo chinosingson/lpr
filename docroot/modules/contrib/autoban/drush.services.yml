@@ -1,0 +1,5 @@
+services:
+  autoban_commands.commands:
+    class: \Drupal\autoban\Commands\AutobanCommands
+    tags:
+      - { name: drush.command }
