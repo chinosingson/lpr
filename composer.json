@@ -17,6 +17,7 @@
     "require": {
         "composer/installers": "^1.9",
         "drupal/admin_toolbar": "^3.4",
+        "drupal/advban": "^1.5",
         "drupal/asset_injector": "^2.19",
         "drupal/autoban": "^1.9",
         "drupal/backup_migrate": "^5.0",

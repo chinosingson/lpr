@@ -1,0 +1,35 @@
+{#
+/**
+ * @file
+ * Theme implementation for the IP Ban item.
+ *
+ * Available variables:
+ * - ip: The IP Address value.
+ * - ip_end: The address (end of range).
+ * - expiry_duration: IP expiration date.
+ * - status: IP entry status.
+ */
+#}
+
+<p>
+  <strong> {{ 'IP address:'|t }} </strong>
+  {% if ip %}
+    {{ ip }}
+  {% endif %}
+</p>
+{% if ip_end %}
+  <p>
+    <strong> {{ 'IP address (end of range):'|t }} </strong>
+    {{ ip_end }}
+  </p>
+{% endif %}
+<p>
+  <strong> {{ 'IP expiration date:'|t }} </strong>
+  {% if expiry_duration %}
+    {{ expiry_duration }}
+  {% endif %}
+</p>
+<p>
+  <strong> {{ 'Status:'|t }} </strong>
+  {{ status }}
+</p>
