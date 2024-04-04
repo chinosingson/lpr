@@ -684,6 +684,7 @@
    color: var(--blue);
  }
  
+ .focus-link a,
  .elearning-list .elearning-read-more a,
  .publications-list .publications-read-more a,
  .news-highlighted .news-read-more a,
