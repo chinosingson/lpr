@@ -1046,20 +1046,7 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* Page banners - About Us, Our Work, News & Events, Knowledge & Resources + Focus Area Pages */
-.banner-text .h1 {
-  font-weight: 600 !important;
-}
-
-@media (min-width: 992px) {
-  .banner-text {
-    width: 84%;
-  }
-
-  .banner-text .h1 {
-    font-size: 2.4rem !important;
-  }
-}
-
+/* banner positioning  */
 @media (max-width: 992px){
   .banner-text {
     /* position: relative !important;
@@ -1072,7 +1059,23 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 }
 
-@media (max-width: 768px) {
+/* text sizes and container width */
+/* .banner-text .h1 {
+  font-weight: 600 !important;
+} */
+
+@media (min-width: 992px) {
+  .banner-text {
+    width: 84%;
+  }
+
+  .banner-text .h1 {
+    font-size: 2.4rem !important;
+  }
+}
+
+
+@media (max-width: 992px) {
   .banner-text .h1 {
     font-size: 2rem !important;
     line-height: 2.2rem !important;
@@ -1085,15 +1088,15 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .banner-text .h1 {
-    font-size: 1.35rem !important;
-    line-height: 1.5rem !important;
+    font-size: 1.8rem !important;
+    line-height: 2rem !important;
   }
 
   .banner-text p {
-    font-size: 1rem !important;
-    line-height: 1.2rem !important;
+    font-size: 1.2rem !important;
+    line-height: 1.4rem !important;
     margin-bottom: 0px !important;
   }
 }
@@ -1162,6 +1165,32 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   --bs-gutter-x: none;
   margin-bottom: 0px;
 }
+.row.region.region-featured-top .banner-container
+{
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  max-height: 100vw;
+}
+
+@media (min-width: 992px){
+  .row.region.region-featured-top .banner-container img
+ {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .row.region.region-featured-top .banner-container
+ {
+    max-height: 55vw;
+    overflow: hidden;
+  }
+}
+
+
+
 
 /* social sharing buttons */
 .social-sharing-buttons {
