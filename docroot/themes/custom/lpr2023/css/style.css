@@ -1137,6 +1137,7 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* our work and ttt videos */
+#focus-env-video iframe,
 #ttt-video iframe,
 #our-work-video iframe {
   border-radius: 20px;
@@ -1150,6 +1151,9 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 
 /* removes overflow on smaller devices */
+#main > .row {
+  margin-right: unset;
+}
 .row.region.region-featured-top {
   --bs-gutter-x: none;
   margin-bottom: 0px;
