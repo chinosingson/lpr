@@ -279,16 +279,11 @@ function lpr2023_preprocess_field($variables){
 function lpr2023_preprocess_page(&$variables) {
   $variables['#attached']['drupalSettings']['responsive_menu']['custom'] = [
     'options' => [
+      'slidingSubmenus' => false, // open menus vertically
       'navbar' => [
-        'add' => TRUE,
-        'title' => "ADB's Law and Policy Reform Program",
+        'title' => "ADB's Law and Policy Reform Program", // override title
       ],
-      'slidingSubmenus' => false
     ],
-    'config' => [
-      'classNames' => [
-        'vertical' => 'Expand'
-      ],
-    ]
   ];
+  dpm($variables['#attached']['drupalSettings']['responsive_menu']);
 }
