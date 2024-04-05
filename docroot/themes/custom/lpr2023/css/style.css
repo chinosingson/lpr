@@ -1107,12 +1107,12 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #F0F0F0;
 } */
 
-.publications-image {
-  /* max-height: 300px;
+/* .publications-image {
+  max-height: 300px;
   overflow:hidden; 
   position:relative;
-  background-color: #F0F0F0; */
-}
+  background-color: #F0F0F0;
+} */
 
 
 @media (min-width: 992px){
@@ -1179,16 +1179,25 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 }
 
+/* News/Events filters */
+.path-events #block-lpr2023-content > div > div > div > div.view-header,
 .path-news #block-lpr2023-content > div > div > div > div.view-header {
   margin-bottom: 1rem;
 }
 
-.path-news [id^=edit-submit-news] {
+.path-events fieldset + [id^=edit-actions] button,
+.path-news fieldset + [id^=edit-actions] button {
   background-color: var(--green);
   border: var(--green);
 }
 
-.path-news #views-exposed-form-asia-law-database-asia-pacific-law-database [id^=edit-actions]:nth-child(5) {
+.path-events fieldset + [id^=edit-actions],
+.path-news fieldset + [id^=edit-actions] {
   align-self: flex-start;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
+}
+
+.path-events fieldset[id^=edit-program] legend,
+.path-news fieldset[id^=edit-program] legend {
+  display: none;
 }
