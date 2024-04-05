@@ -1188,7 +1188,7 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: var(--green);
 }
 
-.path-news [id^=edit-actions] {
+.path-news #views-exposed-form-asia-law-database-asia-pacific-law-database [id^=edit-actions]:nth-child(5) {
   align-self: flex-start;
   margin-top: 1rem;
 }
