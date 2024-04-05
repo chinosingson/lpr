@@ -83,7 +83,7 @@ function search_api_post_update_views_cache_none(): ?TranslatableMarkup {
 
     $update = FALSE;
     foreach ($displays as $id => $display) {
-      if ($display['display_options']['cache']['type'] ?? '' === 'none') {
+      if (($display['display_options']['cache']['type'] ?? '') === 'none') {
         $displays[$id]['display_options']['cache']['type'] = 'search_api_none';
         $update = TRUE;
       }
