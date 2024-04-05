@@ -1,3 +1,8 @@
+Search API 1.33 (2024-04-04):
+-----------------------------
+- #3437379 by yauheni, ELC, Taran2L, drunken monkey: Fixed bug in update
+  function that sets caching of all search views to "None".
+
 Search API 1.32 (2024-03-31):
 -----------------------------
 - #3427068 by jonathan1055, drunken monkey: Fixed cspell errors.
