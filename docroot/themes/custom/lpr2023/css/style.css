@@ -1201,3 +1201,8 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 .path-news fieldset[id^=edit-program] legend {
   display: none;
 }
+
+[id^=block-lpr2023-filterbylawinstrument] .facets-widget- ul{
+  list-style: none;
+  padding-left: 1rem;
+}
