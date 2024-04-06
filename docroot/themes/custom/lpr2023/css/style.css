@@ -385,11 +385,19 @@
   font-weight: 500 !important;
  }
 
+ /* ul.sf-menu.sf-style-white span.nolink:hover, */
+ /* ul.sf-menu.sf-style-white li li li:hover    */
+ 
  ul.sf-menu.sf-style-white li.sfHover,
- ul.sf-menu.sf-style-white a:hover,
- ul.sf-menu.sf-style-white span.nolink:hover,
- ul.sf-menu.sf-style-white li li li:hover   {
+ ul.sf-menu.sf-style-white li a:hover
+ {
   background-color: #a3d2e9 !important;
+ }
+
+ ul.sf-menu.sf-style-white span.nolink:hover,
+ ul.sf-menu.sf-style-white li:hover,
+ ul.sf-menu.sf-style-white li li li {
+  background-color: white !important;
  }
  
  /* MMenu */
