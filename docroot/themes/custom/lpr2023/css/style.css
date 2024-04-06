@@ -445,7 +445,7 @@
 
 #mm-1 > ul > li.menu-name--main-nav-2023.mm-listitem > a {
   /* padding: 2rem; */
-  border-bottom: 1px dotted white;
+  /* border-bottom: 1px dotted white; */
   background-color: white;
   border-left: 0px;
 }
@@ -472,7 +472,9 @@
 
 /* .mm-listitem_selected, */
 #mm-1 > ul > li.menu-name--main-nav-2023.mm-listitem > a.mm-listitem__text.is-active,
-#mm-1 .mm-listview .mm-panel ul > li > a.is-active {
+#mm-1 .mm-listview .mm-panel ul > li > a.is-active,
+#mm-1 > ul > li.menu-name--main-nav-2023.mm-listitem > a.mm-listitem__text.is-active + .mm-btn_next
+ {
   background-color: rgba(66, 169, 216, 0.5) !important;
 }
 
