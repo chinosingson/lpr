@@ -449,7 +449,7 @@
 #mm-1 > ul > li.menu-name--main-nav-2023.mm-listitem > a.mm-listitem__text
 {
   font-weight: 500;
-  padding-left: 0px; 
+  /* padding-left: 0px;  */
 }
 
 /* #mm-1 .mm-listview .mm-panel ul > li {
@@ -460,6 +460,12 @@
   /* border: 1px dotted blue;
   padding-bottom: 0px;
   padding-top: 0px; */
+}
+
+/* .mm-listitem_selected, */
+#mm-1 > ul > li.menu-name--main-nav-2023.mm-listitem > a.mm-listitem__text.is-active,
+#mm-1 .mm-listview .mm-panel ul > li > a.is-active {
+  background-color: rgba(66, 169, 216, 0.5) !important;
 }
 
  /* Slideshow */
