@@ -285,5 +285,5 @@ function lpr2023_preprocess_page(&$variables) {
       ],
     ],
   ];
-  dpm($variables['#attached']['drupalSettings']['responsive_menu']);
+  // dpm($variables['#attached']['drupalSettings']['responsive_menu']);
 }

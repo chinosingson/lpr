@@ -1240,7 +1240,7 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   display: flex;
   justify-content: center;
-  max-height: 100vw;
+  /* max-height: 100vw; */
 }
 
 @media (min-width: 992px){
@@ -1254,11 +1254,10 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 @media (min-width: 768px) {
   .row.region.region-featured-top .banner-container
  {
-    max-height: 55vw;
+    /* max-height: 55vw; */
     overflow: hidden;
   }
 }
-
 
 
 
