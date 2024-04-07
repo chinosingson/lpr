@@ -646,7 +646,7 @@
  }
 
 /* Homepage banner */
-#block-lpr2023-homepagebanner p.h1,
+/* #block-lpr2023-homepagebanner p.h1,
 .maintenance-page #page-1 > div.position-relative > div > p {
   font-weight: 600 !important;
 }
@@ -671,7 +671,7 @@
   .maintenance-page #page-1 > div.position-relative > div > p {
     font-size: 3rem !important;
   }  
-}
+} */
 
  
  /* Flagship Programs - Home */
