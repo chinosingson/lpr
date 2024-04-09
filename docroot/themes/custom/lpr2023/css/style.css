@@ -239,7 +239,8 @@
 }
 
 .navbar-brand img {
-  width: 272px;
+  width: 75px; /* square logo */
+  /* width: 272px; */ /* square + text */
 }
 
  .navbar .nav-link {
