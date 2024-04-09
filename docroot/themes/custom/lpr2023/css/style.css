@@ -664,14 +664,17 @@
   .maintenance-page #page-1 > div.position-relative > div > p {
     font-size: 2.5rem !important;
   }  
-}
+} */
 
 @media (min-width: 992px){
-  #block-lpr2023-homepagebanner p.h1,
+  #block-lpr2023-homepagebanner .banner-text {
+    position: absolute !important;
+  }
+  /* #block-lpr2023-homepagebanner p.h1,
   .maintenance-page #page-1 > div.position-relative > div > p {
     font-size: 3rem !important;
-  }  
-} */
+  }   */
+}
 
  
  /* Flagship Programs - Home */
@@ -1119,8 +1122,6 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 /* banner positioning  */
 @media (max-width: 992px){
   .banner-text {
-    /* position: relative !important;
-    color: var(--bs-dark) !important; */
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -1129,6 +1130,11 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
     position: relative !important;  /* bottom of image up to large */
   }
 }
+
+#block-lpr2023-homepagebanner .banner-text {
+  position: absolute !important;
+}
+
 
 /* text sizes and container width */
 /* .banner-text .h1 {
