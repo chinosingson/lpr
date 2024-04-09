@@ -222,6 +222,13 @@
 
 #CollapsingNavbar #block-lpr2023-exposedformsite-searchsite-search-2 {
   width: 260px!important;
+  margin-bottom: .5rem;
+}
+
+@media (max-width: 1199px){
+#CollapsingNavbar #block-lpr2023-exposedformsite-searchsite-search-2 {
+  display: none;
+}
 }
 
 #CollapsingNavbar #edit-search-api-fulltext {
@@ -239,8 +246,19 @@
 }
 
 .navbar-brand img {
-  width: 75px; /* square logo */
-  /* width: 272px; */ /* square + text */
+  /* width: 75px; square logo */
+  width: 272px; /* square + text */
+}
+
+@media (min-width: 992px) {
+  .navbar-brand img {
+    margin-top: 1rem;
+    margin-bottom: .3rem
+  }
+}
+
+.navbar>.container {
+  align-items: end;
 }
 
  .navbar .nav-link {
@@ -343,7 +361,13 @@
   background-color: #ffffff !important;
 }
 
-@media (min-width: 992px) and (max-width: 1199px){
+/* @media (max-width: 1400px) {
+  #superfish-main-nav-2023 {
+    border: 1px dotted red;
+  }
+} */
+
+@media (min-width: 992px) and (max-width: 1399px){
   #superfish-main-nav-2023 {
     /* border: 2px dotted red; */
     display: -webkit-box;
@@ -358,7 +382,8 @@
     width: 100%;
     display: flex;
     justify-content: end;
-    align-items: center;
+    align-items: end;
+    margin-bottom: .5rem;
   }
 
   ul.sf-menu.sf-style-white a {
