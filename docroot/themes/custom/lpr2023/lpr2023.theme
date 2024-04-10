@@ -186,6 +186,17 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
     } 
   }
 
+  // suggestions for all media page
+  if ($current_path_alias == '/media'){
+    // suggestions for media displays
+    if ($variables['view']->id() == 'lpr_media'){
+      if ($variables['view']->current_display == 'all_media') {
+        $suggestions[] = 'views_view_fields__media__media_list';
+      }
+
+    } 
+  }
+
   // suggestions for publications page
   if ($current_path_alias == '/publications'){
     // suggestions for publications displays
