@@ -1081,6 +1081,10 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* search pages */
+.page-view-events #main-wrapper,
+.page-view-news #main-wrapper,
+.page-view-resources #main-wrapper,
+.page-view-elearning #main-wrapper,
 .page-view-asia-law-database #main-wrapper,
 .page-view-site-search #main-wrapper,
 #main-wrapper {
