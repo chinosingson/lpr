@@ -1,0 +1,16 @@
+{
+  "name": "drupal/video_embed_dacast",
+  "type": "drupal-module",
+  "description": "This module provides a Dacast handler for Video Embed Field.",
+  "keywords": ["Drupal", "Video Embed Dacast"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/video_embed_dacast",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/video_embed_dacast",
+    "source": "https://git.drupalcode.org/project/video_embed_dacast"
+  },
+  "require": {
+    "drupal/core": "^8 || ^9 || ^10",
+    "drupal/video_embed_field": "^2.2"
+  }
+}
