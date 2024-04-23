@@ -117,7 +117,6 @@ class ViewsStriping extends DisplayExtenderPluginBase {
       '#title' => $this->t('Striping type'),
       '#description' => $this->t("The type of striping to use on this view's rows."),
       '#options' => $options,
-      '#required' => TRUE,
       '#empty_value' => '',
       '#default_value' => $this->options['striping_type'],
     ];

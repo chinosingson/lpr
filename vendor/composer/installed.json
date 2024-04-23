@@ -61,17 +61,17 @@
         },
         {
             "name": "chi-teck/drupal-code-generator",
-            "version": "3.4.0",
-            "version_normalized": "3.4.0.0",
+            "version": "3.5.0",
+            "version_normalized": "3.5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Chi-teck/drupal-code-generator.git",
-                "reference": "b8136b945dc3446894e6cd2b2f055e147140faed"
+                "reference": "74c2dc687e124bfc4001e73e9346b33067e2ec2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/b8136b945dc3446894e6cd2b2f055e147140faed",
-                "reference": "b8136b945dc3446894e6cd2b2f055e147140faed",
+                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/74c2dc687e124bfc4001e73e9346b33067e2ec2b",
+                "reference": "74c2dc687e124bfc4001e73e9346b33067e2ec2b",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,7 @@
                 "squizlabs/php_codesniffer": "<3.6"
             },
             "require-dev": {
-                "chi-teck/drupal-coder-extension": "^2.0.0-beta2",
+                "chi-teck/drupal-coder-extension": "^2.0.0-beta3",
                 "drupal/coder": "8.3.23",
                 "drupal/core": "10.3.x-dev",
                 "ext-simplexml": "*",
@@ -100,7 +100,7 @@
                 "symfony/yaml": "^6.3",
                 "vimeo/psalm": "^5.22.2"
             },
-            "time": "2024-03-10T13:35:00+00:00",
+            "time": "2024-04-11T11:23:44+00:00",
             "bin": [
                 "bin/dcg"
             ],
@@ -118,7 +118,7 @@
             "description": "Drupal code generator",
             "support": {
                 "issues": "https://github.com/Chi-teck/drupal-code-generator/issues",
-                "source": "https://github.com/Chi-teck/drupal-code-generator/tree/3.4.0"
+                "source": "https://github.com/Chi-teck/drupal-code-generator/tree/3.5.0"
             },
             "install-path": "../chi-teck/drupal-code-generator"
         },
@@ -362,26 +362,26 @@
         },
         {
             "name": "consolidation/annotated-command",
-            "version": "4.9.2",
-            "version_normalized": "4.9.2.0",
+            "version": "4.10.0",
+            "version_normalized": "4.10.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/annotated-command.git",
-                "reference": "b5255dcbee1de95036185062a103dabc622224de"
+                "reference": "1e830ba908c9ffb1ba7ca056203531b27188812c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/b5255dcbee1de95036185062a103dabc622224de",
-                "reference": "b5255dcbee1de95036185062a103dabc622224de",
+                "url": "https://api.github.com/repos/consolidation/annotated-command/zipball/1e830ba908c9ffb1ba7ca056203531b27188812c",
+                "reference": "1e830ba908c9ffb1ba7ca056203531b27188812c",
                 "shasum": ""
             },
             "require": {
                 "consolidation/output-formatters": "^4.3.1",
                 "php": ">=7.1.3",
                 "psr/log": "^1 || ^2 || ^3",
-                "symfony/console": "^4.4.8 || ^5 || ^6",
-                "symfony/event-dispatcher": "^4.4.8 || ^5 || ^6",
-                "symfony/finder": "^4.4.8 || ^5 || ^6"
+                "symfony/console": "^4.4.8 || ^5 || ^6 || ^7",
+                "symfony/event-dispatcher": "^4.4.8 || ^5 || ^6 || ^7",
+                "symfony/finder": "^4.4.8 || ^5 || ^6 || ^7"
             },
             "require-dev": {
                 "composer-runtime-api": "^2.0",
@@ -389,7 +389,7 @@
                 "squizlabs/php_codesniffer": "^3",
                 "yoast/phpunit-polyfills": "^0.2.0"
             },
-            "time": "2023-12-26T14:30:50+00:00",
+            "time": "2024-04-05T21:05:39+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -415,7 +415,7 @@
             "description": "Initialize Symfony Console commands from annotated command class methods.",
             "support": {
                 "issues": "https://github.com/consolidation/annotated-command/issues",
-                "source": "https://github.com/consolidation/annotated-command/tree/4.9.2"
+                "source": "https://github.com/consolidation/annotated-command/tree/4.10.0"
             },
             "install-path": "../consolidation/annotated-command"
         },
@@ -845,31 +845,31 @@
         },
         {
             "name": "consolidation/site-process",
-            "version": "5.3.0",
-            "version_normalized": "5.3.0.0",
+            "version": "5.4.0",
+            "version_normalized": "5.4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/consolidation/site-process.git",
-                "reference": "5e8eff50fd0015e7ca0b6ce4082cacef012f2f77"
+                "reference": "7ab3ffe4195a89b8dc334ea22e7881abe79ffd9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/consolidation/site-process/zipball/5e8eff50fd0015e7ca0b6ce4082cacef012f2f77",
-                "reference": "5e8eff50fd0015e7ca0b6ce4082cacef012f2f77",
+                "url": "https://api.github.com/repos/consolidation/site-process/zipball/7ab3ffe4195a89b8dc334ea22e7881abe79ffd9a",
+                "reference": "7ab3ffe4195a89b8dc334ea22e7881abe79ffd9a",
                 "shasum": ""
             },
             "require": {
-                "consolidation/config": "^2",
+                "consolidation/config": "^2 || ^3",
                 "consolidation/site-alias": "^3 || ^4",
                 "php": ">=8.0.14",
-                "symfony/console": "^5.4 || ^6",
-                "symfony/process": "^6"
+                "symfony/console": "^5.4 || ^6 || ^7",
+                "symfony/process": "^6 || ^7"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9",
                 "squizlabs/php_codesniffer": "^3"
             },
-            "time": "2024-04-01T12:42:12+00:00",
+            "time": "2024-04-06T00:00:28+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -899,7 +899,7 @@
             "description": "A thin wrapper around the Symfony Process Component that allows applications to use the Site Alias library to specify the target for a remote call.",
             "support": {
                 "issues": "https://github.com/consolidation/site-process/issues",
-                "source": "https://github.com/consolidation/site-process/tree/5.3.0"
+                "source": "https://github.com/consolidation/site-process/tree/5.4.0"
             },
             "install-path": "../consolidation/site-process"
         },
@@ -1062,17 +1062,17 @@
         },
         {
             "name": "doctrine/common",
-            "version": "3.4.3",
-            "version_normalized": "3.4.3.0",
+            "version": "3.4.4",
+            "version_normalized": "3.4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common.git",
-                "reference": "8b5e5650391f851ed58910b3e3d48a71062eeced"
+                "reference": "0aad4b7ab7ce8c6602dfbb1e1a24581275fb9d1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/common/zipball/8b5e5650391f851ed58910b3e3d48a71062eeced",
-                "reference": "8b5e5650391f851ed58910b3e3d48a71062eeced",
+                "url": "https://api.github.com/repos/doctrine/common/zipball/0aad4b7ab7ce8c6602dfbb1e1a24581275fb9d1a",
+                "reference": "0aad4b7ab7ce8c6602dfbb1e1a24581275fb9d1a",
                 "shasum": ""
             },
             "require": {
@@ -1089,7 +1089,7 @@
                 "symfony/phpunit-bridge": "^6.1",
                 "vimeo/psalm": "^4.4"
             },
-            "time": "2022-10-09T11:47:59+00:00",
+            "time": "2024-04-16T13:35:33+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1136,7 +1136,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/common/issues",
-                "source": "https://github.com/doctrine/common/tree/3.4.3"
+                "source": "https://github.com/doctrine/common/tree/3.4.4"
             },
             "funding": [
                 {
@@ -1845,18 +1845,18 @@
         },
         {
             "name": "drupal/better_exposed_filters",
-            "version": "6.0.3",
-            "version_normalized": "6.0.3.0",
+            "version": "6.0.5",
+            "version_normalized": "6.0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/better_exposed_filters.git",
-                "reference": "6.0.3"
+                "reference": "6.0.5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-6.0.3.zip",
-                "reference": "6.0.3",
-                "shasum": "b5c20207d7679542bb81955771956c18083e6e0b"
+                "url": "https://ftp.drupal.org/files/projects/better_exposed_filters-6.0.5.zip",
+                "reference": "6.0.5",
+                "shasum": "a325449adf32c13dd8e348bf10979aea301da84e"
             },
             "require": {
                 "drupal/core": "^9 || ^10",
@@ -1868,8 +1868,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "6.0.3",
-                    "datestamp": "1671541877",
+                    "version": "6.0.5",
+                    "datestamp": "1713570803",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1909,6 +1909,10 @@
                 {
                     "name": "rlhawk",
                     "homepage": "https://www.drupal.org/user/352283"
+                },
+                {
+                    "name": "smustgrave",
+                    "homepage": "https://www.drupal.org/user/3252890"
                 }
             ],
             "description": "Replaces the Views default single- or multi-select boxes with more advanced options.",
@@ -5940,18 +5944,18 @@
         },
         {
             "name": "drupal/search_api",
-            "version": "1.33.0",
-            "version_normalized": "1.33.0.0",
+            "version": "1.34.0",
+            "version_normalized": "1.34.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/search_api.git",
-                "reference": "8.x-1.33"
+                "reference": "8.x-1.34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.33.zip",
-                "reference": "8.x-1.33",
-                "shasum": "6414709995217599839167bc638e0e49243ff714"
+                "url": "https://ftp.drupal.org/files/projects/search_api-8.x-1.34.zip",
+                "reference": "8.x-1.34",
+                "shasum": "dd08166888f90adaf01cc1a759266097709efe7c"
             },
             "require": {
                 "drupal/core": "^10.1 || ^11"
@@ -5972,8 +5976,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.33",
-                    "datestamp": "1712242225",
+                    "version": "8.x-1.34",
+                    "datestamp": "1712400445",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6259,18 +6263,18 @@
         },
         {
             "name": "drupal/simple_sitemap",
-            "version": "4.1.8",
-            "version_normalized": "4.1.8.0",
+            "version": "4.1.9",
+            "version_normalized": "4.1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/simple_sitemap.git",
-                "reference": "4.1.8"
+                "reference": "4.1.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-4.1.8.zip",
-                "reference": "4.1.8",
-                "shasum": "391f64048ccd5ee3ba6a4cffa9ad523ce9bd8a57"
+                "url": "https://ftp.drupal.org/files/projects/simple_sitemap-4.1.9.zip",
+                "reference": "4.1.9",
+                "shasum": "d86d90408b334cd7470ea631e3be5acca2103377"
             },
             "require": {
                 "drupal/core": "^9.3 || ^10",
@@ -6279,8 +6283,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.1.8",
-                    "datestamp": "1702898385",
+                    "version": "4.1.9",
+                    "datestamp": "1712441608",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -6583,18 +6587,18 @@
         },
         {
             "name": "drupal/token",
-            "version": "1.13.0",
-            "version_normalized": "1.13.0.0",
+            "version": "1.14.0",
+            "version_normalized": "1.14.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/token.git",
-                "reference": "8.x-1.13"
+                "reference": "8.x-1.14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/token-8.x-1.13.zip",
-                "reference": "8.x-1.13",
-                "shasum": "f2a074b51726de3727c1d900237d6d471806a4d2"
+                "url": "https://ftp.drupal.org/files/projects/token-8.x-1.14.zip",
+                "reference": "8.x-1.14",
+                "shasum": "df3cae709fcc1a99ac1111ce67a0d6af56d287d7"
             },
             "require": {
                 "drupal/core": "^9.2 || ^10"
@@ -6602,8 +6606,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.13",
-                    "datestamp": "1697885927",
+                    "version": "8.x-1.14",
+                    "datestamp": "1713009399",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7165,27 +7169,27 @@
         },
         {
             "name": "drupal/views_striping",
-            "version": "1.0.2",
-            "version_normalized": "1.0.2.0",
+            "version": "1.0.3",
+            "version_normalized": "1.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/views_striping.git",
-                "reference": "1.0.2"
+                "reference": "1.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views_striping-1.0.2.zip",
-                "reference": "1.0.2",
-                "shasum": "914f4bb743a338f3e5d1a9416dadb4de12b33d0a"
+                "url": "https://ftp.drupal.org/files/projects/views_striping-1.0.3.zip",
+                "reference": "1.0.3",
+                "shasum": "0caba8eb9858be2959da8a690bb7608a61043e4a"
             },
             "require": {
-                "drupal/core": "^8 || ^9 || ^10"
+                "drupal/core": "^8 || ^9 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "1.0.2",
-                    "datestamp": "1678217998",
+                    "version": "1.0.3",
+                    "datestamp": "1713867567",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7794,32 +7798,32 @@
         },
         {
             "name": "grasmash/yaml-cli",
-            "version": "3.1.0",
-            "version_normalized": "3.1.0.0",
+            "version": "3.2.0",
+            "version_normalized": "3.2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/grasmash/yaml-cli.git",
-                "reference": "00f3fd775f6abbfacd44432f1999c3c3b02791f0"
+                "reference": "a5af7c16a0b98fca7d06e85ba517d526e1ba21de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/grasmash/yaml-cli/zipball/00f3fd775f6abbfacd44432f1999c3c3b02791f0",
-                "reference": "00f3fd775f6abbfacd44432f1999c3c3b02791f0",
+                "url": "https://api.github.com/repos/grasmash/yaml-cli/zipball/a5af7c16a0b98fca7d06e85ba517d526e1ba21de",
+                "reference": "a5af7c16a0b98fca7d06e85ba517d526e1ba21de",
                 "shasum": ""
             },
             "require": {
                 "dflydev/dot-access-data": "^3",
                 "php": ">=8.0",
-                "symfony/console": "^6",
-                "symfony/filesystem": "^6",
-                "symfony/yaml": "^6"
+                "symfony/console": "^6 || ^7",
+                "symfony/filesystem": "^6 || ^7",
+                "symfony/yaml": "^6 || ^7"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2",
                 "phpunit/phpunit": "^9",
                 "squizlabs/php_codesniffer": "^3.0"
             },
-            "time": "2022-05-09T20:22:34+00:00",
+            "time": "2024-04-17T16:23:04+00:00",
             "bin": [
                 "bin/yaml-cli"
             ],
@@ -7847,7 +7851,7 @@
             "description": "A command line tool for reading and manipulating yaml files.",
             "support": {
                 "issues": "https://github.com/grasmash/yaml-cli/issues",
-                "source": "https://github.com/grasmash/yaml-cli/tree/3.1.0"
+                "source": "https://github.com/grasmash/yaml-cli/tree/3.2.0"
             },
             "install-path": "../grasmash/yaml-cli"
         },

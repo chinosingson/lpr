@@ -1,11 +1,10 @@
-INTRODUCTION
-------------
+# Views Striping
 
 The Views Striping module adds CSS classes to a view's rows to create stripes
 of alternating colours.
 
-Drupal core's themes have the required CSS styles already defined. You may need
-to define CSS stylings for the 'odd' and 'even' classes in other themes.
+You may need to define CSS stylings for the 'odd' and 'even' classes in your
+theme. (See https://www.drupal.org/project/drupal/issues/3332049.)
 
 The following striping types are provided:
 
@@ -18,18 +17,30 @@ This works for the following view styles:
 - table
 - aggregated table from https://www.drupal.org/project/views_aggregator
 
-REQUIREMENTS
-------------
+## Requirements
 
 This module requires no modules outside of Drupal core.
 
-INSTALLATION
-------------
+## Installation
 
-1. Install as you would normally install a contributed Drupal module. Visit
-   https://www.drupal.org/node/895232/ for further information.
-2. Visit the Views advanced settings at /admin/structure/views/settings/advanced
-3. In the 'Display Extenders' section, enable the 'Row striping' display
+Install as you would normally install a contributed Drupal module. For further
+information, see
+[Installing Drupal Modules](https://www.drupal.org/docs/extending-drupal/installing-drupal-modules).
+
+## Configuration
+
+1. Visit the Views advanced settings at /admin/structure/views/settings/advanced
+2. In the 'Display Extenders' section, enable the 'Row striping' display
    extender.
-4. Edit your view.
-5. In the Table settings, select one of the striping types.
+3. Edit your view.
+4. In the Table settings, select one of the striping types.
+
+## Uninstallation
+
+Before uninstalling the module you have to disable row striping in Views.
+This is due to a core issue reported here:
+https://www.drupal.org/project/drupal/issues/2635728
+
+1. Go to /admin/structure/views/settings/advanced
+2. Uncheck the box 'Row striping'
+3. Proceed to /admin/modules/uninstall to uninstall the module.

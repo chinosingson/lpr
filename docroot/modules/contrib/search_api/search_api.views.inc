@@ -206,8 +206,18 @@ function _search_api_views_get_handlers(FieldInterface $field) {
       $definition = $field->getDataDefinition();
     }
 
+    // Since $definition->getClass() can throw an exception in specific setups,
+    // but $class is not always needed for determining the mappings, we catch
+    // and ignore the exception here.
+    try {
+      $class = $definition?->getClass();
+    }
+    catch (PluginNotFoundException) {
+      // Ignore.
+    }
+
     // Check whether this is an entity reference field.
-    if (is_a($definition?->getClass(), EntityReferenceItem::class, TRUE)) {
+    if (is_a($class ?? NULL, EntityReferenceItem::class, TRUE)) {
       $entity_type_id = $definition->getSetting('target_type');
       if ($entity_type_id) {
         $entity_type = \Drupal::entityTypeManager()
