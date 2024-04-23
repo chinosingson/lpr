@@ -40,11 +40,10 @@
     </div>
     
     <div class="col-lg-4">
-        
         {% if node.field_presentation_file.value %}
         
         {% set file_name = node.field_presentation_file.entity.getFilename() %}
-        {% set file_label = file_name|split('.')|slice(start, length-1)|join('.') %}
+        {% set file_label = file_name|split('.')|slice(1, length-1)|join('.') %}
         {% set file_size = node.field_presentation_file.entity.getSize() %}
         {% set file_extension = file_name|split('.')|last %}
         
@@ -59,7 +58,7 @@
         {% if node.field_files.value %}
         
         {% set file_name = node.field_files.entity.getFilename() %}
-        {% set file_label = file_name|split('.')|slice(start, length-1)|join('.') %}
+        {% set file_label = file_name|split('.')|slice(1, length-1)|join('.') %}
         {% set file_size = node.field_files.entity.getSize() %}
         {% set file_extension = file_name|split('.')|last %}
         
