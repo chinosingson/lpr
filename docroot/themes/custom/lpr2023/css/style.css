@@ -1124,13 +1124,13 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
 #block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database [id^=edit-submit-asia-law-database--],
 #block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database [id^=edit-actions--] button,
-[id^=edit-submit-asia-law-database--]
+[id^=edit-submit-asia-law-database]
 {
   border-radius: 0px 20px 20px 0px;
 }
 
 /* #block-lpr2023-exposedformasia-law-databaseasia-pacific-law-database  */
-[id^=edit-submit-asia-law-database--] {
+[id^=edit-submit-asia-law-database] {
   background-color: var(--green) !important;
   border-color: black !important;
   border-left: none!important;
