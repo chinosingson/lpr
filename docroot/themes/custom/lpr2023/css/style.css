@@ -909,16 +909,21 @@
   font-size: 1.2rem;
 }
 
+.img-small-profile {
+  width: 137.2px;
+  height: 137.2px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 5px solid var(--green);
+}
+
 .tab-content .img-small-profile {
   width: 22% !important;
   height: auto;
   float: left;
   margin-right: 20px;
-  margin-bottom: 10px;
-  border-radius: 50%;
-  border: 5px solid var(--green);
-  /* filter: grayscale(1); */
 }
+
 
 /*  Related Fields */
 .related-list { list-style-type: none; padding-left: 0px; }
