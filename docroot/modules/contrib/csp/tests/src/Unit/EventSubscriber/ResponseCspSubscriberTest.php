@@ -2,7 +2,9 @@
 
 namespace Drupal\Tests\csp\Unit\EventSubscriber;
 
+use Drupal\Core\Asset\LibraryDependencyResolverInterface;
 use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\DependencyInjection\ContainerBuilder;
 use Drupal\Core\Render\HtmlResponse;
 use Drupal\csp\Csp;
 use Drupal\csp\CspEvents;
@@ -505,6 +507,61 @@ class ResponseCspSubscriberTest extends UnitTestCase {
       );
 
     $subscriber->onKernelResponse($this->event);
+  }
+
+  /**
+   * Parameters from 1.21 and prior.
+   *
+   * @group legacy
+   */
+  public function testLegacyConstructorParameters() {
+    $container = new ContainerBuilder();
+    \Drupal::setContainer($container);
+    $container->set('csp.nonce', $this->nonce);
+
+    $configFactory = $this->getConfigFactoryStub([
+      'csp.settings' => [
+        'report-only' => [
+          'enable' => FALSE,
+          'directives' => [],
+        ],
+      ],
+    ]);
+
+    $this->expectDeprecation('Omitting the Nonce service is deprecated in csp:8.x-1.22 and will be required in csp:2.0.0. See https://www.drupal.org/project/csp/issues/3018679');
+    $subscriber = new ResponseCspSubscriber(
+      $configFactory,
+      $this->libraryPolicy,
+      $this->reportingHandlerPluginManager,
+      $this->eventDispatcher,
+    );
+  }
+
+  /**
+   * Deprecated parameter from 1.22 and 1.23 releases.
+   *
+   * @group legacy
+   */
+  public function testLegacyLibraryResolverParameter() {
+    $configFactory = $this->getConfigFactoryStub([
+      'csp.settings' => [
+        'report-only' => [
+          'enable' => FALSE,
+          'directives' => [],
+        ],
+      ],
+    ]);
+
+    $libraryDepencyResolver = $this->createMock(LibraryDependencyResolverInterface::class);
+    $this->expectDeprecation('The LibraryDependencyResolver service is deprecated in csp:8.x-1.24 and will be removed in csp:2.0.0. See https://www.drupal.org/project/csp/issues/3409450');
+    $subscriber = new ResponseCspSubscriber(
+      $configFactory,
+      $this->libraryPolicy,
+      $this->reportingHandlerPluginManager,
+      $this->eventDispatcher,
+      $libraryDepencyResolver,
+      $this->nonce
+    );
   }
 
 }

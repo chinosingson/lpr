@@ -4,6 +4,7 @@ namespace Drupal\csp\Form;
 
 use Drupal\Component\Plugin\Exception\PluginException;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Config\TypedConfigManagerInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
@@ -87,8 +88,14 @@ class CspSettingsForm extends ConfigFormBase {
    * @param \Drupal\Core\Messenger\MessengerInterface|null $messenger
    *   The Messenger service.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, LibraryPolicyBuilder $libraryPolicyBuilder, ReportingHandlerPluginManager $reportingHandlerPluginManager, MessengerInterface $messenger) {
-    parent::__construct($config_factory);
+  public function __construct(
+    ConfigFactoryInterface $config_factory,
+    TypedConfigManagerInterface $typedConfigManager,
+    LibraryPolicyBuilder $libraryPolicyBuilder,
+    ReportingHandlerPluginManager $reportingHandlerPluginManager,
+    MessengerInterface $messenger,
+  ) {
+    parent::__construct($config_factory, $typedConfigManager);
     $this->libraryPolicyBuilder = $libraryPolicyBuilder;
     $this->reportingHandlerPluginManager = $reportingHandlerPluginManager;
     $this->setMessenger($messenger);
@@ -100,6 +107,7 @@ class CspSettingsForm extends ConfigFormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('config.factory'),
+      $container->get('config.typed'),
       $container->get('csp.library_policy_builder'),
       $container->get('plugin.manager.csp_reporting_handler'),
       $container->get('messenger')
@@ -169,6 +177,7 @@ class CspSettingsForm extends ConfigFormBase {
     $form['policies'] = [
       '#type' => 'vertical_tabs',
       '#title' => $this->t('Policies'),
+      '#default_tab' => 'edit-report-only',
     ];
 
     $directiveNames = $this->getConfigurableDirectives();
@@ -190,10 +199,6 @@ class CspSettingsForm extends ConfigFormBase {
         '#group' => 'policies',
         '#tree' => TRUE,
       ];
-
-      if ($config->get($policyTypeKey . '.enable')) {
-        $form['policies']['#default_tab'] = 'edit-' . $policyTypeKey;
-      }
 
       $form[$policyTypeKey]['enable'] = [
         '#type' => 'checkbox',

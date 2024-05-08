@@ -71,14 +71,9 @@ class ResponseCspSubscriberWebRtcTest extends UnitTestCase {
   public function setUp(): void {
     parent::setUp();
 
-    $this->response = $this->getMockBuilder(HtmlResponse::class)
-      ->disableOriginalConstructor()
-      ->getMock();
-    $this->response->headers = $this->getMockBuilder(ResponseHeaderBag::class)
-      ->disableOriginalConstructor()
-      ->getMock();
-    $responseCacheableMetadata = $this->getMockBuilder(CacheableMetadata::class)
-      ->getMock();
+    $this->response = $this->createMock(HtmlResponse::class);
+    $this->response->headers = $this->createMock(ResponseHeaderBag::class);
+    $responseCacheableMetadata = $this->createMock(CacheableMetadata::class);
     $this->response->method('getCacheableMetadata')
       ->willReturn($responseCacheableMetadata);
 

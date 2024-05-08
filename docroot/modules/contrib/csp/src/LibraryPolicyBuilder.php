@@ -74,7 +74,7 @@ class LibraryPolicyBuilder {
    *   The Theme Handler service.
    * @param \Drupal\Core\Asset\LibraryDiscoveryInterface $libraryDiscovery
    *   The Library Discovery Collector service.
-   * @param \Drupal\Core\Logger\LoggerChannelInterface $logger
+   * @param \Drupal\Core\Logger\LoggerChannelInterface|null $logger
    *   The logger channel.
    */
   public function __construct(
@@ -82,7 +82,7 @@ class LibraryPolicyBuilder {
     ModuleHandlerInterface $moduleHandler,
     ThemeHandlerInterface $themeHandler,
     LibraryDiscoveryInterface $libraryDiscovery,
-    ?LoggerChannelInterface $logger = NULL
+    ?LoggerChannelInterface $logger = NULL,
   ) {
     $this->cache = $cache;
     $this->moduleHandler = $moduleHandler;

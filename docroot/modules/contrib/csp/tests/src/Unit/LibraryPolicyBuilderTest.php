@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\csp\Unit;
 
+use Drupal\Component\Datetime\Time;
 use Drupal\Core\Asset\Exception\IncompleteLibraryDefinitionException;
 use Drupal\Core\Asset\LibraryDiscovery;
 use Drupal\Core\Cache\MemoryBackend;
@@ -65,7 +66,7 @@ class LibraryPolicyBuilderTest extends UnitTestCase {
   public function setUp(): void {
     parent::setUp();
 
-    $this->cache = new MemoryBackend();
+    $this->cache = new MemoryBackend(new Time());
     $this->moduleHandler = $this->createMock(ModuleHandler::class);
     $this->themeHandler = $this->createMock(ThemeHandler::class);
     $this->libraryDiscovery = $this->createMock(LibraryDiscovery::class);

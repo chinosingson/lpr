@@ -53,13 +53,6 @@ class ResponseCspSubscriber implements EventSubscriberInterface {
   private $eventDispatcher;
 
   /**
-   * The Library Dependency Resolver service.
-   *
-   * @var \Drupal\Core\Asset\LibraryDependencyResolverInterface
-   */
-  private $libraryDependencyResolver;
-
-  /**
    * The Nonce service.
    *
    * @var \Drupal\csp\Nonce
@@ -85,7 +78,7 @@ class ResponseCspSubscriber implements EventSubscriberInterface {
     LibraryPolicyBuilder $libraryPolicyBuilder,
     ReportingHandlerPluginManager $reportingHandlerPluginManager,
     EventDispatcherInterface $eventDispatcher,
-    $nonce = NULL
+    $nonce = NULL,
   ) {
     $this->configFactory = $configFactory;
     $this->libraryPolicyBuilder = $libraryPolicyBuilder;
@@ -94,7 +87,9 @@ class ResponseCspSubscriber implements EventSubscriberInterface {
 
     if ($nonce instanceof LibraryDependencyResolverInterface) {
       @trigger_error("The LibraryDependencyResolver service is deprecated in csp:8.x-1.24 and will be removed in csp:2.0.0. See https://www.drupal.org/project/csp/issues/3409450", E_USER_DEPRECATED);
-      $nonce = func_get_arg(4);
+      if (func_num_args() >= 5) {
+        $nonce = func_get_arg(5);
+      }
     }
     if (empty($nonce) || !($nonce instanceof Nonce)) {
       @trigger_error("Omitting the Nonce service is deprecated in csp:8.x-1.22 and will be required in csp:2.0.0. See https://www.drupal.org/project/csp/issues/3018679", E_USER_DEPRECATED);
