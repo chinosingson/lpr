@@ -1,0 +1,16 @@
+name: Views Entity Embed
+type: module
+description: 'Allows views to be embedded using a text editor.'
+core_version_requirement: ^9 || ^10
+package: Filters
+dependencies:
+  - drupal:editor
+  - drupal:filter
+  - drupal:views
+  - embed:embed
+  - entity_embed:entity_embed
+
+# Information added by Drupal.org packaging script on 2023-06-23
+version: '2.0.2'
+project: 'views_entity_embed'
+datestamp: 1687545874

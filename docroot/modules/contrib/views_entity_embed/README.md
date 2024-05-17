@@ -1,0 +1,54 @@
+## CONTENTS OF THIS FILE
+
+  - Introduction
+  - Requirements
+  - Installation and Configuration
+  - Maintainers
+
+Views entity embed module allows you to embed views in a textarea using
+WYSIWYG editor.
+
+## REQUIREMENTS
+
+  - Editor and Filter or Link modules included with Drupal core.
+  - [Embed module](https://www.drupal.org/project/embed)
+  - [Entity Embed module](https://www.drupal.org/project/entity_embed)
+
+## INSTALLATION and CONFIGURATION
+
+  - Download module and store it in module folder or use composer
+    `composer require drupal/views_entity_embed`.
+
+  - Enable the module
+
+  - Enable the filter ‘Display embedded views’ for the desired text
+    formats from the Text formats and editors configuration page (
+    admin/config/content/formats). If the Limit allowed HTML tags filter
+    is enabled, add <drupal-views data-view-* data-embed-button> to
+    the Allowed HTML tags.
+
+  - Go to Embed buttons administration page (admin/config/content/embed)
+    and create a new button, which embedded type is ‘Views’. You can
+    choose between the both options:
+
+      - Filter which Views to be allowed as options:
+      - Filter which Display to be allowed as options:
+
+Only the selected views will be allowed to be embedded by this Views embed
+button and for the Views Displays. If you leave the options
+unchecked, all the views will be allowed.
+
+  - To enable the WYSIWYG plugin, move the views-entity-embed button
+    into the Active toolbar for the desired text formats. In the WYSIWYG
+    follow these steps to embed a view:
+
+      - Click the Views Embed Button
+      - Select the view
+      - Select the display
+      - Checkbox for override the title
+      - Populate the context filters (if applicable to the view)
+
+## MAINTAINERS
+
+  - [shelane](https://www.drupal.org/u/shelane)
+  - [bibishani](https://www.drupal.org/u/bibishani)
