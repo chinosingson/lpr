@@ -175,7 +175,7 @@ class LinkitFilter extends FilterBase implements ContainerFactoryPluginInterface
           }
         }
         catch (\Exception $e) {
-          watchdog_exception('linkit_filter', $e);
+          \Drupal\Component\Utility\DeprecationHelper::backwardsCompatibleCall(\Drupal::VERSION, '10.1.0', fn() => \Drupal\Core\Utility\Error::logException(\Drupal::logger('linkit_filter'), $e), fn() => watchdog_exception('linkit_filter', $e));
         }
       }
 

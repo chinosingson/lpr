@@ -110,6 +110,8 @@ class LinkitFormatter extends LinkFormatter {
     foreach ($elements as $delta => &$item) {
       /** @var \Drupal\link\LinkItemInterface $link_item */
       $link_item = $items->get($delta);
+      $item_url = $this->buildUrl($link_item);
+      $item_url_attributes = $item_url->getOption('attributes');
       if ($url = $this->getSubstitutedUrl($link_item)) {
         if ($url instanceof CacheableDependencyInterface) {
           $cacheable_url = $url;
@@ -130,7 +132,8 @@ class LinkitFormatter extends LinkFormatter {
         if (!empty($parsed_url['fragment'])) {
           $url->setOption('fragment', $parsed_url['fragment']);
         }
-        $attributes = $url->getOption('attributes');
+        $attributes = (array) $url->getOption('attributes');
+        $attributes = array_merge($item_url_attributes ?: [], $attributes ?: []);
         // Restore rel and target options.
         if (!empty($settings['rel'])) {
           $attributes['rel'] = $settings['rel'];

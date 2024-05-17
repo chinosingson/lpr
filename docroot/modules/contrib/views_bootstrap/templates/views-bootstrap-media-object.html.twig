@@ -1,14 +1,12 @@
-{# @todo: add more control to images and positoning #}
-
-<div{{ attributes.addClass(classes) }} id="{{ id }}">
+<div id="{{ id }}">
     {% for key, row in rows -%}
-    <div class="d-flex">
-        <div class="flex-shrink-0">
+    <div class="d-flex {{ alignment }}">
+        <div class="flex-shrink-0 {{ order_image }}">
             {% if row.image %}
                 {{ row.image }}
             {% endif %}
         </div>
-        <div class="flex-grow-1 ms-3">
+        <div class="flex-grow-1 ms-3 {{ order_body }}">
             {% if row.heading %}
                 {{ row.heading }}
             {% endif %}
