@@ -243,7 +243,7 @@ function lpr2023_preprocess_views_view(&$variables){
   $current_path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
   $view = $variables['view'];
   $view_id = $view->id();
-  $view_ids = ['news', 'events', 'knowledge_and_resources','program_content','focus_area_content'];
+  $view_ids = ['news', 'events', 'knowledge_and_resources','program_content','focus_area_content','lpr_in_action'];
   $current_display = $view->current_display;
   if (in_array($view_id, $view_ids)){
     $variables['more']['#options']['attributes']['class'] = ['btn','bg-green'];
