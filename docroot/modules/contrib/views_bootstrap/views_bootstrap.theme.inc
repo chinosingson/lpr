@@ -240,31 +240,22 @@ function template_preprocess_views_bootstrap_list_group(array &$vars): void {
   $view = $vars['view'];
   $options = $view->style_plugin->options;
   $vars['id'] = ViewsBootstrap::getUniqueId($view);
-  $group_title_field = isset($view->style_plugin->options['grouping'][0]) ? $view->style_plugin->options['grouping'][0]['field'] : "";
-  $vars['attributes']['class'][] = 'views-bootstrap-list-group';
-  $classes = array_filter(explode(' ', $view->style_plugin->options['list_group_class_custom']));
-  foreach ($classes as &$list_class) {
-    $list_class = Html::cleanCssIdentifier($list_class);
-  }
-  if (!empty($classes)) {
-    $vars['attributes']['class'] = array_merge($vars['attributes']['class'], $classes);
+  $group_title_field = isset($options['grouping'][0]) ? $options['grouping'][0]['field'] : "";
+  $vars['attributes'] = new Attribute(['class' => 'views-bootstrap-list-group']);
+  if ($options['list_group_class_custom']) {
+    $classes = explode(' ', $options['list_group_class_custom']);
+    $classes = array_map([Html::class, 'cleanCssIdentifier'], array_filter($classes));
+    $vars['attributes']->addClass($classes);
   }
   foreach ($vars['rows'] as $id => $row) {
     $vars['group_title'] = $group_title_field ? $view->style_plugin->getField($id, $group_title_field) : "";
-    $class = $view->style_plugin->options['row_class'];
-    $classes = explode(' ', $class);
-    foreach ($classes as &$class) {
-      $class = Html::cleanCssIdentifier($class);
-    }
-    $row_class = array_filter($classes);
     $vars['rows'][$id] = [];
     $vars['rows'][$id]['content'] = $row;
     $vars['rows'][$id]['title'] = $vars['view']->style_plugin->getField($id, $options['title_field']);
-    $row_attributes = ['class' => ['list-group-item']];
-    if (!empty($row_class)) {
-      $row_attributes['class'] = array_merge($row_attributes['class'], $row_class);
+    $vars['rows'][$id]['attributes'] = new Attribute(['class' => ['list-group-item']]);
+    if ($row_class = $view->style_plugin->getRowClass($id)) {
+      $vars['rows'][$id]['attributes']->addClass($row_class);
     }
-    $vars['rows'][$id]['attributes'] = new Attribute($row_attributes);
   }
 
 }

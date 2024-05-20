@@ -61,17 +61,17 @@
         },
         {
             "name": "chi-teck/drupal-code-generator",
-            "version": "3.5.0",
-            "version_normalized": "3.5.0.0",
+            "version": "3.6.0",
+            "version_normalized": "3.6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Chi-teck/drupal-code-generator.git",
-                "reference": "74c2dc687e124bfc4001e73e9346b33067e2ec2b"
+                "reference": "7794c268309a6fd7aeecfd1246a01238c14384c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/74c2dc687e124bfc4001e73e9346b33067e2ec2b",
-                "reference": "74c2dc687e124bfc4001e73e9346b33067e2ec2b",
+                "url": "https://api.github.com/repos/Chi-teck/drupal-code-generator/zipball/7794c268309a6fd7aeecfd1246a01238c14384c4",
+                "reference": "7794c268309a6fd7aeecfd1246a01238c14384c4",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
                 "symfony/yaml": "^6.3",
                 "vimeo/psalm": "^5.22.2"
             },
-            "time": "2024-04-11T11:23:44+00:00",
+            "time": "2024-05-20T12:50:42+00:00",
             "bin": [
                 "bin/dcg"
             ],
@@ -118,7 +118,7 @@
             "description": "Drupal code generator",
             "support": {
                 "issues": "https://github.com/Chi-teck/drupal-code-generator/issues",
-                "source": "https://github.com/Chi-teck/drupal-code-generator/tree/3.5.0"
+                "source": "https://github.com/Chi-teck/drupal-code-generator/tree/3.6.0"
             },
             "install-path": "../chi-teck/drupal-code-generator"
         },
@@ -5879,6 +5879,64 @@
             "install-path": null
         },
         {
+            "name": "drupal/quick_node_clone",
+            "version": "1.18.0",
+            "version_normalized": "1.18.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/quick_node_clone.git",
+                "reference": "8.x-1.18"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/quick_node_clone-8.x-1.18.zip",
+                "reference": "8.x-1.18",
+                "shasum": "ab17077eccb24e5c651fedc5056a50051882a13d"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10"
+            },
+            "require-dev": {
+                "drupal/group": "^1 || ^2 || ^3",
+                "drupal/paragraphs": "1.x-dev"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.18",
+                    "datestamp": "1707833857",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "vilepickle",
+                    "homepage": "https://www.drupal.org/u/vilepickle",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Neslee Canil Pinto",
+                    "homepage": "https://www.drupal.org/u/neslee-canil-pinto",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Quickly clone a node with regular fields.",
+            "homepage": "https://www.drupal.org/project/quick_node_clone",
+            "support": {
+                "source": "https://git.drupalcode.org/project/quick_node_clone",
+                "issues": "https://www.drupal.org/project/issues/quick_node_clone"
+            },
+            "install-path": "../../docroot/modules/contrib/quick_node_clone"
+        },
+        {
             "name": "drupal/rdf",
             "version": "2.1.1",
             "version_normalized": "2.1.1.0",
@@ -7197,18 +7255,18 @@
         },
         {
             "name": "drupal/views_bootstrap",
-            "version": "5.5.0-beta1",
-            "version_normalized": "5.5.0.0-beta1",
+            "version": "5.5.0-beta2",
+            "version_normalized": "5.5.0.0-beta2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/views_bootstrap.git",
-                "reference": "5.5.0-beta1"
+                "reference": "5.5.0-beta2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views_bootstrap-5.5.0-beta1.zip",
-                "reference": "5.5.0-beta1",
-                "shasum": "77ee15a08a60b2c00dd0a22030f61d27a54a9399"
+                "url": "https://ftp.drupal.org/files/projects/views_bootstrap-5.5.0-beta2.zip",
+                "reference": "5.5.0-beta2",
+                "shasum": "8de5d6f205404dbf5b9cc6799d809f8808a2f96b"
             },
             "require": {
                 "drupal/core": "^9 || ^10"
@@ -7216,8 +7274,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "5.5.0-beta1",
-                    "datestamp": "1715903257",
+                    "version": "5.5.0-beta2",
+                    "datestamp": "1716157871",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
