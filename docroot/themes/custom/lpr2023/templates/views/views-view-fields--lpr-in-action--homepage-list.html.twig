@@ -31,8 +31,8 @@
  * @ingroup themeable
  */
 #}
-{% set article_type = fields.field_article_type.content %}
-{% set content_type = fields.type.content %}
+{% set article_type = fields.field_article_type.content|striptags|trim %}
+{% set content_type = fields.type.content|striptags|trim %}
 {% set class_type = '' %}
 {% if article_type == 'News Release' or content_type == 'Article' %}
   {% set class_type = 'news' %}
