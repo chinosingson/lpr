@@ -195,15 +195,13 @@ function template_preprocess_views_bootstrap_grid(array &$vars): void {
   $view = $vars['view'];
   $rows = $vars['rows'];
   $vars['id'] = ViewsBootstrap::getUniqueId($view);
-  $vars['attributes']['class'][] = 'grid';
+  $vars['attributes'] = new Attribute(['class' => 'grid']);
   $options = $view->style_plugin->options;
-
-  $vars['row_attributes'] = new Attribute();
 
   if ($options['grid_class']) {
     $grid_class = explode(' ', $options['grid_class']);
     $grid_classes = array_map([Html::class, 'cleanCssIdentifier'], array_filter($grid_class));
-    $vars['row_attributes']->addClass($grid_classes);
+    $vars['attributes']->addClass($grid_classes);
   }
 
   $col_classes = [];
