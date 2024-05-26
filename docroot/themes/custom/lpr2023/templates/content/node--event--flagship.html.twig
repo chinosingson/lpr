@@ -33,7 +33,20 @@
 
         <hr class="my-5" />
 
-        {{ content.field_other_resources }}
+    {% if content.field_other_resources %}
+        {# {{ content.field_other_resources }} #}
+    {% endif %}
+
+    {% if content.field_related_content_2 %}
+    <div id="related-content-2" >
+        <div class="row my-3">
+            <div class="col">
+                <h2 class="text-center">News and Multimedia</h2>
+            </div>
+        </div>
+        {{ content.field_related_content_2 }}
+    </div>
+    {% endif %}
         
     </div> 
     	
