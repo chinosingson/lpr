@@ -40,8 +40,8 @@
 {% if content_type == 'Event' %}
   {% set class_type = 'event' %}
 {% endif %}
-<div class="row">
-  <div class="col">
+<div class="row h-100 pb-3">
+  <div class="col d-flex flex-column">
     <div class="{{ class_type }}-image pb-lg-0 pb-3">{{ fields.field_image.content }}</div>
     <div class="{{ class_type }}-info mt-3">
       <h5>{{ article_type == 'News Release' ? article_type : content_type }}</h5>
@@ -49,7 +49,7 @@
     <div class="{{ class_type }}-title mt-3">
       <h4>{{ fields.title.content }}</h4>
     </div>
-    <div class="{{class_type}}-body">
+    <div class="{{class_type}}-body flex-grow-1">
       <p class="fs-6">{{ fields.body.content }}</p>
     </div>
     <div class="{{ class_type }}-read-more">
