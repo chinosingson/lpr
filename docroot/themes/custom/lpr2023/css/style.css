@@ -791,14 +791,24 @@
  .event-list .event-read-more a,
  .success-story-read-more a,
  .view-lpr-in-action .news-read-more a,
- .view-lpr-in-action .event-read-more a {
+ .view-lpr-in-action .event-read-more a,
+ .field--name-field-feature-big .news-read-more a,
+ .field--name-field-feature-big .event-read-more a,
+ .field--name-field-feature-small .news-read-more a,
+ .field--name-field-feature-small .event-read-more a
+  {
    text-decoration: none;
    color: #333;
    font-size: .9rem;
  }
 
  .view-lpr-in-action .news-read-more a,
- .view-lpr-in-action .event-read-more a {
+ .view-lpr-in-action .event-read-more a,
+ .field--name-field-feature-big .news-read-more a,
+ .field--name-field-feature-big .event-read-more a,
+ .field--name-field-feature-small .news-read-more a,
+ .field--name-field-feature-small .event-read-more a
+  {
     font-size: .8rem;
  } 
  /* .elearning-list .elearning-read-more a:after,
@@ -1248,7 +1258,12 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 .path-frontpage .view-events.view-id-events.view.view-display-id-homepage_list .event-list .event-image > a > img,
 .path-frontpage .view-news.view-id-news.view-display-id-homepage_list .news-list .news-image > a > img,
 .view-lpr-in-action .news-image img,
-.view-lpr-in-action .event-image img {
+.view-lpr-in-action .event-image img,
+.field--name-field-feature-big .news-image img,
+.field--name-field-feature-big .event-image img,
+.field--name-field-feature-small .news-image img,
+.field--name-field-feature-small .event-image img
+ {
   border-radius: 20px !important;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }

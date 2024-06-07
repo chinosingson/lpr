@@ -1,0 +1,91 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ * To override output, copy the "field.html.twig" from the templates directory
+ * to your theme's directory and customize it, just like customizing other
+ * Drupal templates such as page.html.twig or node.html.twig.
+ *
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
+ * - field.html.twig
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the containing element.
+ * - label_hidden: Whether to show the field label or not.
+ * - title_attributes: HTML attributes for the title.
+ * - label: The label for the field.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
+ *
+ *
+ * @see template_preprocess_field()
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+  ]
+%}
+{%
+  set title_classes = [
+    'field__label',
+    label_display == 'visually_hidden' ? 'visually-hidden',
+  ]
+%}
+
+{% set item = items[0] %}
+{% set node = item.content['#node'] %}
+{% set node_id = node.nid.value %}
+{% set path = 'node/' ~ node_id %}
+{% set article_type = node.field_article_type.entity.label %}
+{% set content_type = node.type.entity.label %}
+{% set class_type = '' %}
+{% if article_type == 'News Release' or content_type == 'Article' %}
+  {% set class_type = 'news' %}
+{% endif %}
+{% if content_type == 'Event' %}
+  {% set class_type = 'event' %}
+{% endif %}
+
+<div{{ attributes.addClass(classes, 'field__item') }}>
+  <div class="row {{class_type}}-highlighted mb-3">
+    <div class="col">
+      <div class="{{class_type}}-image pb-3"><a href="{{ drupal_url(path) }}">{{ drupal_image(node.field_image[0].entity.fid.value) }}</a></div>
+    </div>
+    <div class="col">
+      <div class="{{class_type}}-info">
+        <h5>{{ article_type ? article_type : content_type }}</h5>
+      </div>
+      <div class="{{class_type}}-title">
+        <h3><a href="{{ drupal_url(path) }}">{{ drupal_field('title','node',node_id) }}</a></h3>
+      </div>
+      <div class="{{class_type}}-body">
+        <p class="fs-5">{{ drupal_field('body','node',node_id) }}</p>
+      </div>
+      <div class="{{class_type}}-read-more">
+        <a href="{{ drupal_url(path) }}">Read more</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
