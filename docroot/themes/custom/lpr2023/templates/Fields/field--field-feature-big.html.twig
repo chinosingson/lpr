@@ -53,7 +53,7 @@
 %}
 
 {% set item = items[0] %}
-{% set node = item.content['#node'] %}
+{% set node = item.content['#entity'] %}
 {% set node_id = node.nid.value %}
 {% set path = 'node/' ~ node_id %}
 {% set article_type = node.field_article_type.entity.label %}
@@ -65,7 +65,7 @@
 {% if content_type == 'Event' %}
   {% set class_type = 'event' %}
 {% endif %}
-
+{% set body_trimmed = node.fields.body.value|raw|striptags|split(".").0 ~ '.' %}
 <div{{ attributes.addClass(classes, 'field__item') }}>
   <div class="row {{class_type}}-highlighted mb-3">
     <div class="col">
@@ -79,7 +79,7 @@
         <h3><a href="{{ drupal_url(path) }}">{{ drupal_field('title','node',node_id) }}</a></h3>
       </div>
       <div class="{{class_type}}-body">
-        <p class="fs-5">{{ drupal_field('body','node',node_id) }}</p>
+        <p class="fs-5">{{ not node.body.summary ? body_trimmed  : node.body.summary }}</p>
       </div>
       <div class="{{class_type}}-read-more">
         <a href="{{ drupal_url(path) }}">Read more</a>
