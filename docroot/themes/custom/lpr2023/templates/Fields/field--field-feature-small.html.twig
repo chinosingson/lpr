@@ -51,7 +51,6 @@
     label_display == 'visually_hidden' ? 'visually-hidden',
   ]
 %}
-
 {% if label_hidden %}
   {% if multiple %}
     <div{{ attributes.addClass(classes, 'field__items row h-100 pb-3') }}>
@@ -68,6 +67,7 @@
         {% if content_type == 'Event' %}
           {% set class_type = 'event' %}
         {% endif %}
+        {% set body_trimmed = node.body.value|replace({"&nbsp;": " "})|raw|striptags|split(".").0 ~ '.' %}
         <div class="col d-flex flex-column">
           <div class="{{ class_type }}-image pb-lg-0 pb-3"><a href="{{ drupal_url(path) }}">{{ drupal_image(node.field_image[0].entity.fid.value) }}</a></div>
           <div class="{{ class_type }}-info mt-3">
@@ -77,7 +77,7 @@
             <h4><a href="{{ drupal_url(path) }}">{{ drupal_field('title','node',node_id) }}</a></h4>
           </div>
           <div class="{{class_type}}-body flex-grow-1">
-            <p class="fs-6">{{ node.body.summary ? node.body.summary : node.body.value|striptags|raw }}</p>
+            <p class="fs-6">{{ not node.body.summary ? body_trimmed : node.body.summary }}</p>
           </div>
           <div class="{{ class_type }}-read-more">
              <a href="{{ drupal_url(path) }}">Read more</a>
