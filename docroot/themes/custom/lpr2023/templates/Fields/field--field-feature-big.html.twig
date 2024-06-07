@@ -66,23 +66,25 @@
   {% set class_type = 'event' %}
 {% endif %}
 {% set body_trimmed = node.fields.body.value|raw|striptags|split(".").0 ~ '.' %}
-<div{{ attributes.addClass(classes, 'field__item') }}>
-  <div class="row {{class_type}}-highlighted mb-3">
-    <div class="col">
-      <div class="{{class_type}}-image pb-3"><a href="{{ drupal_url(path) }}">{{ drupal_image(node.field_image[0].entity.fid.value) }}</a></div>
-    </div>
-    <div class="col">
-      <div class="{{class_type}}-info">
-        <h5>{{ article_type ? article_type : content_type }}</h5>
+<div class="container">
+  <div{{ attributes.addClass(classes, 'field__item') }}>
+    <div class="row {{class_type}}-highlighted mb-3">
+      <div class="col">
+        <div class="{{class_type}}-image pb-3"><a href="{{ drupal_url(path) }}">{{ drupal_image(node.field_image[0].entity.fid.value) }}</a></div>
       </div>
-      <div class="{{class_type}}-title">
-        <h3><a href="{{ drupal_url(path) }}">{{ drupal_field('title','node',node_id) }}</a></h3>
-      </div>
-      <div class="{{class_type}}-body">
-        <p class="fs-5">{{ not node.body.summary ? body_trimmed  : node.body.summary }}</p>
-      </div>
-      <div class="{{class_type}}-read-more">
-        <a href="{{ drupal_url(path) }}">Read more</a>
+      <div class="col">
+        <div class="{{class_type}}-info">
+          <h5>{{ article_type ? article_type : content_type }}</h5>
+        </div>
+        <div class="{{class_type}}-title">
+          <h3><a href="{{ drupal_url(path) }}">{{ drupal_field('title','node',node_id) }}</a></h3>
+        </div>
+        <div class="{{class_type}}-body">
+          <p class="fs-5">{{ not node.body.summary ? body_trimmed  : node.body.summary }}</p>
+        </div>
+        <div class="{{class_type}}-read-more">
+          <a href="{{ drupal_url(path) }}">Read more</a>
+        </div>
       </div>
     </div>
   </div>

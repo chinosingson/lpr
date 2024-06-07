@@ -51,6 +51,7 @@
     label_display == 'visually_hidden' ? 'visually-hidden',
   ]
 %}
+<div class="container">
 {% if label_hidden %}
   {% if multiple %}
     <div{{ attributes.addClass(classes, 'field__items row h-100 pb-3') }}>
@@ -87,3 +88,4 @@
     </div>
   {% endif %}
 {% endif %}
+</div>
