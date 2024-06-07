@@ -5,11 +5,20 @@
  */
 
 /**
+ * Remove obsolete text_formats setting.
+ */
+function insert_update_10301() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('insert.config');
+  $config->clear('text_formats');
+}
+
+/**
  * Write default values of additional variables to module configuration.
  */
-function insert_update_8101(array &$sandbox) {
-  $configFactory = \Drupal::configFactory();
-  $config = $configFactory->getEditable('insert.config');
+function insert_update_8101() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('insert.config');
 
   // It is possible to access the module configuration page and save
   // configuration after applying the new code while not having run the update.

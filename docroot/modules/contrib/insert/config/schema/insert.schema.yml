@@ -2,11 +2,6 @@ insert.config:
   type: config_object
   label: 'Insert module configuration settings'
   mapping:
-    text_formats:
-      type: sequence
-      label: 'Automatic text format support'
-      sequence:
-        type: string
     absolute:
       type: boolean
       label: 'Use absolute paths'

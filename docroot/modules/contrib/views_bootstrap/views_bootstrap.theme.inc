@@ -361,16 +361,16 @@ function template_preprocess_views_bootstrap_tab(array &$vars): void {
  *   - rows: The raw row data.
  */
 function template_preprocess_views_bootstrap_table(array &$vars): void {
-  $view = $vars['view'];
-  $option_classes = array_filter(explode(' ', $view->style_plugin->options['table_class_custom']));
-  $classes = array_map([Html::class, 'cleanCssIdentifier'], $option_classes);
+  $options = $vars['view']->style_plugin->options;
+  $vars['attributes'] = new Attribute(['class' => 'table']);
+  $vars['responsive'] = $options['responsive'];
+  foreach (array_filter($options['bootstrap_styles']) as $style) {
+    $vars['attributes']->addClass('table-' . $style);
+  }
+  if ($options['table_class_custom']) {
+    $option_classes = array_filter(explode(' ', $options['table_class_custom']));
+    $classes = array_map([Html::class, 'cleanCssIdentifier'], $option_classes);
+    $vars['attributes']->addClass($classes);
+  }
 
-  $vars['responsive'] = $view->style_plugin->options['responsive'];
-  $vars['attributes']['class'][] = 'table';
-  foreach (array_filter($vars['view']->style_plugin->options['bootstrap_styles']) as $style) {
-    $vars['attributes']['class'][] = 'table-' . $style;
-  }
-  if (!empty($classes)) {
-    $vars['attributes']['class'] = array_merge($vars['attributes']['class'], $classes);
-  }
 }

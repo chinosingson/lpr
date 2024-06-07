@@ -43,14 +43,12 @@ class InsertFileTest extends InsertFileTestBase {
     $this->updateInsertSettings($fieldName, [
       'styles' => [
         'link' => 1,
-        'icon_link' => 1,
       ],
       'default' => 'link',
     ]);
     $this->updateInsertSettings($fieldName, [
       'styles' => [
         'link' => 0,
-        'icon_link' => 0,
       ],
     ]);
 
@@ -148,7 +146,6 @@ class InsertFileTest extends InsertFileTestBase {
     $this->updateInsertSettings($fieldName, [
       'styles' => [
         'link' => 1,
-        'icon_link' => 1,
       ],
       'default' => 'link',
     ]);
@@ -166,10 +163,8 @@ class InsertFileTest extends InsertFileTestBase {
     $this->assertSession()->waitForField($fieldName . '[0][fids]');
 
     $this->assertEquals(1, count($page->findAll('css', '[name="' . $fieldName . '[0][insert_template][link]"]')), 'Insert link template exists');
-    $this->assertEquals(1, count($page->findAll('css', '[name="' . $fieldName . '[0][insert_template][icon_link]"]')), 'Insert icon link template exists');
     $this->assertEquals(1, count($page->findAll('css', '.insert select.insert-style')), 'Insert style select box exists');
     $this->assertEquals(1, count($page->findAll('css', '.insert select.insert-style > option[value="link"]')), 'Insert style option "link" exists');
-    $this->assertEquals(1, count($page->findAll('css', '.insert select.insert-style > option[value="icon_link"]')), 'Insert style option "icon link" exists');
 
     $page->findButton('Insert')->click();
 
@@ -188,7 +183,6 @@ class InsertFileTest extends InsertFileTestBase {
     $this->updateInsertSettings($fieldName, [
       'styles' => [
         'link' => 1,
-        'icon_link' => 1,
       ],
       'default' => 'link',
     ]);
@@ -237,7 +231,6 @@ class InsertFileTest extends InsertFileTestBase {
     $this->updateInsertSettings($fieldName, [
       'styles' => [
         'link' => 1,
-        'icon_link' => 1,
       ],
       'default' => 'link',
     ]);
@@ -253,8 +246,6 @@ class InsertFileTest extends InsertFileTestBase {
     );
 
     $this->assertSession()->waitForField($fieldName . '[0][fids]');
-
-    $page->find('css', '.insert select.insert-style')->selectOption('icon_link');
 
     $page->findButton('Insert')->click();
 
@@ -276,7 +267,6 @@ class InsertFileTest extends InsertFileTestBase {
     $this->updateInsertSettings($fieldName, [
       'styles' => [
         'link' => 1,
-        'icon_link' => 1,
       ],
       'default' => 'link',
     ]);
@@ -321,7 +311,6 @@ class InsertFileTest extends InsertFileTestBase {
     $this->updateInsertSettings($fieldName, [
       'styles' => [
         'link' => 1,
-        'icon_link' => 1,
       ],
       'default' => 'link',
     ]);
@@ -373,7 +362,6 @@ class InsertFileTest extends InsertFileTestBase {
     $this->updateInsertSettings($fieldName, [
       'styles' => [
         'link' => 1,
-        'icon_link' => 1,
       ],
       'default' => 'link',
     ]);
@@ -412,7 +400,6 @@ class InsertFileTest extends InsertFileTestBase {
     $this->updateInsertSettings($fieldName, [
       'styles' => [
         'link' => 1,
-        'icon_link' => 1,
       ],
       'default' => 'link',
     ]);

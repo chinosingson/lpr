@@ -9,6 +9,30 @@
   class FocusManager {
 
     /**
+     * Finds descending elements of a CKEditor model element according to a
+     * predicate function looping through the provided element's descendants.
+     * @param {ckeditor.Element} element
+     * @param {(child: ckeditor.Element) => boolean} predicate
+     * @returns {ckeditor.Element[]}
+     */
+    static findDescendants(element, predicate) {
+      let elements = [];
+
+      if (predicate(element)) {
+        elements = [...elements, element];
+      } else if (element.getChildren) {
+        for (const child of element.getChildren()) {
+          const childElements = this.findDescendants(child, predicate);
+          if (childElements) {
+            elements = [...elements, ...childElements];
+          }
+        }
+      }
+
+      return elements;
+    }
+
+    /**
      * Registry of the CKEditor instances tracked by the FocusManager
      * @type {ckeditor.Editor[]}
      */
@@ -44,8 +68,11 @@
       this.#editors = [];
       this.#textareas = [];
 
-      const firstEditorElement
-        = document.querySelector('.ck-editor__editable');
+      this.init();
+    }
+
+    init() {
+      const firstEditorElement= document.querySelector('.ck-editor__editable');
 
       this.defaultTarget = firstEditorElement
         ? firstEditorElement.ckeditorInstance

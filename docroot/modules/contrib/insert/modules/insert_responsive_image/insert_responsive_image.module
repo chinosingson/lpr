@@ -83,27 +83,6 @@ function insert_responsive_image_insert_variables($insertType, array &$element, 
 }
 
 /**
- * Implements hook_editor_js_settings_alter().
- */
-function insert_responsive_image_editor_js_settings_alter(array &$settings) {
-  InsertUtility::addEditorExtraAllowedContent($settings, ['img[srcset,sizes]']);
-}
-
-/**
- * Implements hook_insert_allowed_html().
- */
-function insert_responsive_image_insert_allowed_html() {
-  return [
-    'attributes' => [
-      'img' => [
-        'srcset' => NULL,
-        'sizes' => NULL,
-      ],
-    ],
-  ];
-}
-
-/**
  * Implements hook_module_implements_alter().
  */
 function insert_responsive_image_module_implements_alter(array &$implementations, $hook) {

@@ -54,7 +54,27 @@ FocusManager:
   dependencies:
     - insert/namespace
 
+Rotator:
+  version: 3.x
+  js:
+    js/Rotator.js: {}
+  dependencies:
+    - insert/namespace
+
 namespace:
   version: 3.x
   js:
     js/namespace.js: {}
+
+CKEditor5:
+    version: 3.x
+    js:
+      js/plugins/ckeditor5.js: {}
+    dependencies:
+      - ckeditor5/internal.drupal.ckeditor5
+
+CKEditor5.admin:
+  version: 3.x
+  css:
+    component:
+      css/ckeditor5.admin.css: {}

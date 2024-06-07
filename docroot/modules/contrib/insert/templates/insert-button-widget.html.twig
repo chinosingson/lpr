@@ -4,6 +4,16 @@
  * Template file for the insert button.
  */
 #}
+{% if insert.settings.rotate %}
+  <div class="insert-rotate">
+    <label>{{ 'Rotate'|trans }}</label>
+    <span class="insert-rotate-controls">
+      <span class="insert-rotate-controls-left"><a href="{{ url('insert.rotate', {'fid': insert.settings.fid, 'degree': 270, 'nid': nid}) }}" role="button">↺</a></span>
+      <span class="insert-rotate-controls-right"><a href="{{ url('insert.rotate', {'fid': insert.settings.fid, 'degree': 90, 'nid': nid}) }}" role="button">↻</a></span>
+    </span>
+  </div>
+{% endif %}
+
 {% if insert.styles|length > 1 %}
     <div class="insert-style-select">
       <label for="insert-{{ id }}">{{ 'Style'|trans }}</label>

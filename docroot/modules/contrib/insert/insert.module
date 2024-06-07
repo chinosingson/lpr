@@ -31,6 +31,7 @@ const INSERT_DEFAULT_SETTINGS = [
   'auto_image_style' => 'image',
   'link_image' => NULL,
   'width' => '',
+  'rotate' => FALSE,
 ];
 
 /**
@@ -92,22 +93,6 @@ function _insert_get_insert_type($pluginId) {
  */
 function insert_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
   _insert_add_process($form);
-
-  if ($form_id === 'filter_format_edit_form') {
-    $text_formats = \Drupal::config('insert.config')->get('text_formats');
-
-    // Ensure attributes set by Insert are not stripped from the output:
-    if (in_array($form['format']['#default_value'], $text_formats)) {
-      if (isset($form['filters']['settings']['filter_html'])) {
-        $form['filters']['settings']['filter_html']['allowed_html']['#element_validate'][]
-          = '_insert_allowed_html_validate';
-      }
-      if (isset($form['editor']['settings']['subform']['plugins']['ckeditor5_sourceEditing'])) {
-        $form['editor']['settings']['subform']['plugins']['ckeditor5_sourceEditing']['allowed_tags']['#element_validate'][]
-          = '_insert_allowed_html_validate';
-      }
-    }
-  }
 }
 
 /**
@@ -390,10 +375,7 @@ function _insert_render($styleName, array $vars, array $insertElement) {
         ? $vars['insert__auto'] : 'link';
     }
 
-    if ($styleName === 'icon_link') {
-      $rendered = \Drupal::theme()->render(['insert_icon_link'], $vars);
-    }
-    elseif ($styleName === 'link') {
+    if ($styleName === 'link') {
       $rendered = \Drupal::theme()->render(['insert_link'], $vars);
     }
     elseif ($styleName === 'audio') {
@@ -571,7 +553,9 @@ function insert_insert_variables($insertType, array &$element, $styleName, array
     if ($styleUrl !== NULL) {
       $vars['url'] = $styleUrl;
 
-      if ($settings['link_image']) {
+      if ($settings['link_image'] === 'image') {
+        $vars['url_link'] = $vars['url_original'];
+      } elseif ($settings['link_image']) {
         $vars['url_link'] = InsertUtility::buildDerivativeUrl(
           $vars['file'],
           $settings['link_image'],
@@ -683,6 +667,14 @@ function _insert_settings_form(array $settings, $insertType) {
       '#description' => t('When inserting images, the height and width of images may be scaled down to fit within the specified width. Note that this does not resize the image, it only affects the HTML output.'),
       '#weight' => 26,
     ];
+
+    $element['rotate'] = [
+      '#type' => 'checkbox',
+      '#title' => t('Rotation controls'),
+      '#default_value' => $settings['rotate'],
+      '#description' => t('The image may be rotated by using rotation controls.'),
+      '#weight' => 27,
+    ];
   }
 
   return $element;
@@ -763,10 +755,6 @@ function insert_insert_styles($insertType) {
     'label' => t('Link to file'),
     'weight' => -20,
   ];
-  $stylesList['icon_link'] = [
-    'label' => t('Link to file (with icon)'),
-    'weight' => -19,
-  ];
   $stylesList['audio'] = [
     'label' => t('Embed audio'),
     'weight' => -10,
@@ -784,100 +772,6 @@ function insert_insert_styles($insertType) {
  */
 function insert_insert_render() {
   return [];
-}
-
-/**
- * Implements hook_editor_js_settings_alter().
- */
-function insert_editor_js_settings_alter(array &$settings) {
-  InsertUtility::addEditorExtraAllowedContent($settings, [
-    'img[src,width,height,alt,title,data-insert-class,data-insert-type,data-insert-attach](*)',
-    'span[contenteditable,data-insert-type,data-insert-attach](*)',
-    'a[title,type,data-insert-type,data-insert-attach](*)',
-    'div[data-insert-attach]',
-    'audio[contenteditable,controls,src,type,data-insert-attach]',
-    'video[contenteditable,controls,src,type,data-insert-attach]',
-  ]);
-}
-
-/**
- * @param array $element
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- */
-function _insert_allowed_html_validate(array $element, FormStateInterface &$form_state) {
-  $imagePluginActive
-    = $element['#groups']['editor][settings][plugins][ckeditor5_image']['#group_exists'];
-
-  $tags = [
-    'img' => NULL,
-    'a' => NULL,
-    'audio' => NULL,
-    'span' => NULL,
-    'video' => NULL,
-  ];
-
-  $attributes = [
-    'img' => [
-      'class' => NULL,
-      'data-insert-attach' => NULL,
-      'data-insert-type' => NULL,
-      'title' => NULL,
-    ],
-    'a' => [
-      'class' => NULL,
-      'data-insert-attach' => NULL,
-      'data-insert-type' => NULL,
-      'title' => NULL,
-      'type' => NULL,
-    ],
-    'audio' => [
-      // Although added through insert_editor_js_settings_alter, CKEditor does
-      // not accept contenteditable on <audio> and <video> if not explicitly
-      // white-listed:
-      'contenteditable' => NULL,
-      'controls' => NULL,
-      'data-insert-attach' => NULL,
-      'data-insert-type' => NULL,
-      'src' => NULL,
-      'type' => NULL,
-    ],
-    'span' => [
-      'class' => NULL,
-      'data-insert-attach' => NULL,
-      'data-insert-type' => NULL,
-    ],
-    'video' => [
-      'contenteditable' => NULL,
-      'controls' => NULL,
-      'data-insert-attach' => NULL,
-      'data-insert-type' => NULL,
-      'src' => NULL,
-      'type' => NULL,
-    ],
-  ];
-
-  if (!$imagePluginActive) {
-    $attributes['img']['src'] = NULL;
-    $attributes['img']['alt'] = NULL;
-    $attributes['img']['width'] = NULL;
-    $attributes['img']['height'] = NULL;
-  }
-
-  $additional = \Drupal::moduleHandler()->invokeAll('insert_allowed_html');
-
-  if (isset($element['#value'])) {
-    $form_state->setValueForElement($element, InsertUtility::addAllowedHtml(
-      $element['#value'],
-      NestedArray::mergeDeep(
-        $tags,
-        isset($additional['tags']) ? $additional['tags'] : []
-      ),
-      NestedArray::mergeDeep(
-        $attributes,
-        isset($additional['attributes']) ? $additional['attributes'] : []
-      )
-    ));
-  }
 }
 
 /**
@@ -899,10 +793,6 @@ function insert_theme() {
     ],
     'insert_link' => [
       'template' => 'insert-link',
-      'variables' => [],
-    ],
-    'insert_icon_link' => [
-      'template' => 'insert-icon-link',
       'variables' => [],
     ],
     'insert_audio' => [
@@ -978,27 +868,6 @@ function template_preprocess_insert_image(array &$vars) {
 function template_preprocess_insert_link(array &$vars) {
   /** @var \Drupal\file\Entity\File $vars['file'] */
   $vars['name'] = $vars['file']->getFilename();
-}
-
-/**
- * Preprocess variables for the insert-icon-link.html.twig file.
- */
-function template_preprocess_insert_icon_link(array &$vars) {
-  /** @var \Drupal\file\Entity\File $file */
-  $file = $vars['file'];
-
-  $vars['name'] = $file->getFilename();
-
-  $mime_type = $file->getMimeType();
-  $vars['type'] = $file->getMimeType() . '; length=' . $file->getSize();
-
-  $vars['icon_classes'] = join(' ', [
-    'file',
-    // Add a specific class for each and every mime type.
-    'file--mime-' . strtr($mime_type, ['/' => '-', '.' => '-']),
-    // Add a more general class for groups of well known MIME types.
-    'file--' . file_icon_class($mime_type),
-  ]);
 }
 
 /**

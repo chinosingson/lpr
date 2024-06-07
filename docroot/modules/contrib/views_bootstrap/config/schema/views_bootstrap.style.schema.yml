@@ -207,15 +207,18 @@ views.style.views_bootstrap_table:
       type: mapping
       label: "Bootstrap styles"
       mapping:
-        striped:
-          type: boolean
-          label: 'Striped'
         bordered:
-          type: boolean
+          type: string
           label: 'Bordered'
-        hover:
-          type: boolean
-          label: 'Hover'
-        condensed:
-          type: boolean
+        borderless:
+          type: string
+          label: 'Borderless'
+        sm:
+          type: string
           label: 'Condensed'
+        hover:
+          type: string
+          label: 'Hover'
+        striped:
+          type: string
+          label: 'Striped'

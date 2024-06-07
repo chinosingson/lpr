@@ -2,30 +2,6 @@
   'use strict';
 
   /**
-   * Finds descending elements of a CKEditor model element according to a
-   * predicate function looping through the provided element's descendants.
-   * @param {ckeditor.Element} element
-   * @param {(child: ckeditor.Element) => boolean} predicate
-   * @returns {ckeditor.Element[]}
-   */
-  function findDescendants(element, predicate) {
-    let elements = [];
-
-    if (predicate(element)) {
-      elements = [...elements, element];
-    } else if (element.getChildren) {
-      for (const child of element.getChildren()) {
-        const childElements = findDescendants(child, predicate);
-        if (childElements) {
-          elements = [...elements, ...childElements];
-        }
-      }
-    }
-
-    return elements;
-  }
-
-  /**
    * Returns whether a provided editor element is the one to be synced by
    * Insert.
    * @param {ckeditor.Element} element
@@ -33,6 +9,14 @@
    * @returns {boolean}
    */
   function isSyncedElement(element, syncId) {
+    if (element.getAttribute('dataInsertAttach')) {
+      const attach = JSON.parse(element.getAttribute('dataInsertAttach'));
+
+      if (attach.id === syncId) {
+        return true;
+      }
+    }
+
     for (const key of element.getAttributeKeys()) {
       const attribute = element.getAttribute(key);
       const attributes = attribute.attributes;
@@ -232,9 +216,9 @@
      */
     #updateEditor(editor, syncId) {
       editor.model.change(writer => {
-        writer.model.document.getRoot()
+        writer.model.document.getRoot();
 
-        const elements = findDescendants(
+        const elements = Drupal.insert.Manager.findDescendants(
           writer.model.document.getRoot(),
           element => isSyncedElement(element, syncId)
         );

@@ -12,7 +12,7 @@
    * having to specify the alternative text (if set to required).
    * @type {string[]}
    */
-  const noAltTextInsertStyles = ['link', 'icon_link'];
+  const noAltTextInsertStyles = ['link'];
 
   Drupal.insert.ImageHandler = class extends Drupal.insert.FileHandler {
 
@@ -27,12 +27,26 @@
     #insertStyle;
 
     /**
+     * @type {Drupal.insert.Rotator}
+     */
+    #rotator;
+
+    /**
      * @inheritDoc
      */
     constructor(container, widgetSettings, wrapper) {
       super(container, widgetSettings, SELECTORS, wrapper);
 
       this.#insertStyle = this._container.querySelector('.insert-style');
+
+      const rotatorElement = this._container.querySelector('.insert-rotate');
+
+      if (rotatorElement) {
+        this.#rotator = new Drupal.insert.Rotator(
+          rotatorElement,
+          this._container.querySelector('.insert-templates'),
+        );
+      }
 
       this.#initAltField();
       this._disable(!this.#checkAltField());

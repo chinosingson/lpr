@@ -211,31 +211,6 @@ function insert_colorbox_insert_render($styleName, array $vars) {
 }
 
 /**
- * Implements hook_editor_js_settings_alter().
- */
-function insert_colorbox_editor_js_settings_alter(array &$settings) {
-  InsertUtility::addEditorExtraAllowedContent($settings, [
-    'a[data-colorbox-gallery]',
-  ]);
-}
-
-/**
- * Implements hook_insert_allowed_html().
- */
-function insert_colorbox_insert_allowed_html() {
-  return [
-    'tags' => [
-      'a' => NULL,
-    ],
-    'attributes' => [
-      'a' => [
-        'data-colorbox-gallery' => NULL,
-      ],
-    ],
-  ];
-}
-
-/**
  * Implements hook_module_implements_alter().
  */
 function insert_colorbox_module_implements_alter(array &$implementations, $hook) {

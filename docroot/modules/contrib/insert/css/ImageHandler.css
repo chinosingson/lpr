@@ -2,6 +2,10 @@
   margin-right: 1em;
 }
 
+.insert-rotate .insert-rotate-controls a {
+  text-decoration: none;
+}
+
 .insert-button-wrapper {
   display: inline-block;
   position: relative;
