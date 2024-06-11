@@ -1389,3 +1389,23 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   list-style: none;
   padding-left: 1rem;
 }
+
+figcaption {
+  display: block;
+  font-size: .875em;
+  color: #6c757d;
+}
+
+figure img {
+  margin-bottom: .5rem;
+  line-height: 1;
+  height: auto !important;
+}
+
+.caption-img.align-left {
+  margin-right: 1rem;
+}
+
+.caption-img.align-right {
+  margin-left: 1rem;
+}
