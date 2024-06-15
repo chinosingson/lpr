@@ -2,16 +2,22 @@ services:
   csp.nonce:
     class: Drupal\csp\Nonce
 
+  csp.policy_helper:
+    class: Drupal\csp\PolicyHelper
+    arguments:
+      - '@csp.nonce'
+
   csp.response_listener:
     class: Drupal\csp\EventSubscriber\ResponseCspSubscriber
     arguments:
       - '@config.factory'
-      - '@csp.library_policy_builder'
-      - '@plugin.manager.csp_reporting_handler'
       - '@event_dispatcher'
       - '@csp.nonce'
+      - '@csp.library_policy_builder'
+      - '@plugin.manager.csp_reporting_handler'
     tags:
       - { name: event_subscriber }
+
   csp.library_policy_builder:
     class: Drupal\csp\LibraryPolicyBuilder
     arguments:

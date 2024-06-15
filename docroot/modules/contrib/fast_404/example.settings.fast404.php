@@ -138,10 +138,16 @@
  * regular 404 error. In this case you can specify a URL to another page and it
  * will be read and displayed (it can't be redirected to because we have to
  * give a 30x header to do that. This page needs to be in your docroot.
+ * Accepts a normal path, or an array, keyed by langcodes.
  *
  * Default value for this setting is FALSE.
  */
 # $settings['fast404_HTML_error_page'] = './my_page.html';
+# The page is translatable.
+# $settings['fast404_HTML_error_page'] = [
+#   'en' => './my_page-en.html',
+#   'fr' => './my_page-fr.html',
+# ];
 
 /**
  * Default value for this setting is FALSE. This setting needs to be enabled,

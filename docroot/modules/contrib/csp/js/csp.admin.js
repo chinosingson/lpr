@@ -10,7 +10,7 @@
    * @type {Drupal~behavior}
    *
    * @prop {Drupal~behaviorAttach} attach
-   *   Attaches summary behaviour for policy form tabs.
+   *   Attaches summary behavior for policy form tabs.
    */
   Drupal.behaviors.cspPolicySummary = {
     attach(context) {

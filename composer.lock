@@ -2887,17 +2887,17 @@
         },
         {
             "name": "drupal/csp",
-            "version": "1.31.0",
+            "version": "1.32.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/csp.git",
-                "reference": "8.x-1.31"
+                "reference": "8.x-1.32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/csp-8.x-1.31.zip",
-                "reference": "8.x-1.31",
-                "shasum": "f5279b78f2edac89d5cb2a731a246da9d429573a"
+                "url": "https://ftp.drupal.org/files/projects/csp-8.x-1.32.zip",
+                "reference": "8.x-1.32",
+                "shasum": "559a05eb29f8a6b3567d97843bd83011c3363422"
             },
             "require": {
                 "drupal/core": "~10.0.0 || ^10.1.3 || ^11",
@@ -2906,8 +2906,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.31",
-                    "datestamp": "1714819870",
+                    "version": "8.x-1.32",
+                    "datestamp": "1718326042",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2997,26 +2997,26 @@
         },
         {
             "name": "drupal/ctools",
-            "version": "4.0.4",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/ctools.git",
-                "reference": "4.0.4"
+                "reference": "4.1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ctools-4.0.4.zip",
-                "reference": "4.0.4",
-                "shasum": "4a2474eb2fd525b2add2db0e855c135ba7f0fb70"
+                "url": "https://ftp.drupal.org/files/projects/ctools-4.1.0.zip",
+                "reference": "4.1.0",
+                "shasum": "69f5889cf557df9e55519390e6a95cfa31b67874"
             },
             "require": {
-                "drupal/core": "^9.3 || ^10"
+                "drupal/core": "^9.5 || ^10 || ^11"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "4.0.4",
-                    "datestamp": "1684299878",
+                    "version": "4.1.0",
+                    "datestamp": "1718144949",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4046,17 +4046,17 @@
         },
         {
             "name": "drupal/fast_404",
-            "version": "3.2.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/fast_404.git",
-                "reference": "8.x-3.2"
+                "reference": "8.x-3.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/fast_404-8.x-3.2.zip",
-                "reference": "8.x-3.2",
-                "shasum": "70ebac9602da076547fc51827831fd395a4bcd6f"
+                "url": "https://ftp.drupal.org/files/projects/fast_404-8.x-3.3.zip",
+                "reference": "8.x-3.3",
+                "shasum": "6c946c79e662075b4af4153ddc9a6980a0fc49b2"
             },
             "require": {
                 "drupal/core": "^8.8 || ^9 || ^10"
@@ -4067,8 +4067,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-3.2",
-                    "datestamp": "1692381474",
+                    "version": "8.x-3.3",
+                    "datestamp": "1717810095",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -7461,6 +7461,10 @@
                     "homepage": "https://www.drupal.org/user/93571"
                 },
                 {
+                    "name": "scott_euser",
+                    "homepage": "https://www.drupal.org/user/3267594"
+                },
+                {
                     "name": "seanB",
                     "homepage": "https://www.drupal.org/user/545912"
                 }
@@ -9736,16 +9740,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.12.3",
+            "version": "v0.12.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "b6b6cce7d3ee8fbf31843edce5e8f5a72eff4a73"
+                "reference": "2fd717afa05341b4f8152547f142cd2f130f6818"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/b6b6cce7d3ee8fbf31843edce5e8f5a72eff4a73",
-                "reference": "b6b6cce7d3ee8fbf31843edce5e8f5a72eff4a73",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/2fd717afa05341b4f8152547f142cd2f130f6818",
+                "reference": "2fd717afa05341b4f8152547f142cd2f130f6818",
                 "shasum": ""
             },
             "require": {
@@ -9809,9 +9813,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bobthecow/psysh/issues",
-                "source": "https://github.com/bobthecow/psysh/tree/v0.12.3"
+                "source": "https://github.com/bobthecow/psysh/tree/v0.12.4"
             },
-            "time": "2024-04-02T15:57:53+00:00"
+            "time": "2024-06-10T01:18:23+00:00"
         },
         {
             "name": "ralouphie/getallheaders",

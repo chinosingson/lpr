@@ -469,10 +469,12 @@ class Csp {
     $sources = array_unique($sources);
 
     // 'none' overrides any other sources in CSP 8.x-1.x.
-    // @todo Change to remove 'none' if other sources present in 2.x https://www.drupal.org/project/csp/issues/3142306
     if (in_array(Csp::POLICY_NONE, $sources)) {
+      // Warn if policy will be affected by change to remove 'none' if other
+      // sources are present in 2.x.
       if (!empty(array_diff($sources, [Csp::POLICY_NONE, Csp::POLICY_REPORT_SAMPLE]))) {
-        @trigger_error("'none' overriding other sources is deprecated in csp:8.x-1.30 and behaviour will change in csp:2.0.0. See https://www.drupal.org/node/3411477", E_USER_DEPRECATED);
+        // phpcs:ignore Drupal.Semantics.UnsilencedDeprecation.UnsilencedDeprecation
+        trigger_error("'none' overriding other sources is deprecated in csp:8.x-1.30 and behavior will change in csp:2.0.0. See https://www.drupal.org/node/3411477", E_USER_DEPRECATED);
       }
 
       $noneValue = [Csp::POLICY_NONE];

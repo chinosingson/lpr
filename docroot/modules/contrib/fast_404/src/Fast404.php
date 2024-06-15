@@ -42,6 +42,13 @@ class Fast404 {
   protected $request;
 
   /**
+   * The langcode to use for the translated 404 page if it exists.
+   *
+   * @var string
+   */
+  protected $langcode;
+
+  /**
    * Language Negotiation Url Info.
    *
    * @var array
@@ -53,9 +60,12 @@ class Fast404 {
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The current request.
+   * @param string|null $langcode
+   *   The current langcode.
    */
-  public function __construct(Request $request) {
+  public function __construct(Request $request, ?string $langcode = NULL) {
     $this->request = $request;
+    $this->langcode = $langcode;
   }
 
   /**
@@ -266,10 +276,21 @@ class Fast404 {
   public function response($return = FALSE) {
     $message = Settings::get('fast404_html', '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>');
     $return_gone = Settings::get('fast404_return_gone', FALSE);
-    $custom_404_path = Settings::get('fast404_HTML_error_page', FALSE);
+    $custom_404 = Settings::get('fast404_HTML_error_page', FALSE);
     // If a file is set to provide us with Fast 404 joy, load it.
-    if (($this->loadHtml || Settings::get('fast404_HTML_error_all_paths', FALSE) === TRUE) && file_exists($custom_404_path)) {
-      $message = @file_get_contents($custom_404_path, FALSE);
+    if (($this->loadHtml || Settings::get('fast404_HTML_error_all_paths', FALSE) === TRUE)) {
+      if (is_array($custom_404)) {
+        // For arrays, use the path associated with the langcode or the first
+        // path if the langcode is not set.
+        $custom_404_path = $this->langcode && isset($custom_404[$this->langcode]) ? $custom_404[$this->langcode] : reset($custom_404);
+      }
+      else {
+        $custom_404_path = $custom_404;
+      }
+
+      if (file_exists($custom_404_path)) {
+        $message = @file_get_contents($custom_404_path, FALSE);
+      }
     }
     $headers = [
       Settings::get('fast404_HTTP_status_method', 'mod_php') === 'FastCGI' ? 'Status:' : 'HTTP/1.0' => $return_gone ? '410 Gone' : '404 Not Found',
@@ -303,4 +324,5 @@ class Fast404 {
       self::$languageNegotiationUrlInfo = $lang_negotiation_url_info;
     }
   }
+
 }

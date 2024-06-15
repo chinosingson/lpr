@@ -81,11 +81,13 @@ class CspSettingsForm extends ConfigFormBase {
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The factory for configuration objects.
+   * @param \Drupal\Core\Config\TypedConfigManagerInterface $typedConfigManager
+   *   The TypedConfigManager service.
    * @param \Drupal\csp\LibraryPolicyBuilder $libraryPolicyBuilder
    *   The Library Policy Builder service.
    * @param \Drupal\csp\ReportingHandlerPluginManager $reportingHandlerPluginManager
    *   The Reporting Handler Plugin Manger service.
-   * @param \Drupal\Core\Messenger\MessengerInterface|null $messenger
+   * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    *   The Messenger service.
    */
   public function __construct(

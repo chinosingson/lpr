@@ -21,7 +21,7 @@ class CspSettingsFormTest extends UnitTestCase {
    * @return array[]
    *   An array of [URL, isValid] tuples.
    */
-  public function urlDataProvider() {
+  public static function urlDataProvider() {
     return [
       'tld' => ['com', FALSE],
       'wildcard_tld' => ['*.com', FALSE],
@@ -75,6 +75,7 @@ class CspSettingsFormTest extends UnitTestCase {
       'other_protocol' => ['example://localhost', TRUE],
       'edge_case_protocol' => ['example-foo.123+bar://localhost', TRUE],
       'protocol_numeric_first_char' => ['1example://localhost', FALSE],
+      // cspell:disable-next-line
       'protocol_invalid_symbol' => ['ex@mple://localhost', FALSE],
     ];
   }

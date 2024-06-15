@@ -130,10 +130,10 @@ class ResponseCspSubscriberNonceTest extends UnitTestCase {
 
     $subscriber = new ResponseCspSubscriber(
       $configFactory,
+      $this->eventDispatcher,
+      $this->nonce,
       $this->libraryPolicy,
       $this->reportingHandlerPluginManager,
-      $this->eventDispatcher,
-      $this->nonce
     );
 
     $this->response->expects($this->once())

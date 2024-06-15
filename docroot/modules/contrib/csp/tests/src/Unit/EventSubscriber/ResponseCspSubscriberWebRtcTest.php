@@ -120,10 +120,10 @@ class ResponseCspSubscriberWebRtcTest extends UnitTestCase {
 
     $subscriber = new ResponseCspSubscriber(
       $configFactory,
-      $this->libraryPolicy,
-      $this->reportingHandlerPluginManager,
       $this->eventDispatcher,
-      $this->nonce
+      $this->nonce,
+      $this->libraryPolicy,
+      $this->reportingHandlerPluginManager
     );
 
     $this->response->headers->expects($this->never())
@@ -138,7 +138,7 @@ class ResponseCspSubscriberWebRtcTest extends UnitTestCase {
    * @return array[]
    *   Configuration values.
    */
-  public function webRtcConfigProvider() {
+  public static function webRtcConfigProvider() {
     return [
       'allow' => ['allow'],
       'block' => ['block'],
@@ -173,10 +173,10 @@ class ResponseCspSubscriberWebRtcTest extends UnitTestCase {
 
     $subscriber = new ResponseCspSubscriber(
       $configFactory,
+      $this->eventDispatcher,
+      $this->nonce,
       $this->libraryPolicy,
       $this->reportingHandlerPluginManager,
-      $this->eventDispatcher,
-      $this->nonce
     );
 
     $this->response->headers->expects($this->once())

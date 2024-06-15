@@ -7,7 +7,7 @@
   /**
    * Command to add css.
    *
-   * Backported from Drupal 10.1 to handle attributes arrays.
+   * Back ported from Drupal 10.1 to handle attributes arrays.
    *
    * @param {Drupal.Ajax} [ajax]
    *   {@link Drupal.Ajax} object created by {@link Drupal.ajax}.

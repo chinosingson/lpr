@@ -13,7 +13,7 @@ use Drupal\fast404\Fast404FactoryInterface;
 use Drupal\fast404\Fast404;
 
 /**
- * Class Fast404EventSubscriber.
+ * Adds an event subscriber for Fast 404 events.
  *
  * @package Drupal\fast404\EventSubscriber
  */
@@ -27,10 +27,10 @@ class Fast404EventSubscriber implements EventSubscriberInterface {
   public $requestStack;
 
   /**
-  * The config factory.
-  *
-  * @var \Drupal\fast404\Fast404FactoryInterface
-  */
+   * The config factory.
+   *
+   * @var \Drupal\fast404\Fast404FactoryInterface
+   */
   protected $fast404Factory;
 
   /**
@@ -39,6 +39,7 @@ class Fast404EventSubscriber implements EventSubscriberInterface {
    * @param \Symfony\Component\HttpFoundation\RequestStack $request_stack
    *   The Request Stack.
    * @param \Drupal\fast404\Fast404FactoryInterface $fast404Factory
+   *   The Fast 404 Factory.
    */
   public function __construct(RequestStack $request_stack, Fast404FactoryInterface $fast404Factory) {
     $this->requestStack = $request_stack;
@@ -50,8 +51,6 @@ class Fast404EventSubscriber implements EventSubscriberInterface {
    */
   public function onKernelRequest(RequestEvent $event) {
     $fast_404 = $this->fast404Factory->createInstance();
-    // @var \Drupal\fast404\Fast404
-
     $fast_404->extensionCheck();
     if ($fast_404->isPathBlocked()) {
       $event->setResponse($fast_404->response(TRUE));
@@ -73,7 +72,7 @@ class Fast404EventSubscriber implements EventSubscriberInterface {
     // Check to see if we will completely replace the Drupal 404 page.
     if (Settings::get('fast404_not_found_exception', FALSE)) {
       if ($event->getThrowable() instanceof NotFoundHttpException) {
-        $fast_404 = new Fast404($event->getRequest());
+        $fast_404 = $this->fast404Factory->createInstance($event->getRequest());
         $event->setResponse($fast_404->response(TRUE));
       }
     }
