@@ -69,7 +69,7 @@
           {% set class_type = 'event' %}
         {% endif %}
         {% set body_trimmed = node.body.value|replace({"&nbsp;": " "})|raw|striptags|split(".").0 ~ '.' %}
-        <div class="col d-flex flex-column">
+        <div class="col-md-6 col-lg-3 mb-md-3 d-flex flex-column">
           <div class="{{ class_type }}-image pb-lg-0 pb-3"><a href="{{ drupal_url(path) }}">{{ drupal_image(node.field_image[0].entity.fid.value) }}</a></div>
           <div class="{{ class_type }}-info mt-3">
             <h5>{{ article_type == 'News Release' ? article_type : content_type }}</h5>

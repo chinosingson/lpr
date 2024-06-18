@@ -69,10 +69,10 @@
 <div class="container">
   <div{{ attributes.addClass(classes, 'field__item') }}>
     <div class="row {{class_type}}-highlighted mb-3">
-      <div class="col">
+      <div class="col-md-6">
         <div class="{{class_type}}-image pb-3"><a href="{{ drupal_url(path) }}">{{ drupal_image(node.field_image[0].entity.fid.value) }}</a></div>
       </div>
-      <div class="col">
+      <div class="col-md-6">
         <div class="{{class_type}}-info">
           <h5>{{ article_type ? article_type : content_type }}</h5>
         </div>
