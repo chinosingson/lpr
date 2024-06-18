@@ -44,7 +44,8 @@
    --gray: #e5e5e5;
    --dark-blue: #0088C7;
    --light-green: #8BD573;
-  }
+   --white: #ffffff;
+ }
  
  body,
  p {
@@ -101,9 +102,16 @@
  .bg-green a,
  .bg-green a:hover {
    background: var(--green);
-   color: #fff;
+   color: var(--white);
  }
- 
+
+ a.bg-green,
+ a.bg-green:hover {
+   background: var(--green);
+   border: var(--green);
+ }
+
+
  .blue {
    color: var(--blue);
  }
@@ -112,8 +120,13 @@
  .bg-blue a,
  .bg-blue a:hover {
    background: var(--blue);
-   color: #fff;
  }
+
+ a.bg-blue,
+ a.bg-blue:hover {
+  background: var(--blue);
+  border: var(--blue);
+}
  
  .bg-gray {
    background: var(--gray);
@@ -459,8 +472,8 @@
 }
 
 .mm-panels #mm-1 li {
-  border-top-color: #fff;
-  border-bottom-color: #fff;
+  border-top-color: var(--white);
+  border-bottom-color: var(--white);
   position: static;
 }
 
@@ -511,7 +524,7 @@
    bottom: 0px;
    right: 0px;
    background: rgba(0, 0, 0, 0.51);
-   color: #fff;
+   color: var(--white);
    padding: 50px;
    z-index: 2;
  }
@@ -780,6 +793,16 @@
    text-decoration: none;
    color: var(--blue);
  }
+
+ .latest-news .news-title a,
+ .upcoming-event .event-title a {
+  color: #333 !important;
+ }
+
+ .latest-news .btn,
+ .upcoming-event .btn {
+  border-radius: 0px;
+ }
  
  .focus-link a,
  .media-list .media-read-more a,
@@ -791,6 +814,7 @@
  .event-list .event-read-more a,
  .success-story-read-more a,
  .view-lpr-in-action .news-read-more a,
+ .in-action-list .news-read-more a,
  .view-lpr-in-action .event-read-more a,
  .field--name-field-feature-big .news-read-more a,
  .field--name-field-feature-big .event-read-more a,
@@ -803,6 +827,7 @@
  }
 
  .view-lpr-in-action .news-read-more a,
+ .in-action-list .news-read-more a,
  .view-lpr-in-action .event-read-more a,
  .field--name-field-feature-big .news-read-more a,
  .field--name-field-feature-big .event-read-more a,
@@ -1258,6 +1283,7 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
 .path-frontpage .view-events.view-id-events.view.view-display-id-homepage_list .event-list .event-image > a > img,
 .path-frontpage .view-news.view-id-news.view-display-id-homepage_list .news-list .news-image > a > img,
 .view-lpr-in-action .news-image img,
+.in-action-list .news-image img,
 .view-lpr-in-action .event-image img,
 .field--name-field-feature-big .news-image img,
 .field--name-field-feature-big .event-image img,

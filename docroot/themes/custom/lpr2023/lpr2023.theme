@@ -121,6 +121,8 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
   // Get the current path.
   $current_path = \Drupal::service('path.current')->getPath();
   $current_path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+  $current_display = $variables['view']->current_display;
+  $current_view = $variables['view']->id();
 
   // Check for specific paths and add theme suggestions accordingly.
   // suggestions for the News & Events page
@@ -130,12 +132,12 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
     // }
 
     // suggestions for events displays
-    if ($variables['view']->id() == 'events'){
-      if ($variables['view']->current_display == 'news_events_highlighted') {
+    if ($current_view == 'events'){
+      if ($current_display == 'news_events_highlighted') {
         $suggestions[] = 'views_view_fields__events__news_events_highlighted';
       }
 
-      if ($variables['view']->current_display == 'news_events_list') {
+      if ($current_view == 'news_events_list') {
         $suggestions[] = 'views_view_fields__events__news_events_list';
       }
 
@@ -144,21 +146,21 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
 
   // suggestions for the homepage
   if (\Drupal::service('path.matcher')->isFrontPage()) {
-    if ($variables['view']->id() == 'news'){
-      if ($variables['view']->current_display == 'news_highlighted') {
+    if ($current_view == 'news'){
+      if ($current_display == 'news_highlighted') {
         $suggestions[] = 'views_view_fields__news__homepage_highlighted';
       }
-      if ($variables['view']->current_display == 'homepage_list') {
+      if ($current_display == 'homepage_list') {
         $suggestions[] = 'views_view_fields__news__homepage_list';
       }
     }
 
-    if ($variables['view']->id() == 'events'){
-      if ($variables['view']->current_display == 'homepage_highlighted') {
+    if ($current_view == 'events'){
+      if ($current_display == 'homepage_highlighted') {
         $suggestions[] = 'views_view_fields__events__homepage_highlighted';
       }
 
-      if ($variables['view']->current_display == 'homepage_list') {
+      if ($current_display == 'homepage_list') {
         $suggestions[] = 'views_view_fields__events__homepage_list';
       }
     }
@@ -167,8 +169,8 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
   // suggestions for all events page
   if ($current_path_alias == '/events'){
     // suggestions for events displays
-    if ($variables['view']->id() == 'events'){
-      if ($variables['view']->current_display == 'all_events') {
+    if ($current_view == 'events'){
+      if ($current_display == 'all_events') {
         $suggestions[] = 'views_view_fields__events__news_events_list';
       }
 
@@ -178,19 +180,35 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
   // suggestions for all news page
   if ($current_path_alias == '/news'){
     // suggestions for news displays
-    if ($variables['view']->id() == 'news'){
-      if ($variables['view']->current_display == 'all_news') {
+    if ($current_view == 'news'){
+      if ($current_display == 'all_news') {
         $suggestions[] = 'views_view_fields__news__news_list';
       }
-
     } 
   }
+
+  if ($current_view == 'news'){
+    if ($current_display == 'latest_news') {
+      $suggestions[] = 'views_view_fields__news__latest_news';
+    }
+    if ($current_display == 'in_action_list') {
+      $suggestions[] = 'views_view_fields__news__in_action_list';
+    }
+  } 
+
+  if ($current_view == 'events'){
+    if ($current_display == 'all_events') {
+      $suggestions[] = 'views_view_fields__events__upcoming_event';
+    }
+
+  } 
+
 
   // suggestions for all media page
   if ($current_path_alias == '/media'){
     // suggestions for media displays
-    if ($variables['view']->id() == 'lpr_media'){
-      if ($variables['view']->current_display == 'all_media') {
+    if ($current_view == 'lpr_media'){
+      if ($current_display == 'all_media') {
         $suggestions[] = 'views_view_fields__media__media_list';
       }
 
@@ -200,8 +218,8 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
   // suggestions for publications page
   if ($current_path_alias == '/publications'){
     // suggestions for publications displays
-    if ($variables['view']->id() == 'knowledge_and_resources'){
-      if ($variables['view']->current_display == 'publications_list') {
+    if ($current_view == 'knowledge_and_resources'){
+      if ($current_display == 'publications_list') {
         $suggestions[] = 'views_view_fields__knowledge_and_resources__publications_list';
       }
 
@@ -211,8 +229,8 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
   // suggestions for elearning page
   if ($current_path_alias == '/elearning' || $current_path_alias == '/e-learning'){
     // suggestions for elearning displays
-    if ($variables['view']->id() == 'knowledge_and_resources'){
-      if ($variables['view']->current_display == 'elearning_list') {
+    if ($current_view == 'knowledge_and_resources'){
+      if ($current_display == 'elearning_list') {
         $suggestions[] = 'views_view_fields__knowledge_and_resources__elearning_list';
       }
 
@@ -220,17 +238,26 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
   }
   // suggestions for search pages
   if ($current_path_alias  == '/search') {
-    if ($variables['view']->current_display == 'site_search') {
+    if ($current_display == 'site_search') {
       $suggestions[] = 'views_view_fields__site_search';
     }
   }
 
   if ($current_path_alias == '/search/asia-pacific-law-database') {
-    if ($variables['view']->current_display == 'asia_pacific_law_database'){
+    if ($current_display == 'asia_pacific_law_database'){
       $suggestions[] = 'views_view_fields__asia_pacific_law_database';
     }
   }
 
+}
+
+function lpr2023_theme_suggestions_views_view_alter(array &$suggestions, array $variables){
+  $view_id = $variables['view']->id();
+  $view_display = $variables['view']->current_display;
+  if ($view_id == 'news' && $view_display == 'in_action_list') {
+    // dpm($suggestions);
+    $suggestions[] = 'views_view__news__in_action_list';
+  }
 }
 
 /**
