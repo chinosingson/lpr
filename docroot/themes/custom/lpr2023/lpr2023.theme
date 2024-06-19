@@ -197,7 +197,7 @@ function lpr2023_theme_suggestions_views_view_fields_alter(array &$suggestions, 
   } 
 
   if ($current_view == 'events'){
-    if ($current_display == 'all_events') {
+    if ($current_display == 'upcoming_event') {
       $suggestions[] = 'views_view_fields__events__upcoming_event';
     }
 
