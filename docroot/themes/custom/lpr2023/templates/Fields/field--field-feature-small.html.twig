@@ -51,6 +51,15 @@
     label_display == 'visually_hidden' ? 'visually-hidden',
   ]
 %}
+{% set item_count = items|length %}
+{% if item_count == 3 %}
+  {% set bs_col_lg = 4 %}
+{% elseif item_count == 4%}
+  {% set bs_col_lg = 3 %}
+{% else %}
+  {% set bs_col_lg = 6 %}
+{% endif %}
+
 <div class="container">
 {% if label_hidden %}
   {% if multiple %}
@@ -68,17 +77,14 @@
         {% if content_type == 'Event' %}
           {% set class_type = 'event' %}
         {% endif %}
-        {% set body_trimmed = node.body.value|replace({"&nbsp;": " "})|raw|striptags|split(".").0 ~ '.' %}
-        <div class="col-md-6 col-lg-3 mb-md-3 d-flex flex-column">
+        {% set body_trimmed = node.body.value|split('</p>').0|check_markup('restricted_html') %}
+        <div class="col-md-6 col-lg-{{bs_col_lg }} mb-md-3 d-flex flex-column">
           <div class="{{ class_type }}-image pb-lg-0 pb-3"><a href="{{ drupal_url(path) }}">{{ drupal_image(node.field_image[0].entity.fid.value) }}</a></div>
-          {# <div class="{{ class_type }}-info mt-3">
-            <h5>{{ article_type == 'News Release' ? article_type : content_type }}</h5>
-          </div> #}
           <div class="{{ class_type }}-title mt-3">
             <h4><a href="{{ drupal_url(path) }}">{{ drupal_field('title','node',node_id) }}</a></h4>
           </div>
           <div class="{{class_type}}-body flex-grow-1">
-            <p class="fs-6">{{ not node.body.summary ? body_trimmed : node.body.summary }}</p>
+            <div class="fs-6">{{ not node.body.summary ? body_trimmed : node.body.summary }}</div>
           </div>
           <div class="{{ class_type }}-read-more">
              <a href="{{ drupal_url(path) }}">Read more</a>
