@@ -4,7 +4,7 @@
     <div class="col-lg-8">
         
          <h1>{{ label }}</h1>
-    <div class="metadata-top">{{ content.field_media_type.0 }} | {{ content.field_publish_date.0 }}</div>    
+    <div class="metadata-top">{% if content.field_media_type.0 %}{{ content.field_media_type.0 }} | {% endif %}{{ content.field_publish_date.0 }}</div>    
         
     <div>{{ drupal_block("social_sharing_buttons_block") }}</div>
         

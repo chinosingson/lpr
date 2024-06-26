@@ -7,7 +7,7 @@
     <div class="col-lg-8">
         
          <h1>{{ label }}</h1>
-    <div class="metadata-top">{{ resource_type is not null ? resource_type : "" }} | {{ publish_date is not null ? publish_date['#markup'] : "" }}
+    <div class="metadata-top">{% if resource_type is not null %} {{ resource_type }} | {% endif %}{{ publish_date is not null ? publish_date['#markup'] : "" }}
     </div> 
     <div>{{ drupal_block("social_sharing_buttons_block") }}</div>
         {% if node.field_image.value %}
