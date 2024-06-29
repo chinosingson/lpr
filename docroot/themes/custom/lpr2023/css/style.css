@@ -990,14 +990,15 @@ body.page-view-site-search img.site-search-thumbnail
 a.resource-button:link, a.resource-button:visited {
   background-color: var(--green);
   border-color: var(--green);
-  font-size: 1.2rem;
+  font-size: 1.18rem;
 }
 
 .file-metadata {
-  font-size: 0.6em;
+  /* flex-shrink: 1 !important; */
+  font-size: 0.8em;
   display: block;
-  height: 20px;
-  text-transform: uppercase;
+  /* height: 20px; */
+  /* text-transform: uppercase; */
 }
 
 .resource-cover {

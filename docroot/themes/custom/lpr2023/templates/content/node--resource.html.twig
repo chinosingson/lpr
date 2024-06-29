@@ -46,26 +46,35 @@
         {% set file_label = file_name|split('.')|slice(1, length-1)|join('.') %}
         {% set file_size = node.field_presentation_file.entity.getSize() %}
         {% set file_extension = file_name|split('.')|last %}
-        
-        <a class="resource-button btn btn-primary mb-3 p-2 w-100" href="{{ file_url(node.field_presentation_file.entity.uri.value) }}" target="_blank">
-        {# <i class="fas fa-angle-double-down document-download-button"></i>&nbsp;&nbsp; #}
-        Download File<br /><span class="file-metadata">{{ file_extension }} | {{ node.field_presentation_file.entity.filesize.value | format_bytes }}</span></a>
+
+        <a class="resource-button btn btn-primary mb-3 p-2 w-100 d-flex" href="{{ file_url(node.field_presentation_file.entity.uri.value) }}" target="_blank">
+         <span class="resource-dl flex-grow-1 text-start align-content-center">Download File</span><br />
+         <span class="file-metadata flex-shrink-1 fw-light align-content-center">
+            {# {% if file_name %} {{ file_name }}<br/>{% endif %} #}
+            {{ file_extension }} | {{ node.field_presentation_file.entity.filesize.value | format_bytes }}
+         </span>
+        </a>
         
         {% endif %}
         
         
         
         {% if node.field_files.value %}
-        
-        {% set file_name = node.field_files.entity.getFilename() %}
-        {% set file_label = file_name|split('.')|slice(1, length-1)|join('.') %}
-        {% set file_size = node.field_files.entity.getSize() %}
-        {% set file_extension = file_name|split('.')|last %}
-        
-        <a class="resource-button btn btn-primary mb-3 p-2 w-100" href="{{ file_url(node.field_files.entity.uri.value) }}" target="_blank">
-        {# <i class="fas fa-angle-double-down document-download-button"></i>&nbsp;&nbsp; #}
-        Download File<br /><span class="file-metadata">{{ file_extension }} | {{ node.field_files.entity.filesize.value | format_bytes }}</span></a>
-        
+         {% set files = node.field_files  %}
+         {% for file in files %}
+            {% set file_name = file.entity.getFilename() %}
+            {# {% set file_label = file_name|split('.')|slice(1, length-1)|join('.') %} #}
+            {% set file_size = file.entity.getSize() %}
+            {% set file_description = file.description %}
+            {% set file_extension = file_name|split('.')|last %}
+            
+            <a class="resource-button btn btn-primary mb-3 p-2 w-100 d-flex" href="{{ file_url(file.entity.uri.value) }}" target="_blank">
+               <span class="resource-dl flex-grow-1 text-start align-content-center">Download File {% if file.description %} ({{ file.description }}){% endif %}</span>
+               <span class="flex-shrink-1 file-metadata fw-light align-content-center">
+               {{ file_extension }} | {{ file_size | format_bytes }}
+               </span>
+            </a>
+         {% endfor %}
         {% endif %}
         
         
