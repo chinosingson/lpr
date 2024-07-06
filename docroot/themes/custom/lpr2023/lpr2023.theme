@@ -350,7 +350,7 @@ function lpr2023_theme_suggestions_form_alter(array &$suggestions, array $variab
 }
 
 function lpr2023_theme_suggestions_form_element_alter(array &$suggestions, array $variables, $hook) {
-  if ($variables['element']['#id']){
+  if (isset($variables['element']['#id'])){
     $form_element_id = $variables['element']['#id'];
     if ($form_element_id === 'edit-search-api-fulltext' || $form_element_id === 'edit-search-api-fulltext--2') {
       $suggestions[] = $hook . '__search_api_fulltext';
