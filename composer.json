@@ -69,6 +69,7 @@
         "drupal/jquery_ui_slider": "^2.0",
         "drupal/linkit": "^6.1",
         "drupal/login_switch": "^3.0",
+        "drupal/memcache": "^2.5",
         "drupal/metatag": "^2.0",
         "drupal/paragraphs": "^1.16",
         "drupal/pathauto": "^1.12",

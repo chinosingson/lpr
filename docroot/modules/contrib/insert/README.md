@@ -34,5 +34,7 @@ how to configure the module.
 
 ## Maintainers
 
-- Nate Lampton - [quicksketch](https://www.drupal.org/u/quicksketch)
-- Snater - [Snater](https://www.snater.com)
+- [Snater](https://www.snater.com) – Current maintainer, development of Insert
+for Drupal >= 8.
+- [quicksketch](https://www.drupal.org/u/quicksketch) – Development of Insert
+for Drupal 6 and 7.

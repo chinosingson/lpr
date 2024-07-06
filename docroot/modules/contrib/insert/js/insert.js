@@ -21,9 +21,11 @@
     // Populate the Focus Manager registry
     // Add all editors instantiated at the moment when the Insert module code
     // is loaded.
-    Drupal.CKEditor5Instances.forEach(editor => {
+
+    Drupal.CKEditor5Instances?.forEach(editor => {
       Drupal.insert.FocusManager.addEditor(editor);
     });
+
     document.querySelectorAll('textarea').forEach(textarea => {
       Drupal.insert.FocusManager.addTextarea(textarea);
     });

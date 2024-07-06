@@ -7,7 +7,7 @@ dependencies:
   - drupal:media_library
   - insert:insert
 
-# Information added by Drupal.org packaging script on 2024-06-01
-version: '3.0.0-beta7'
+# Information added by Drupal.org packaging script on 2024-07-01
+version: '3.0.0'
 project: 'insert'
-datestamp: 1717265065
+datestamp: 1719827335

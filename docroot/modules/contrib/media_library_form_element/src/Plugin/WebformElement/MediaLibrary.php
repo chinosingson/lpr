@@ -165,7 +165,7 @@ class MediaLibrary extends WebformElementBase {
       ->condition('bundle', array_filter($element['#bundles']), 'IN')
       ->range(0, 50);
 
-    $result = $query->execute();
+    $result = $query->accessCheck(TRUE)->execute();
 
     if (!empty($result)) {
       return array_rand($result);
