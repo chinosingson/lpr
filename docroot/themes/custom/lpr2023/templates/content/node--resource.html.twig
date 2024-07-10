@@ -5,9 +5,16 @@
 <div class="row">
 
     <div class="col-lg-8">
-        
+
          <h1>{{ label }}</h1>
-    <div class="metadata-top">{% if resource_type is not null %} {{ resource_type }} | {% endif %}{{ publish_date is not null ? publish_date['#markup'] : "" }}
+    <div class="metadata-top">{% if resource_type is not null %} 
+         {% for term in node.field_resource_type %}
+            {% set res_label = term.entity.label %}
+            {% set res_link = "/search?f[0]=topic%3A" ~ term.entity.id %}
+            {% if loop.first == false  %}|{% endif%}
+            <a href="{{ res_link }}" class="button-link">{{ res_label }}</a>
+         {% endfor %}
+     | {% endif %}{{ publish_date is not null ? publish_date['#markup'] : "" }}
     </div> 
     <div>{{ drupal_block("social_sharing_buttons_block") }}</div>
         {% if node.field_image.value %}
@@ -130,7 +137,7 @@
         <hr />   
         {% endif %}
         
-        {% if node.field_subjects.value %}
+        {# {% if node.field_subjects.value %}
         
            <div class="related-links">
            <h3>Subjects</h3>
@@ -139,7 +146,7 @@
               </ul>    
            </div>   
         <hr />   
-        {% endif %}
+        {% endif %} #}
         
         
         {% if node.field_topics.value %}
