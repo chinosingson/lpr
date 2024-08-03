@@ -1,0 +1,6 @@
+<div>
+    {{ include("@responsive_menu/responsive-menu-off-canvas.html.twig") }}
+    <div id="lpr-mmenu-search" class="mt-4">
+        {{ drupal_entity('block','lpr2023_exposedformsite_searchsite_search', check_access=false) }}
+    </div>
+</div>

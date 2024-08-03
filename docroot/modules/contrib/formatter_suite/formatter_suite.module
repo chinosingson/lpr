@@ -331,7 +331,7 @@ function template_preprocess_formatter_suite_image_embed(
   }
 
   // Get the file's MIME type. We need this for the data URL.
-  $mimeType = \Drupal::service('file.mime_type.guesser')->guess($path);
+  $mimeType = \Drupal::service('file.mime_type.guesser')->guessMimeType($path);
 
   // Read the file's raw bytes and base64 encode them as a data URL.
   $data = file_get_contents($path);
@@ -464,7 +464,7 @@ function template_preprocess_formatter_suite_image_embed_style(
   // Styling can change the file format of the image, which changes its
   // MIME type. So we need to query the MIME type of the styled image
   // instead of using whatever is saved in the image object.
-  $mimeType = \Drupal::service('file.mime_type.guesser')->guess($path);
+  $mimeType = \Drupal::service('file.mime_type.guesser')->guessMimeType($path);
 
   // Read the file's raw bytes and base64 encode them as a data URL.
   $data = file_get_contents($path);

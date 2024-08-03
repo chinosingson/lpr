@@ -28,7 +28,7 @@ class ViewsBootstrapTable extends Table {
     $options = parent::defineOptions();
     $options['table_class_custom'] = ['default' => NULL];
     $options['responsive'] = ['default' => FALSE];
-    $options['bootstrap_styles'] = ['default' => NULL];
+    $options['bootstrap_styles'] = ['default' => []];
 
     return $options;
   }

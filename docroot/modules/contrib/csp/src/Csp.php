@@ -19,6 +19,7 @@ class Csp {
   const POLICY_UNSAFE_ALLOW_REDIRECTS = "'unsafe-allow-redirects'";
   const POLICY_WASM_UNSAFE_EVAL = "'wasm-unsafe-eval'";
   const POLICY_REPORT_SAMPLE = "'report-sample'";
+  const POLICY_INLINE_SPECULATION_RULES = "'inline-speculation-rules'";
 
   // https://www.w3.org/TR/CSP/#grammardef-serialized-source-list
   const DIRECTIVE_SCHEMA_SOURCE_LIST = 'serialized-source-list';

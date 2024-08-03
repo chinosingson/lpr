@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityRepository;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\File\FileUrlGeneratorInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Session\AccountInterface;
@@ -101,8 +102,10 @@ class GeneralImageFormatter extends ImageFormatter {
     array $thirdPartySettings,
     AccountInterface $currentUser,
     EntityStorageInterface $imageStyleStorage,
-    EntityRepository $entityRepository) {
+    FileUrlGeneratorInterface $fileUrlGenerator, // Corrected order of parameters
+    EntityRepository $entityRepository) { // Corrected order of parameters
 
+    // Pass all arguments in the correct order to the parent constructor.
     parent::__construct(
       $pluginId,
       $pluginDefinition,
@@ -112,11 +115,12 @@ class GeneralImageFormatter extends ImageFormatter {
       $view_mode,
       $thirdPartySettings,
       $currentUser,
-      $imageStyleStorage);
+      $imageStyleStorage,
+      $fileUrlGenerator, // Correctly positioned FileUrlGeneratorInterface instance
+      $entityRepository); // Correctly positioned EntityRepository instance
 
     $this->entityRepository = $entityRepository;
   }
-
   /**
    * {@inheritdoc}
    */
@@ -136,9 +140,9 @@ class GeneralImageFormatter extends ImageFormatter {
       $configuration['third_party_settings'],
       $container->get('current_user'),
       $container->get('entity_type.manager')->getStorage('image_style'),
-      $container->get('entity.repository'));
+      $container->get('file_url_generator'), // Moved FileUrlGeneratorInterface argument to the correct position
+      $container->get('entity.repository')); // Moved EntityRepository argument to the correct position
   }
-
   /*---------------------------------------------------------------------
    *
    * Configuration.

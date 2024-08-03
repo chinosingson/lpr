@@ -37,8 +37,7 @@
    */
   Drupal.behaviors.formatter_suite_text_with_expand_collapse_buttons = {
     attach(pageContext) {
-      $(".formatter_suite-text-with-expand-collapse-buttons", pageContext)
-        .once("formatter_suite-text-with-expand-collapse-buttons")
+        $(once('formatter_suite-text-with-expand-collapse-buttons', ".formatter_suite-text-with-expand-collapse-buttons", pageContext))
         .each((index, value) => {
           // Get handles on all elements that should be children, and get
           // all text block data values that should be there.

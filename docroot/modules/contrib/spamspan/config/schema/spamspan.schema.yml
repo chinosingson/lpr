@@ -26,3 +26,9 @@ filter_settings.filter_spamspan:
     spamspan_form_default_displaytext:
       type: label
       label: 'Form default display text'
+    # @todo Remove this key. "Use Form" is simply a details form and should not
+    # get saved anyways:
+    # @see https://www.drupal.org/project/spamspan/issues/3456700:
+    use_form:
+      type: boolean
+      label: 'Use Form'

@@ -43,7 +43,7 @@ class ViewsBootstrapAccordion extends StylePluginBase {
     $options['label_field'] = ['default' => NULL];
     $options['flush'] = ['default' => FALSE];
     $options['behavior'] = ['default' => 'closed'];
-    $options['sections'] = ['default' => NULL];
+    $options['sections'] = ['default' => []];
 
     return $options;
   }
