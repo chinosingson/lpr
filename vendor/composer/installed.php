@@ -596,12 +596,12 @@
             'dev_requirement' => false,
         ),
         'drupal/ds' => array(
-            'pretty_version' => '3.22.0',
-            'version' => '3.22.0.0',
+            'pretty_version' => '3.23.0',
+            'version' => '3.23.0.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../docroot/modules/contrib/ds',
             'aliases' => array(),
-            'reference' => '8.x-3.22',
+            'reference' => '8.x-3.23',
             'dev_requirement' => false,
         ),
         'drupal/dynamic_entity_reference' => array(
