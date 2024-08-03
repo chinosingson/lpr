@@ -1,25 +1,48 @@
-## IMPORTANT NOTE ##
+# Drupal Memcache Integration
+
+- Introduction
+- Requirements
+- Installation
+- Advanced Configuration
+  - Multiple memcache backend
+  - Multiple servers, bins and clusters
+  - Prefixing
+  - Key Hash Algorithm
+  - Memcache Distribution
+- Locks
+- Cache Container on bootstrap (with cache tags on database)
+- Cache Container on bootstrap (pure memcache)
+- Debugging
+- Troubleshooting
+  - "Failure to set key" message
+  - "SERVER_ERROR object too large for cache" error message
+- Memcache Admin
+- Other Notes
+  - Memcached PECL Extension Support
+
+
+## INTRODUCTION
 
 This file contains installation instructions for the 8.x-2.x version of the
 Drupal Memcache module. Configuration differs between 8.x and 7.x versions
 of the module, so be sure to follow the 7.x instructions if you are configuring
 the 7.x-1.x version of this module!
 
-## REQUIREMENTS ##
+## REQUIREMENTS
 
-- PHP 7.0 or greater
+- PHP 7.4 or greater (8.3+ recommended)
 - Availability of a memcached daemon: http://memcached.org/
 - One of the two PECL memcache packages:
   - http://pecl.php.net/package/memcache (recommended)
   - http://pecl.php.net/package/memcached
-- Using the submodule, memcache_admin, requires Drupal 9.1 or later.
+- Drupal 9.5 or later.
 
 For more detailed instructions on installing a memcached daemon or either of the
 memcache PECL extensions, please see the documentation online at
 https://www.drupal.org/node/1131458 which includes links to external
 walk-throughs for various operating systems.
 
-## INSTALLATION ##
+## INSTALLATION
 
 These are the steps you need to take in order to use this software. Order
 is important.
@@ -28,22 +51,24 @@ is important.
  2. Enable the memcache module.
     You need to enable the module in Drupal before you can configure it to run
     as the default backend. This is so Drupal knows where to find everything.
- 2. Edit settings.php to configure the servers, clusters and bins that memcache
+ 3. Edit settings.php to configure the servers, clusters and bins that memcache
     is supposed to use. You do not need to set this if the only memcache backend
     is localhost on port 11211. By default the main settings will be:
+    ```
       $settings['memcache']['servers'] = ['127.0.0.1:11211' => 'default'];
       $settings['memcache']['bins'] = ['default' => 'default'];
       $settings['memcache']['key_prefix'] = '';
- 7. Edit settings.php to make memcache the default cache class, for example:
-      $settings['cache']['default'] = 'cache.backend.memcache';
+    ```
+4. Edit settings.php to make memcache the default cache class, for example:
+      `$settings['cache']['default'] = 'cache.backend.memcache';`
  8. If you wish to arbitrarily send cache bins to memcache, then you can do the
     following. E.g. for the cache_render bin:
-      $settings['cache']['bins']['render'] = 'cache.backend.memcache';
+      `$settings['cache']['bins']['render'] = 'cache.backend.memcache';`
 
-## ADVANCED CONFIGURATION ##
+## ADVANCED CONFIGURATION
 
-### Multiple memcache backends ###
-
+### Multiple memcache backend
+```
   $settings['memcache']['servers'] = [
     '127.0.0.1:11211' => 'default', // Default host and port
     '127.0.0.1:11212' => 'default', // Default host with port 11212
@@ -51,11 +76,11 @@ is important.
     'server1.com:11211' => 'default', // Default port with hostname
     'unix:///path/to/socket' => 'default', 'Unix socket'
   ];
-
-### Multiple servers, bins and clusters ###
-
+```
+### Multiple servers, bins and clusters
+```
   $settings['memcache'] = [
-    'servers' = [
+    'servers' => [
       'server1:port' => 'default',
       'server2:port' => 'default',
       'server3:port' => 'cluster1',
@@ -70,7 +95,7 @@ is important.
       'binS' => 'clusterS',
     ],
   ];
-
+```
 The bin/cluster/server model can be described as follows:
 
 - Servers are memcached instances identified by host:port.
@@ -84,15 +109,15 @@ The bin/cluster/server model can be described as follows:
 
 - If a bin can not be found it will map to 'default'.
 
-### Prefixing ###
+### Prefixing
 
 If you want to have multiple Drupal installations share memcached instances,
 you need to include a unique prefix for each Drupal installation in the memcache
 config in settings.php:
 
-  $settings['memcache']['key_prefix'] = 'something_unique';
+  `$settings['memcache']['key_prefix'] = 'something_unique';`
 
-### Key Hash Algorithm ###
+### Key Hash Algorithm
 
 Note: if the length of your prefix + key + bin combine to be more than 250
 characters, they will be automatically hashed. Memcache only supports key
@@ -100,12 +125,12 @@ lengths up to 250 bytes. You can optionally configure the hashing algorithm
 used, however sha1 was selected as the default because it performs quickly with
 minimal collisions.
 
-  $settings['memcache']['key_hash_algorithm'] = 'sha1';
+  `$settings['memcache']['key_hash_algorithm'] = 'sha1';`
 
 Visit http://www.php.net/manual/en/function.hash-algos.php to learn more about
 which hash algorithms are available.
 
-### Memcache Distribution ###
+### Memcache Distribution
 
 To use this module with multiple memcached servers, it is important that you set
 the hash strategy to consistent. This is controlled in the PHP extension, not the
@@ -121,22 +146,22 @@ You need to reload apache httpd after making that change.
 If using PECL memcached:
 Memcached options can be controlled in settings.php. Consistent distribution is
 the default in this case but could be set using:
-
+```
   $settings['memcache']['options'] = [
     Memcached::OPT_DISTRIBUTION => Memcached::DISTRIBUTION_CONSISTENT,
   ];
-
-## LOCKS ##
+```
+## LOCKS
 
 Memcache locks can be enabled through the services.yml file.
-
+```
 services:
   # Replaces the default lock backend with a memcache implementation.
   lock:
     class: Drupal\Core\Lock\LockBackendInterface
     factory: memcache.lock.factory:get
-
-## Cache Container on bootstrap (with cache tags on database) ##
+```
+## Cache Container on bootstrap (with cache tags on database)
 By default Drupal starts the cache_container on the database, in order to
 override that you can use the following code on your settings.php file. Make
 sure that the $class_load->addPsr4 is pointing to the right location of
@@ -145,7 +170,7 @@ memcache (in this case modules/contrib/memcache/src)
 In this mode, the database is still bootstrapped so that cache tag invalidation
 can be handled. If you want to avoid database bootstrap, see the container
 definition in the next section instead.
-
+```
 $memcache_exists = class_exists('Memcache', FALSE);
 $memcached_exists = class_exists('Memcached', FALSE);
 if ($memcache_exists || $memcached_exists) {
@@ -193,8 +218,8 @@ if ($memcache_exists || $memcached_exists) {
     ],
   ];
 }
-
-## Cache Container on bootstrap (pure memcache) ##
+```
+## Cache Container on bootstrap (pure memcache)
 By default Drupal starts the cache_container on the database, in order to
 override that you can use the following code on your settings.php file.
 Make sure that the $class_load->addPsr4 is pointing to the right location
@@ -202,7 +227,7 @@ of memcache (in this case modules/contrib/memcache/src)
 
 For this mode to work correctly, you must be using the overridden cache_tags.invalidator.checksum service.
 See example.services.yml for the corresponding configuration.
-
+```
 $memcache_exists = class_exists('Memcache', FALSE);
 $memcached_exists = class_exists('Memcached', FALSE);
 if ($memcache_exists || $memcached_exists) {
@@ -254,14 +279,15 @@ if ($memcache_exists || $memcached_exists) {
     ],
   ];
 }
-
-## Debugging ##
+```
+## Debugging
 By default debugging is off. To enable it add the following code in settings.php.
-$settings['memcache']['debug'] = TRUE;
+`$settings['memcache']['debug'] = TRUE;`
 
-## TROUBLESHOOTING ##
+## TROUBLESHOOTING
 
-PROBLEM:
+### "Failure to set key" message
+
 Error:
 Failed to set key: Failed to set key: cache_page-......
 
@@ -272,14 +298,33 @@ WARNING:
 Zlib compression at the php.ini level and Memcache conflict.
 See http://drupal.org/node/273824
 
-## MEMCACHE ADMIN ##
+
+### "SERVER_ERROR object too large for cache" error message
+
+The following error may be logged;
+```
+    Notice: MemcachePool::set(): Server 127.0.0.1 (tcp 11211, udp 0) failed
+    with: SERVER_ERROR object too large for cache (3) in
+    Drupal\memcache\Driver\MemcacheDriver->set() (line 17 of
+    memcache/src/Driver/MemcacheDriver.php)
+```
+The workaround is to modify the memcached configuration `/etc/memcached.conf`:
+```
+    # Override the default size of each slab page. The default size is 1mb.
+    # Default value for this parameter is 1m, minimum is 1k, max is 1G
+    # (1024 * 1024 * 1024). Adjusting this value changes the item size limit.
+    # --max-item-size=<size>
+    --max-item-size=5M
+```
+
+## MEMCACHE ADMIN
 
 A module offering a UI for memcache is included. It provides aggregated and
 per-page statistics for memcache.
 
-## OTHER NOTES ##
+## OTHER NOTES
 
-### Memcached PECL Extension Support ###
+### Memcached PECL Extension Support
 
 We also support the Memcached PECL extension. This extension backends
 to libmemcached and allows you to use some of the newer advanced features in
@@ -295,12 +340,12 @@ https://secure.php.net/manual/en/memcached.constants.php
 An example configuration block is below, this block also illustrates our
 default options (selected through performance testing). These options will be
 set unless overridden in settings.php.
-
+```
   $settings['memcache']['options'] = [
     Memcached::OPT_COMPRESSION => TRUE,
     Memcached::OPT_DISTRIBUTION => Memcached::DISTRIBUTION_CONSISTENT,
   ];
-
+```
 These are as follows:
 
  * Turn on compression, as this allows more data to be stored and in turn
@@ -335,7 +380,7 @@ memcached client version 2.0.0 or greater also built with SASL support. Once
 these requirements are satisfied you can then enable SASL support in the Drupal
 memcache module by enabling the binary protocol and setting
 memcache_sasl_username and memcache_sasl_password in settings.php. For example:
-
+```
 $settings['memcache']['sasl'] = [
   'username' => 'user',
   'password' => 'password',
@@ -347,3 +392,4 @@ $settings['memcache']['extension'] = 'Memcached';
 $settings['memcache']['options'] = [
   \Memcached::OPT_BINARY_PROTOCOL => TRUE,
 ];
+```

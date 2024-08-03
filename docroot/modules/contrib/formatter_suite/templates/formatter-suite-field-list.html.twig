@@ -58,7 +58,7 @@
 
 {% set itemsLength = items|length %}
 {% set itemsIndex = 1 %}
-<div{{ attributes.addClass(classes) }}>
+<div{{ attributes.addClass(classes|merge(['clearfix'])) }}>
   {% if label_hidden == false %}
     <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
   {% endif %}

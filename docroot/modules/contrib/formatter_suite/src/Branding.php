@@ -180,7 +180,7 @@ final class Branding {
 
     // To get the module's version number, we have to parse its YML info file.
     $moduleInfo = \Drupal::service('info_parser')->parse($module->getPathname());
-    $moduleVersion = $moduleInfo['version'];
+    $moduleVersion = $moduleInfo['version'] ?? 'unknown';
 
     // Get the path to the module's logo.
     $logoPath = $moduleImagesPath . self::LOGO_FILE_NAME;

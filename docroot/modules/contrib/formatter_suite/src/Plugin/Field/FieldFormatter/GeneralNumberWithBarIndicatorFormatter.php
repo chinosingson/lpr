@@ -452,7 +452,7 @@ class GeneralNumberWithBarIndicatorFormatter extends GeneralNumberFormatter {
       // Use inline styles because:
       // * The bar area length and width are parameters.
       // * The bar and background colors are parameters.
-      $backgroundStyle = "width: ${barLength}px; height: ${barWidth}px;";
+      $backgroundStyle = "width: {$barLength}px; height: {$barWidth}px;";
       if (empty($backgroundColor) === FALSE) {
         $backgroundStyle .= "background-color: $backgroundColor;";
       }

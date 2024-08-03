@@ -4,7 +4,7 @@ description: Provide Content-Security-Policy headers
 core_version_requirement: ^10 || ^11
 configure: csp.settings
 
-# Information added by Drupal.org packaging script on 2024-06-14
-version: '8.x-1.32'
+# Information added by Drupal.org packaging script on 2024-07-18
+version: '8.x-1.33'
 project: 'csp'
-datestamp: 1718326044
+datestamp: 1721292909

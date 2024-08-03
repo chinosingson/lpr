@@ -11,7 +11,7 @@ libraries:
   - formatter_suite/formatter_suite
 core_version_requirement: ^9 || ^10
 
-# Information added by Drupal.org packaging script on 2023-09-06
-version: '2.0.0'
+# Information added by Drupal.org packaging script on 2024-07-12
+version: '2.0.1'
 project: 'formatter_suite'
-datestamp: 1694036574
+datestamp: 1720828091

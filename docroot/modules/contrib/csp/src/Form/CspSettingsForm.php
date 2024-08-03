@@ -47,8 +47,8 @@ class CspSettingsForm extends ConfigFormBase {
     // the violation report.
     // @see https://www.w3.org/TR/CSP3/#framework-violation
     'report-sample' => ['default-src', 'script-src', 'script-src-attr', 'script-src-elem', 'style-src', 'style-src-attr', 'style-src-elem'],
-    'strict-dynamic' => ['default-src', 'script-src'],
-    'unsafe-allow-redirects' => ['navigate-to'],
+    'inline-speculation-rules' => ['default-src', 'script-src'],
+    'unsafe-inline' => ['default-src', 'script-src', 'script-src-attr', 'script-src-elem', 'style-src', 'style-src-attr', 'style-src-elem'],
     // Since "unsafe-eval" acts as a global page flag, script-src-attr and
     // script-src-elem are not used when performing this check, instead
     // script-src (or it’s fallback directive) is always used.
@@ -57,7 +57,8 @@ class CspSettingsForm extends ConfigFormBase {
     'wasm-unsafe-eval' => ['default-src', 'script-src'],
     // Unsafe-hashes only applies to inline attributes.
     'unsafe-hashes' => ['default-src', 'script-src', 'script-src-attr', 'style-src', 'style-src-attr'],
-    'unsafe-inline' => ['default-src', 'script-src', 'script-src-attr', 'script-src-elem', 'style-src', 'style-src-attr', 'style-src-elem'],
+    'unsafe-allow-redirects' => ['navigate-to'],
+    'strict-dynamic' => ['default-src', 'script-src'],
   ];
 
   /**
@@ -150,20 +151,13 @@ class CspSettingsForm extends ConfigFormBase {
    * @return array
    *   An array of keywords.
    */
-  private function getKeywordOptions($directive) {
-    $allKeywords = [
-      'unsafe-inline',
-      'unsafe-eval',
-      'wasm-unsafe-eval',
-      'unsafe-hashes',
-      'unsafe-allow-redirects',
-      'strict-dynamic',
-      'report-sample',
-    ];
-
-    return array_filter($allKeywords, function ($keyword) use ($directive) {
-      return !array_key_exists($keyword, self::$keywordDirectiveMap) || in_array($directive, self::$keywordDirectiveMap[$keyword]);
-    });
+  private function getKeywordOptions($directive): array {
+    return array_keys(array_filter(
+      self::$keywordDirectiveMap,
+      function ($directives) use ($directive) {
+        return in_array($directive, $directives);
+      }
+    ));
   }
 
   /**

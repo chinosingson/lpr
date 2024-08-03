@@ -72,34 +72,26 @@ views.style.views_bootstrap_carousel:
       type: boolean
       label: "Wrap"
     effect:
-      type: select
+      type: string
       label: "Effect"
-      options:
-        '': "No effect"
-        slide: "Slide"
-        slide carousel-fade: "Fade"
     columns:
-      type: select
+      type: integer
       label: "Columns"
-      options:
-        1: "1"
-        2: "2"
-        3: "3"
-        4: "4"
     breakpoints:
-      type: select
+      type: string
       label: "Breakpoints"
-      options:
-        xs: "Extra Small"
-        sm: "Small"
-        md: "Medium"
-        lg: "Large"
     display:
-      type: radios
+      type: string
       label: "Display"
-      options:
-        fields: "Select by fields"
-        content: "Display fields as row content"
+    image:
+      type: string
+      label: "Image"
+    title:
+      type: string
+      label: "Title"
+    description:
+      type: string
+      label: "Description"
 
 views.style.views_bootstrap_grid:
   type: views_style
@@ -197,12 +189,15 @@ views.style.views_bootstrap_tab:
       label: "Fade Effect"
 
 views.style.views_bootstrap_table:
-  type: views_style
+  type: views.style.table
   label: 'Views bootstrap table'
   mapping:
     responsive:
       type: boolean
       label: "Responsive"
+    table_class_custom:
+      type: string
+      label: "Table custom class"
     bootstrap_styles:
       type: mapping
       label: "Bootstrap styles"
