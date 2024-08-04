@@ -20,38 +20,6 @@
     
     </div>
     <div class="col-lg-4">
-        {% if node.field_contact_information.value %}
-        
-           <h3>Contact Person</h3>  
-           {{ content.field_contact_information }}
-        <hr />
-        {% endif %}
-        
-
-        
-        {% if node.field_organization.value %}
-        
-           <div class="related-links">
-           <h3>Organizations</h3>
-              <ul class="related-links-set">
-                  {{ content.field_organization }}
-              </ul>    
-           </div>    
-        <hr />
-        {% endif %}
-    
-        
-        {% if node.field_related_content.value %}
-        
-           <div class="related-links">
-           <h3>Related Links</h3>
-              <ul class="related-links-set">
-                  {{ content.field_related_content }}
-              </ul>    
-           </div>  
-        <hr />   
-        {% endif %}
-    
         
         {% if node.field_focus_areas.value %}
         
@@ -86,6 +54,37 @@
            </div>   
         <hr />   
         {% endif %}
+        
+        {% if node.field_organization.value %}
+        
+           <div class="related-links">
+           <h3>Organizations</h3>
+              <ul class="related-links-set">
+                  {{ content.field_organization }}
+              </ul>    
+           </div>    
+        <hr />
+        {% endif %}
+    
+        {% if node.field_related_content.value %}
+        
+           <div class="related-links">
+           <h3>Related Links</h3>
+              <ul class="related-links-set">
+                  {{ content.field_related_content }}
+              </ul>    
+           </div>  
+        <hr />   
+        {% endif %}
+
+        {% if node.field_contact_information.value %}
+        
+           <h3>Contact Person</h3>  
+           {{ content.field_contact_information }}
+        <hr />
+        {% endif %}
+        
+
         
         
     </div>

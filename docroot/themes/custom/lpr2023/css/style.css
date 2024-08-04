@@ -970,6 +970,9 @@
 .related-list { list-style-type: none; padding-left: 0px; }
 .related-item .field__item, .related-list .related-item { margin-bottom: 10px; }
 .related-links-set { padding-left: 0px; }
+.related-link .related-link-image .img-fluid {
+  margin-bottom: .5em;
+}
 
 /* force 'img-fluid' property on images */
 /* .field--name-body img  */

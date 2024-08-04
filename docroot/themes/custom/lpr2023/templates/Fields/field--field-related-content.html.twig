@@ -43,6 +43,7 @@
     'field--name-' ~ field_name|clean_class,
     'field--type-' ~ field_type|clean_class,
     'field--label-' ~ label_display,
+    'related-links'
   ]
 %}
 {%
@@ -52,6 +53,9 @@
   ]
 %}
 
+{%
+  set parent_node_type = element['#bundle']
+%}
 
   <div{{ attributes.addClass(classes) }}>
     {# <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div> #}
@@ -59,20 +63,25 @@
       <div class='field__items'>
     {# {% endif %} #}
     {% for item in items %}
-      <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
-      {{ dd(item.content['#url']) }}
-      {{ dd(item.content['#url'].external) }}
-
-      {% if item.content['#url'].external  %}
-        {{ dd(item.content['#url'].uri) }}
+       <div{{ item.attributes.addClass(['field__item','related-link']) }}>
+      {% if item.content['#url'].external or parent_node_type not in ['event','article']  %}
+        {# {{ dd(item.content['#url'].uri) }} #}
+       <h5>{{ item.content }}</h5>
       {% else %}
-        {{ dd(item.content['#url'].routeParameters.node) }}
         {% set nodeDefault = drupal_entity('node', item.content['#url'].routeParameters.node,'default') %}
         {% set nodeObj = nodeDefault['#node'] %}
         {% set nodeType = nodeObj.type.value.0.target_id %}
-        {{ drupal_field('field_image', 'node', nodeObj.id) }}
+        {% set nodeUrlAlias = path('entity.node.canonical', {'node':nodeObj.id}) %}
+        {# {{ dd('VIDEO') }}
+        {{ dd(nodeObj.fields.field_video) }}
+        {{ drupal_field('field_video', 'node', nodeObj.id) }} #}
+        {# {{ dd('IMAGE') }}#}
+        {# {{ dd(nodeObj) }} #}
+        <div class="related-link-image"><a href='{{ nodeUrlAlias }}'>{{ drupal_field('field_image', 'node', nodeObj.id)|without('label') }}</a></div>
+        <div class="related-link-type fs-6 fw-bold">{{ nodeType|title }}</div>
+        <div class="related-link-title mb-3"><h5><a href='{{ nodeUrlAlias }}'>{{ drupal_field('title', 'node', nodeObj.id) }}</a></h5></div>
       {% endif %}
-
+      </div>
     {% endfor %}
     {# {% if multiple %} #}
       </div>
