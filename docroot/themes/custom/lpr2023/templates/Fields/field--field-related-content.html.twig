@@ -71,15 +71,12 @@
         {% set nodeDefault = drupal_entity('node', item.content['#url'].routeParameters.node,'default') %}
         {% set nodeObj = nodeDefault['#node'] %}
         {% set nodeType = nodeObj.type.value.0.target_id %}
-        {% set nodeUrlAlias = path('entity.node.canonical', {'node':nodeObj.id}) %}
-        {# {{ dd('VIDEO') }}
-        {{ dd(nodeObj.fields.field_video) }}
-        {{ drupal_field('field_video', 'node', nodeObj.id) }} #}
-        {# {{ dd('IMAGE') }}#}
-        {# {{ dd(nodeObj) }} #}
-        <div class="related-link-image"><a href='{{ nodeUrlAlias }}'>{{ drupal_field('field_image', 'node', nodeObj.id)|without('label') }}</a></div>
-        <div class="related-link-type fs-6 fw-bold">{{ nodeType|title }}</div>
-        <div class="related-link-title mb-3"><h5><a href='{{ nodeUrlAlias }}'>{{ drupal_field('title', 'node', nodeObj.id) }}</a></h5></div>
+        {% if nodeObj.id and nodeObj.published %}
+          {% set nodeUrlAlias = path('entity.node.canonical', {'node':nodeObj.id}) %}
+          <div class="related-link-image"><a href='{{ nodeUrlAlias }}'>{{ drupal_field('field_image', 'node', nodeObj.id)|without('label') }}</a></div>
+          <div class="related-link-type fs-6 fw-bold">{{ nodeType|title }}</div>
+          <div class="related-link-title mb-3"><h5><a href='{{ nodeUrlAlias }}'>{{ drupal_field('title', 'node', nodeObj.id) }}</a></h5></div>
+        {% endif %}
       {% endif %}
       </div>
     {% endfor %}
