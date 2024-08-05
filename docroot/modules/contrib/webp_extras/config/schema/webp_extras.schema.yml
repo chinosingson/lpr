@@ -1,0 +1,8 @@
+filter_settings.filter_webp_extras:
+  type: filter
+  label: 'WebP Image Filter'
+  mapping:
+    check_roles:
+      type: boolean
+      label: 'Check roles permissions'
+
