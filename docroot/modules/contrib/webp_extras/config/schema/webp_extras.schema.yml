@@ -1,5 +1,5 @@
-filter_settings.filter_webp_extras:
-  type: filter
+filter_settings.webp_image:
+  type: mapping
   label: 'WebP Image Filter'
   mapping:
     check_roles:

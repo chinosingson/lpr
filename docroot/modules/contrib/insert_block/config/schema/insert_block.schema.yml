@@ -1,5 +1,5 @@
 filter_settings.filter_insert_block:
-  type: filter
+  type: mapping
   label: 'Insert Block Filter'
   mapping:
     check_roles:
