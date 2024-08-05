@@ -1,5 +1,5 @@
 filter_settings.filter_spamspan:
-  type: mapping
+  type: filter
   label: 'Filter Spamspan'
   mapping:
     spamspan_at:

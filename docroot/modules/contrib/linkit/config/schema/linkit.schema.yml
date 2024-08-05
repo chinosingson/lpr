@@ -92,7 +92,7 @@ linkit.matcher.entity:user:
 
 # Plugin \Drupal\linkit\Plugin\Filter\LinkitFilter
 filter_settings.linkit:
-  type: mapping
+  type: filter
   label: 'Linkit'
   mapping:
     title:
