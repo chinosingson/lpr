@@ -8,8 +8,8 @@
         
         {% if node.field_image.value %}
         <figure class="figure">
-        <img class="img-fluid figure-img article-photo" src={{ file_url(content.field_image|field_target_entity.uri.value) }} alt={{ content.field_image|field_raw('alt') }} >
-        <figcaption class="figure-caption">{{ content.field_image|field_raw('alt') }}</figcaption>
+        <img class="img-fluid figure-img article-photo" src={{ file_url(content.field_image|field_target_entity.uri.value) }} alt="{{ content.field_image|field_raw('alt')|escape('html') }}" >
+        <figcaption class="figure-caption">{{ content.field_image|field_raw('alt')|escape('html') }}</figcaption>
         </figure>
         {% endif %}
         
