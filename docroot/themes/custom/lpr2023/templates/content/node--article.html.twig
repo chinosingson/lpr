@@ -1,7 +1,7 @@
 
 <div class="container header-spacer">
 <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-9">
         <h1>{{ label }}</h1>
         <div class="metadata-top">{% if content.field_article_type.0 %}{{ content.field_article_type.0 }} | {% endif %}{{ content.field_publish_date.0 }}</div>
         <div>{{ drupal_block("social_sharing_buttons_block") }}</div>
@@ -19,7 +19,7 @@
         
     
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         
         {% if node.field_focus_areas.value %}
         
@@ -32,7 +32,7 @@
         <hr />   
         {% endif %}
         
-        {% if node.field_subjects.value %}
+        {# {% if node.field_subjects.value %}
         
            <div class="related-links">
            <h3>Subjects</h3>
@@ -41,7 +41,7 @@
               </ul>    
            </div>   
         <hr />   
-        {% endif %}
+        {% endif %} #}
         
         
         {% if node.field_topics.value %}
@@ -66,23 +66,24 @@
         <hr />
         {% endif %}
     
-        {% if node.field_related_content.value %}
-        
-           <div class="related-links">
-           <h3>Related Links</h3>
-              <ul class="related-links-set">
-                  {{ content.field_related_content }}
-              </ul>    
-           </div>  
-        <hr />   
-        {% endif %}
-
         {% if node.field_contact_information.value %}
         
            <h3>Contact Person</h3>  
            {{ content.field_contact_information }}
         <hr />
         {% endif %}
+
+        {% if node.field_related_content.value %}
+        
+           <div class="related-links">
+           <h3>Related Links</h3>
+              <ul class="related-links-set p-3">
+                  {{ content.field_related_content }}
+              </ul>    
+           </div>  
+        {# <hr />    #}
+        {% endif %}
+
         
 
         

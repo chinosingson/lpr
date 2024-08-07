@@ -4,7 +4,7 @@
     
    
     
-    <div class="col-lg-8">
+    <div class="col-lg-9">
         
          <h1>{{ label }}</h1>
     <div class="metadata-top">{{ node.type.entity.label }}  | {{ content.field_statement_date.0 }}</div>    
@@ -17,19 +17,7 @@
         
     </div>
     
-    <div class="col-lg-4">
-        
-        {% if node.field_related_content.value %}
-        
-           <div class="related-links">
-           <h3>Related Links</h3>
-              <ul class="related-links-set">
-                  {{ content.field_related_content }}
-              </ul>    
-           </div>  
-        <hr />   
-        {% endif %}
-    
+    <div class="col-lg-3">
         
         {% if node.field_focus_areas.value %}
         
@@ -42,7 +30,7 @@
         <hr />   
         {% endif %}
         
-        {% if node.field_subjects.value %}
+        {# {% if node.field_subjects.value %}
         
            <div class="related-links">
            <h3>Subjects</h3>
@@ -51,7 +39,7 @@
               </ul>    
            </div>   
         <hr />   
-        {% endif %}
+        {% endif %} #}
         
         
         {% if node.field_topics.value %}
@@ -65,6 +53,17 @@
         <hr />   
         {% endif %} 
         
+        {% if node.field_related_content.value %}
+        
+           <div class="related-links">
+           <h3>Related Links</h3>
+              <ul class="related-links-set">
+                  {{ content.field_related_content }}
+              </ul>    
+           </div>  
+        <hr />   
+        {% endif %}
+    
          
        
         
