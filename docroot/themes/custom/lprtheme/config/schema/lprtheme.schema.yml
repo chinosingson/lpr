@@ -1,5 +1,0 @@
-# Schema for the configuration files of the Bootstrap Barrio Subtheme.
-
-lprtheme.settings:
-  type: theme_settings
-  label: 'ADB-OGC LPR Website Theme settings'
