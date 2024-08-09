@@ -775,6 +775,15 @@
             'reference' => '2.1.3',
             'dev_requirement' => false,
         ),
+        'drupal/imageapi_optimize' => array(
+            'pretty_version' => '4.0.1',
+            'version' => '4.0.1.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../docroot/modules/contrib/imageapi_optimize',
+            'aliases' => array(),
+            'reference' => '4.0.1',
+            'dev_requirement' => false,
+        ),
         'drupal/imagemagick' => array(
             'pretty_version' => '4.0.1',
             'version' => '4.0.1.0',
