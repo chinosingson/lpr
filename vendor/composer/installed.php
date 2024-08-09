@@ -775,6 +775,15 @@
             'reference' => '2.1.3',
             'dev_requirement' => false,
         ),
+        'drupal/imagemagick' => array(
+            'pretty_version' => '4.0.1',
+            'version' => '4.0.1.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../docroot/modules/contrib/imagemagick',
+            'aliases' => array(),
+            'reference' => '4.0.1',
+            'dev_requirement' => false,
+        ),
         'drupal/insert' => array(
             'pretty_version' => '3.0.0',
             'version' => '3.0.0.0',
@@ -1054,6 +1063,15 @@
             'reference' => '4.1.9',
             'dev_requirement' => false,
         ),
+        'drupal/sophron' => array(
+            'pretty_version' => '2.1.0',
+            'version' => '2.1.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../docroot/modules/contrib/sophron',
+            'aliases' => array(),
+            'reference' => '2.1.0',
+            'dev_requirement' => false,
+        ),
         'drupal/spamspan' => array(
             'pretty_version' => '3.1.7',
             'version' => '3.1.7.0',
@@ -1250,6 +1268,15 @@
             'install_path' => __DIR__ . '/../egulias/email-validator',
             'aliases' => array(),
             'reference' => 'ebaaf5be6c0286928352e054f2d5125608e5405e',
+            'dev_requirement' => false,
+        ),
+        'fileeye/mimemap' => array(
+            'pretty_version' => '2.1.2',
+            'version' => '2.1.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../fileeye/mimemap',
+            'aliases' => array(),
+            'reference' => '2cb60da59d5c6fb881a78b481d513c4c68a1a93c',
             'dev_requirement' => false,
         ),
         'fileeye/pel' => array(

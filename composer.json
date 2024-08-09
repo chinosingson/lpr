@@ -60,6 +60,7 @@
         "drupal/google_analytics": "^4.0",
         "drupal/google_tag": "^2.0",
         "drupal/honeypot": "^2.1",
+        "drupal/imagemagick": "^4.0",
         "drupal/insert": "^3.0@beta",
         "drupal/insert_block": "^1.0@beta",
         "drupal/insert_view": "^2.1",
